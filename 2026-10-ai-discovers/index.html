@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIが発見しはじめた</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1115;
+    --stage: #161922;
+    --ink: #eef0f5;
+    --muted: #9aa3b5;
+    --line: #2a2f3d;
+    --accent: #7c9cff;
+    --accent-2: #4fd1a5;
+    --warn: #ffb454;
+    --chip: #222838;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Noto Sans JP", "Hiragino Sans", "WenQuanYi Zen Hei", sans-serif;
+    overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .deck { position: relative; width: 1280px; height: 720px; transform-origin: center center; }
+  .slide {
+    position: absolute; inset: 0;
+    background: var(--stage);
+    border-radius: 12px;
+    padding: 64px 80px 56px;
+    display: none; flex-direction: column;
+  }
+  .slide.active { display: flex; }
+  .kicker {
+    font-family: "JetBrains Mono", monospace; font-size: 18px;
+    color: var(--accent); letter-spacing: .08em; margin-bottom: 14px;
+  }
+  h1 { font-size: 72px; font-weight: 900; line-height: 1.2; letter-spacing: -.01em; }
+  h2 { font-size: 46px; font-weight: 900; line-height: 1.3; margin-bottom: 32px; }
+  p, li { font-size: 28px; line-height: 1.6; }
+  .muted { color: var(--muted); }
+  .em { color: var(--accent); }
+  .em2 { color: var(--accent-2); }
+  .warn { color: var(--warn); }
+  ul { list-style: none; display: grid; gap: 14px; }
+  ul li { padding-left: 1.2em; position: relative; }
+  ul li::before { content: ""; position: absolute; left: 0; top: .72em; width: .5em; height: .5em; border-radius: 50%; background: var(--accent); }
+  .footer {
+    position: absolute; left: 80px; right: 80px; bottom: 24px;
+    display: flex; justify-content: space-between;
+    font-size: 15px; color: var(--muted);
+  }
+  .src { font-size: 15px; color: var(--muted); margin-top: auto; }
+
+  /* title */
+  .title { justify-content: center; }
+  .title h1 { font-size: 88px; }
+  .title .sub { font-size: 30px; color: var(--muted); margin-top: 28px; }
+
+  /* timeline */
+  .tl { display: grid; gap: 10px; }
+  .tl-row { display: grid; grid-template-columns: 120px 1fr; align-items: baseline; gap: 24px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .tl-row:last-child { border-bottom: 0; }
+  .date { font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--accent); }
+  .tl-row p { font-size: 26px; }
+  .tl-row .muted { font-size: 20px; margin-left: .5em; }
+
+  /* big number */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 36px; }
+  .stat { background: var(--chip); border-radius: 12px; padding: 28px 28px 24px; }
+  .stat .n { font-size: 64px; font-weight: 900; color: var(--accent); line-height: 1.1; }
+  .stat .l { font-size: 22px; color: var(--muted); margin-top: 8px; }
+
+  /* cards */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1; min-height: 0; }
+  .card { background: var(--chip); border-radius: 12px; padding: 30px 32px; display: flex; flex-direction: column; gap: 12px; }
+  .card h3 { font-size: 30px; font-weight: 900; }
+  .card .who { font-family: "JetBrains Mono", monospace; font-size: 16px; color: var(--accent-2); letter-spacing: .05em; }
+  .card p { font-size: 23px; line-height: 1.6; }
+
+  .big-quote { font-size: 56px; font-weight: 900; line-height: 1.4; }
+  .center { justify-content: center; }
+
+  .trend { display: grid; grid-template-columns: 72px 1fr; gap: 20px; align-items: start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .trend:last-child { border-bottom: 0; }
+  .trend .no { font-family: "JetBrains Mono", monospace; font-size: 44px; color: var(--accent); line-height: 1; }
+  .trend h3 { font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+  .trend p { font-size: 22px; color: var(--muted); }
+
+  .refs li { font-size: 16px; line-height: 1.5; }
+  .refs li::before { top: .6em; width: .4em; height: .4em; }
+  .refs { gap: 6px; }
+
+  .hint { position: fixed; bottom: 10px; right: 14px; font-size: 12px; color: var(--muted); opacity: .6; }
+
+  @media print {
+    @page { size: 1280px 720px; margin: 0; }
+    html, body { overflow: visible; height: auto; display: block; background: var(--stage); }
+    .deck { transform: none !important; width: 1280px; height: auto; }
+    .slide { display: flex !important; position: relative; height: 720px; border-radius: 0; page-break-after: always; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide title">
+    <div class="kicker">AI LT · 2026.10</div>
+    <h1>AIが<span class="em">「発見」</span><br>しはじめた</h1>
+    <p class="sub">2026年9月〜10月のAI実績を5分でざっと見る</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">AGENDA</div>
+    <h2>この1ヶ月で起きたこと</h2>
+    <ul>
+      <li><span class="em">モデル</span>：主要3社がそろってフラッグシップを更新</li>
+      <li><span class="em">数学</span>：ミレニアム懸賞問題に「解いた」と主張</li>
+      <li><span class="em">科学</span>：ゲノム・酵素・天気・宇宙までAIが成果</li>
+      <li><span class="em">セキュリティ</span>：最強モデルは「防御側」に先行提供</li>
+    </ul>
+    <p class="muted" style="margin-top:40px; font-size:24px">→ キーワードは「生成」から「発見」、そして「検証」へ</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">01 · MODELS</div>
+    <h2>9月はフロンティアモデル・ラッシュ</h2>
+    <div class="tl">
+      <div class="tl-row"><span class="date">09/01</span><p>Anthropic <b>Claude Fable 5.1 / Mythos 5.1</b></p></div>
+      <div class="tl-row"><span class="date">09/03</span><p>OpenAI <b>GPT-6 Astra</b></p></div>
+      <div class="tl-row"><span class="date">09/22</span><p>OpenAI <b>GPT-6 Sol / Luna</b><span class="muted">→ 9/29 に GPT-6.1 Sol</span></p></div>
+      <div class="tl-row"><span class="date">09/30</span><p>Google <b>Gemini 4 Argon</b> 発表<span class="muted">（サイバー防御者から先行提供）</span></p></div>
+      <div class="tl-row"><span class="date">10/07</span><p>Anthropic <b>Claude Haiku 5.5</b><span class="muted">（小型モデル）</span></p></div>
+    </div>
+    <p class="src">出典: 各社公式発表・リリースノート</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">02 · MATH</div>
+    <h2>OpenAI「ナビエ–ストークス方程式を解いた」</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">約1万</div><div class="l">並列に動いたAIエージェント</div></div>
+      <div class="stat"><div class="n">88時間</div><div class="l">開始から証明完成まで</div></div>
+      <div class="stat"><div class="n">Lean</div><div class="l">形式証明つきで公開</div></div>
+    </div>
+    <ul>
+      <li>9/8発表。3次元流体の解が有限時間で<b>特異点</b>を持ちうることを示したと主張</li>
+      <li>9/21には同系統モデルで「<b>100問以上</b>の未解決問題を解決」とも</li>
+    </ul>
+    <p class="src">出典: OpenAI “On the Navier–Stokes Millennium Prize Problem” / HPCwire (2026-09-16)</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">02 · MATH — BUT</div>
+    <h2>ただし、<span class="warn">まだ「検証中」</span></h2>
+    <ul>
+      <li>Clay数学研究所は問題を依然 <b>“active”</b>（未解決）扱い</li>
+      <li>「機械チェックは通るが、それだけでは信じない」── 人間の査読はこれから</li>
+      <li>先行研究者とのクレジット論争（Codex利用データへのアクセス疑惑）</li>
+      <li>フィールズ賞受賞者28名が「未解決問題をベンチマーク扱いするな」と声明</li>
+    </ul>
+    <p class="muted" style="margin-top:32px; font-size:24px">→ AIが証明を「書く」速度に、人間が「読む」速度が追いついていない</p>
+    <p class="src">出典: IEEE Spectrum / NPR (2026-09-22) / The Conversation / Tufts Daily</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">03 · SCIENCE — BIO</div>
+    <h2>生命科学：データの海から見つける</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="who">GOOGLE DEEPMIND · 9月</div>
+        <h3>AlphaGenome Atlas</h3>
+        <p>ヒトゲノム上で起こりうる<b class="em">約90億</b>通りの一塩基変異すべてについて、影響の予測を算出して<b>無償公開</b>。</p>
+        <p class="muted">コード不要で使え、希少疾患研究にすでに活用</p>
+      </div>
+      <div class="card">
+        <div class="who">ANTHROPIC · 09/23</div>
+        <h3>CRISPRに似た新しい酵素系</h3>
+        <p>Claudeのエージェントが、人間は大まかな方針を示しただけで、DNAデータから<b class="em">未知の酵素システム</b>を発見。</p>
+        <p class="muted">CRISPR的な反復配列を持つ。機能はまだ解明中</p>
+      </div>
+    </div>
+    <p class="src" style="margin-top:20px">出典: Google “The latest AI news we announced in September 2026” / Anthropic “Claude discovers a novel enzyme system”</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">03 · SCIENCE — EARTH &amp; SKY</div>
+    <h2>地球と宇宙：見えなかったものを埋める</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="who">GOOGLE DEEPMIND · 09/03</div>
+        <h3>WeatherNext 3</h3>
+        <p>世界初の<b class="em">1時間ごと</b>の全球天気予報AI。衛星画像をリアルタイムに取り込み、解像度は前世代の約5倍（地表気温 約5km）。</p>
+        <p class="muted">Google検索・Maps・Geminiにすでに搭載</p>
+      </div>
+      <div class="card">
+        <div class="who">ANTHROPIC · 10/08</div>
+        <h3>初の「紫外線の全天マップ」</h3>
+        <p>NASA GALEXが観測できなかった銀河面などの空白を、Claude Scienceで予測。マップの<b class="em">約1/3</b>が予測値。</p>
+        <p class="muted">ピクセルごとに「実測 / 予測」と不確かさを明記</p>
+      </div>
+    </div>
+    <p class="src" style="margin-top:20px">出典: Google “Introducing WeatherNext 3” / Anthropic “The missing map of the sky”</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">04 · SECURITY</div>
+    <h2>最強モデルは、まず「守る側」へ</h2>
+    <ul>
+      <li><b>Gemini 4 Argon</b>：一般公開に先立ち、信頼できるサイバー防御者へ提供</li>
+      <li><b>Anthropic Cyber Mission</b>（10/8）：重要インフラ防御プログラムを開始</li>
+      <li><b>OSS Scanner</b>：オープンソース向け無料・オプトインの脆弱性スキャン
+        <br><span class="muted" style="font-size:22px">レポートは完全にモデル生成（人手のトリアージなし）と明言</span></li>
+    </ul>
+    <p class="muted" style="margin-top:32px; font-size:24px">→ 「攻撃にも使える能力」をどう配るか、が各社の共通テーマに</p>
+    <p class="src">出典: Google Gemini Models / Anthropic “Introducing the Anthropic Cyber Mission”</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">TAKEAWAYS</div>
+    <h2>この1ヶ月から見える3つの傾向</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>AIは「道具」から「共同研究者」へ</h3><p>方針だけ渡して、仮説・探索・証明までをエージェントが回す</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>ボトルネックは「検証」に移った</h3><p>Lean形式証明、実測/予測フラグ ── 信頼の仕組みづくりが競争軸に</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>公開の順番が戦略になった</h3><p>防御者・研究者から先に渡す「段階的リリース」が標準に</p></div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide center">
+    <div class="kicker">SO WHAT?</div>
+    <p class="big-quote">AIが答えを出すのは<br>もう当たり前。<br><span class="em">「それ、本当に正しい？」</span>を<br>確かめる力が、次の価値。</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="kicker">REFERENCES</div>
+    <h2 style="font-size:36px; margin-bottom:20px">出典（2026年10月9日時点）</h2>
+    <ul class="refs">
+      <li>OpenAI — On the Navier–Stokes Millennium Prize Problem / Ten advances in mathematics and theoretical computer science — openai.com</li>
+      <li>OpenAI Developer Community — Announcing GPT-6 Sol and GPT-6 Luna in the API, Codex and ChatGPT</li>
+      <li>IEEE Spectrum — OpenAI’s Navier–Stokes Claim Sparks a Reckoning Among Mathematicians</li>
+      <li>NPR (2026-09-22) — Mathematicians learn little from AI completing unsolved problem</li>
+      <li>The Conversation — OpenAI claims another huge mathematical result amid fights over credit, ethics and privacy</li>
+      <li>HPCwire / AIwire (2026-09-16) — OpenAI Says AI Cracked Millennium Prize Problem in 88 Hours</li>
+      <li>Google — The latest AI news we announced in September 2026 / Introducing WeatherNext 3 — blog.google</li>
+      <li>Google DeepMind — WeatherNext 3 / Gemini Models — deepmind.google</li>
+      <li>Anthropic — Newsroom / Claude discovers a novel enzyme system / The missing map of the sky — anthropic.com</li>
+      <li>Anthropic — Introducing the Anthropic Cyber Mission / Launching an opt-in vuln-finding service for open source</li>
+    </ul>
+    <p class="src">※ 数学の結果はいずれも独立検証前の「主張」段階です</p>
+  </section>
+
+</div>
+<div class="hint">← → / クリックで移動 · F で全画面</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const deck = document.getElementById('deck');
+  const total = slides.length;
+  let i = Math.min(Math.max(parseInt(location.hash.slice(1), 10) - 1 || 0, 0), total - 1);
+
+  slides.forEach((s, n) => {
+    if (n === 0) return;
+    const f = document.createElement('div');
+    f.className = 'footer';
+    f.innerHTML = `<span>AIが「発見」しはじめた</span><span>${n + 1} / ${total}</span>`;
+    s.appendChild(f);
+  });
+
+  function show(n) {
+    i = Math.min(Math.max(n, 0), total - 1);
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fit() {
+    const s = Math.min(innerWidth / 1280, innerHeight / 720) * 0.96;
+    deck.style.transform = `scale(${s})`;
+  }
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(total - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
+    }
+  });
+  addEventListener('click', e => show(e.clientX < innerWidth / 3 ? i - 1 : i + 1));
+  addEventListener('resize', fit);
+  fit();
+  show(i);
+</script>
+</body>
+</html>
