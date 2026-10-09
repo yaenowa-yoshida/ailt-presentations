@@ -53,7 +53,17 @@
       document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.();
     }
   });
-  addEventListener('click', e => show(e.clientX < innerWidth / 3 ? i - 1 : i + 1));
+  // スライドの外側（左右の余白）のクリックだけでページ送りする。
+  // スライド内のクリックやテキスト選択では移動しない。
+  addEventListener('click', e => {
+    const r = deck.getBoundingClientRect();
+    if (e.clientX < r.left) show(i - 1);
+    else if (e.clientX > r.right) show(i + 1);
+  });
+  addEventListener('mousemove', e => {
+    const r = deck.getBoundingClientRect();
+    document.body.style.cursor = e.clientX < r.left ? 'w-resize' : e.clientX > r.right ? 'e-resize' : '';
+  });
   addEventListener('resize', fit);
   fit();
   show(i);
