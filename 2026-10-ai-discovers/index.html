@@ -60,6 +60,7 @@
   .title { justify-content: center; }
   .title h1 { font-size: 88px; }
   .title .sub { font-size: 30px; color: var(--muted); margin-top: 28px; }
+  .title .presenter { font-size: 26px; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); }
 
   /* timeline */
   .tl { display: grid; gap: 10px; }
@@ -114,6 +115,7 @@
     <div class="kicker">AI LT · 2026.10</div>
     <h1>AIが<span class="em">「発見」</span><br>しはじめた</h1>
     <p class="sub">2026年9月〜10月のAI実績を5分でざっと見る</p>
+    <p class="presenter">株式会社ヤエノワ　代表取締役　<b>吉田 勝大</b></p>
   </section>
 
   <!-- 2 -->
@@ -278,7 +280,7 @@
     if (n === 0) return;
     const f = document.createElement('div');
     f.className = 'footer';
-    f.innerHTML = `<span>AIが「発見」しはじめた</span><span>${n + 1} / ${total}</span>`;
+    f.innerHTML = `<span>AIが「発見」しはじめた ｜ 株式会社ヤエノワ 吉田 勝大</span><span>${n + 1} / ${total}</span>`;
     s.appendChild(f);
   });
 
