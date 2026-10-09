@@ -116,7 +116,7 @@
       <svg viewBox="0 0 1072 350">
         <!-- 狙い目の象限 -->
         <rect class="box-pale" x="560" y="14" width="500" height="166" style="stroke-dasharray:5 5"/>
-        <text class="lbl-em" x="1048" y="40" text-anchor="end">狙い目：「決まった人」の価値が大きい</text>
+        <text class="lbl-em" x="1048" y="170" text-anchor="end">狙い目：「決まった人」の価値が大きい</text>
         <!-- 軸 -->
         <line class="msg" x1="80" y1="320" x2="1060" y2="320" marker-end="url(#arr)"/>
         <line class="msg" x1="80" y1="320" x2="80" y2="10" marker-end="url(#arr)"/>
@@ -127,12 +127,17 @@
           <circle cx="220" cy="290" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="234" y="295">日用品</text>
           <circle cx="680" cy="260" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="694" y="265">アパレル</text>
           <circle cx="330" cy="70" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="344" y="75">住宅</text>
-          <circle cx="780" cy="200" r="8" style="fill:var(--sakura-deep)"/><text class="lbl-em" x="796" y="205">家電・EC（出発点）</text>
-          <circle cx="620" cy="70" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="636" y="75">BtoBの発注</text>
-          <circle cx="760" cy="120" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="776" y="125">採用</text>
-          <circle cx="900" cy="90" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="916" y="95">旅行</text>
-          <circle cx="980" cy="150" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="900" y="160" text-anchor="end">地域の専門店</text>
+          <circle cx="780" cy="215" r="8" style="fill:var(--sakura-mid)"/><text class="lbl" x="796" y="220">家電・EC（出発点）</text>
+          <circle cx="860" cy="62" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="874" y="67">採用</text>
+          <circle cx="950" cy="105" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="964" y="110">旅行</text>
+          <circle cx="1010" cy="140" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="996" y="145" text-anchor="end">地域の専門店</text>
+          <!-- ヤエノワの領域 -->
+          <circle cx="600" cy="44" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="618" y="50">システムリプレース</text>
+          <circle cx="700" cy="96" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="718" y="102">システム導入</text>
+          <circle cx="610" cy="138" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="628" y="144">HP制作</text>
         </g>
+        <circle cx="110" cy="200" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="128" y="206">ヤエノワの領域</text>
+        <circle cx="110" cy="230" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="128" y="236">ほかの業界</text>
       </svg>
     </div>
     <p class="src">配置は発表者による整理（仮説）</p>
@@ -183,22 +188,49 @@
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">03 · Playbook</div>
-    <h2>どの業界でも効く、3つの打ち手</h2>
-    <div>
-      <div class="trend"><span class="no">01</span><div><h3>AIに「読まれる」一次情報を出す</h3><p>価格・在庫・対応範囲・事例・制度。AIが推測で埋められない事実ほど、選ばれる理由になる</p></div></div>
-      <div class="trend"><span class="no">02</span><div><h3>来た人には「説明」より「確認と仕上げ」</h3><p>営業・接客・面接の最初の5分を、ゼロからの説明ではなく、AIで調べた内容の答え合わせに</p></div></div>
-      <div class="trend"><span class="no">03</span><div><h3>KPIを「人数」から「1人あたりの価値」へ</h3><p>PV・応募数・問い合わせ数が減っても慌てない。成約率と1件あたりの価値で測る</p></div></div>
+    <div class="kicker">03 · My Business</div>
+    <h2>自分のビジネスに置き換えると</h2>
+    <div class="cards three">
+      <div class="card">
+        <div class="who">システム導入</div>
+        <h3>AIで済ませてくること</h3>
+        <p>ツールの候補・機能比較・概算費用まで調べてから相談に来る。</p>
+        <p class="muted">残る仕事：<b>自社の業務に本当に合うか</b>の見極めと、要件の抜け漏れチェック</p>
+      </div>
+      <div class="card">
+        <div class="who">HP制作</div>
+        <h3>AIで済ませてくること</h3>
+        <p>サイトの構成案や文章のたたき台まで、AIと一緒に作ってくる。</p>
+        <p class="muted">残る仕事：ブランドとしての一貫性、更新し続けられる仕組み、<b>AIに読まれる</b>情報設計</p>
+      </div>
+      <div class="card">
+        <div class="who">システムリプレース</div>
+        <h3>AIで済ませてくること</h3>
+        <p>現行の課題整理や、移行方式の一般的な比較までは済んでいる。</p>
+        <p class="muted">残る仕事：基幹連携・データ移行・切替の段取りなど、<b>AIが知らない現場の事情</b></p>
+      </div>
     </div>
+    <p class="note">AIが一般論を片づけてくれるほど、<b>「その会社だけの事情」</b>を扱う上流工程の価値が上がる</p>
   </section>
 
   <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">03 · Vision</div>
+    <h2>ヤエノワとして、これからやっていきたいこと</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>「AIで整理してから」の相談を歓迎する</h3><p>AIとの壁打ちメモや要件のたたき台を持ち込める相談窓口に。最初の打ち合わせを、ゼロからの説明ではなく<b>答え合わせとプロの見極め</b>の場にしたい</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>自社サイトを「AIに読まれる」一次情報にする</h3><p>対応範囲・進め方・事例・費用の目安を、AIが正しく紹介できる形で公開し、<b>検討初日の候補リスト</b>に載りたい</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>問い合わせの「数」より「質」で測る</h3><p>件数が少なくても、要件が見えている相談を大切に。<b>1件あたりの価値</b>と、長く続くご縁で事業を育てていきたい</p></div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">「たくさん集める」から、<br><span class="em">「来る前に選ばれる」</span>へ。</p>
   </section>
 
-  <!-- 10 -->
+  <!-- 11 -->
   <section class="slide">
     <div class="kicker">References</div>
     <h2>出典（2026年10月9日時点）</h2>
