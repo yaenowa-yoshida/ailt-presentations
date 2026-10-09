@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>来る前に、決まっている</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css">
+</head>
+<body data-title="来る前に、決まっている">
+
+<!-- 図で共通に使う矢印（非表示のスライド内に置くと描画されないため、ここに定義） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-light)"/></marker>
+  </defs>
+</svg>
+
+<div class="deck">
+
+  <!-- 1 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · 2026.10</div>
+    <h1>来る前に、<br><span class="em">決まっている</span></h1>
+    <p class="sub">「少ないが、よく買う」AI経由のお客さまを、別のビジネスに置き換えてみる</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">About Me</div>
+    <h2>自己紹介</h2>
+    <div class="profile">
+      <div class="id">
+        <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+        <div class="name">吉田 勝大</div>
+        <div class="roman">Yoshida Katsuhiro</div>
+        <div class="role">株式会社ヤエノワ<br>代表取締役</div>
+      </div>
+      <div>
+        <ul>
+          <li>金融・EC領域の業務システムを、<b>設計・開発から運用保守まで</b>担当</li>
+          <li>基幹システムとEC・OMSの<b>連携設計</b>が専門（SAP連携など）</li>
+          <li>2025年4月にヤエノワを設立。<b>要件定義・設計</b>を軸に、生成AI活用・アプリ開発まで</li>
+          <li>技術コミュニティ <b>CraftStage</b> 共同主催・登壇者</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">要件定義</span><span class="tag">システム設計</span><span class="tag">基幹システム連携</span><span class="tag">EC・OMS</span><span class="tag">PM</span><span class="tag">生成AI</span><span class="tag">Shopify</span><span class="tag">生成AIパスポート</span>
+        </div>
+      </div>
+    </div>
+    <p class="src">yaenowa.co.jp</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">00 · Previously</div>
+    <h2>AI経由のお客さまは「少ないが、よく買う」</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">+60%</div><div class="l">購入率（AI以外の流入と比べて）</div></div>
+      <div class="stat"><div class="n">+53%</div><div class="l">1訪問あたりの売上</div></div>
+      <div class="stat"><div class="n">+48%</div><div class="l">サイトの滞在時間</div></div>
+    </div>
+    <ul>
+      <li>米国の小売サイト。量はまだ検索やメールに及ばない</li>
+      <li>でも、来た人の<b>「買う気」の濃さ</b>が違う</li>
+    </ul>
+    <p class="note"><b>なぜ？</b> ── ここに、ECの外でも使える構造が隠れている</p>
+    <p class="src">出典: Adobe Digital Insights（購入率・売上: 2026年7月 / 滞在時間: 2026年3月）</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">01 · Insight</div>
+    <h2>正体：AIが「前工程」を肩代わりしている</h2>
+    <div class="figure">
+      <svg viewBox="0 0 1072 330">
+        <text class="sub" x="260" y="22" text-anchor="middle" style="font-size:15px;letter-spacing:.3em">これまで</text>
+        <rect class="box-pale" x="40" y="40" width="440" height="56"/>
+        <text class="head" x="260" y="74" text-anchor="middle">検索・広告で、広く集める</text>
+        <rect class="box" x="100" y="108" width="320" height="56"/>
+        <text class="head" x="260" y="142" text-anchor="middle">店に来てから、比較・検討</text>
+        <rect class="box-em" x="185" y="176" width="150" height="56"/>
+        <text class="head-inv" x="260" y="210" text-anchor="middle">購入</text>
+        <text class="lbl" x="260" y="268" text-anchor="middle">来訪は多い。でも多くは比べて帰る</text>
+
+        <line class="lane" x1="536" y1="10" x2="536" y2="300"/>
+
+        <text class="sub" x="810" y="22" text-anchor="middle" style="font-size:15px;letter-spacing:.3em">AI経由</text>
+        <rect class="box-cool" x="590" y="40" width="440" height="124"/>
+        <text class="head" x="810" y="88" text-anchor="middle" style="fill:var(--accent-cool)">AIとの会話の中で</text>
+        <text class="head" x="810" y="116" text-anchor="middle" style="fill:var(--accent-cool)">条件整理・比較・検討が終わる</text>
+        <text class="sub" x="810" y="142" text-anchor="middle">予算・用途・候補の絞り込み</text>
+        <rect class="box-em" x="735" y="176" width="150" height="56"/>
+        <text class="head-inv" x="810" y="210" text-anchor="middle">来訪 ≒ 購入</text>
+        <text class="lbl-em" x="810" y="268" text-anchor="middle">来訪は少ない。でも来た人は「決まっている」</text>
+      </svg>
+    </div>
+    <p class="note">店に届く前に、迷いの大半が片づいている</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">01 · Abstraction</div>
+    <h2>前工程が重いビジネスほど、この構造が効く</h2>
+    <div class="figure">
+      <svg viewBox="0 0 1072 350">
+        <!-- 狙い目の象限 -->
+        <rect class="box-pale" x="560" y="14" width="500" height="166" style="stroke-dasharray:5 5"/>
+        <text class="lbl-em" x="1048" y="40" text-anchor="end">狙い目：「決まった人」の価値が大きい</text>
+        <!-- 軸 -->
+        <line class="msg" x1="80" y1="320" x2="1060" y2="320" marker-end="url(#arr)"/>
+        <line class="msg" x1="80" y1="320" x2="80" y2="10" marker-end="url(#arr)"/>
+        <text class="lbl" x="1060" y="344" text-anchor="end">選択肢の多さ →</text>
+        <text class="lbl" x="92" y="16">↑ 検討の重さ（時間・金額・失敗の痛さ）</text>
+        <!-- 点 -->
+        <g>
+          <circle cx="220" cy="290" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="234" y="295">日用品</text>
+          <circle cx="680" cy="260" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="694" y="265">アパレル</text>
+          <circle cx="330" cy="70" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="344" y="75">住宅</text>
+          <circle cx="780" cy="200" r="8" style="fill:var(--sakura-deep)"/><text class="lbl-em" x="796" y="205">家電・EC（前回の話）</text>
+          <circle cx="620" cy="70" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="636" y="75">BtoBの発注</text>
+          <circle cx="760" cy="120" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="776" y="125">採用</text>
+          <circle cx="900" cy="90" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="916" y="95">旅行</text>
+          <circle cx="980" cy="150" r="9" style="fill:var(--accent)"/><text class="lbl-em" x="900" y="160" text-anchor="end">地域の専門店</text>
+        </g>
+      </svg>
+    </div>
+    <p class="src">配置は発表者による整理（仮説）</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">02 · BtoB</div>
+    <h2>① BtoB：要件が「半分決まった」問い合わせ</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">94%</div><div class="l">直近の購買で生成AIを使ったBtoBの買い手</div></div>
+      <div class="stat"><div class="n">47%</div><div class="l">業者に連絡する前に、AIで社内稟議の材料まで作成</div></div>
+      <div class="stat"><div class="n">95%</div><div class="l">最終的な受注先は、検討初日の候補リストにいた</div></div>
+    </div>
+    <ul>
+      <li>営業の仕事は「説明」から<b>「確認と仕上げ」</b>へ</li>
+      <li>チャンスは<b>初日の候補リストに載ること</b>。対応範囲・価格帯・事例を、AIが読める形で公開する</li>
+    </ul>
+    <p class="src">出典: Forrester 2026 Buyers' Journey Survey（94%・47%）/ 6sense 2025 Buyer Experience Report（95%）</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">02 · More Cases</div>
+    <h2>②〜④ 採用・観光・地域の店にも、同じ構造</h2>
+    <div class="cards three">
+      <div class="card">
+        <div class="who">② 採用</div>
+        <h3>志望理由が固まった応募者</h3>
+        <p>就活生の<b>7割超</b>が生成AIを利用。調べた後に<b>約9割</b>が公式サイトで事実確認する。</p>
+        <p class="muted">AIが答えられない一次情報（社員の声・評価制度・1日の流れ）を厚く</p>
+      </div>
+      <div class="card">
+        <div class="who">③ 観光</div>
+        <h3>行き先が決まった旅行者</h3>
+        <p>海外旅行の計画にAIを使う人は、半年で<b>22%→36%</b>。目的地は着く前に決まっている。</p>
+        <p class="muted">売るべきは「選ばれること」より、着いてからの<b>深い体験</b></p>
+      </div>
+      <div class="card">
+        <div class="who">④ 地域の専門店（仮説）</div>
+        <h3>条件にぴったりの数人</h3>
+        <p>検索順位では埋もれる小さな店も、AIは「条件に合うか」で探す。</p>
+        <p class="muted">広く集めるより、<b>ぴったりの少数</b>で成り立つ商売に追い風</p>
+      </div>
+    </div>
+    <p class="src">出典: ナイル 就活生調査（2026-03）/ Global Rescue 旅行者調査（2026-08）</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">03 · Playbook</div>
+    <h2>どの業界でも効く、3つの打ち手</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>AIに「読まれる」一次情報を出す</h3><p>価格・在庫・対応範囲・事例・制度。AIが推測で埋められない事実ほど、選ばれる理由になる</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>来た人には「説明」より「確認と仕上げ」</h3><p>営業・接客・面接の最初の5分を、ゼロからの説明ではなく、AIで調べた内容の答え合わせに</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>KPIを「人数」から「1人あたりの価値」へ</h3><p>PV・応募数・問い合わせ数が減っても慌てない。成約率と1件あたりの価値で測る</p></div></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">「たくさん集める」から、<br><span class="em">「来る前に選ばれる」</span>へ。</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">References</div>
+    <h2>出典（2026年10月9日時点）</h2>
+    <ul class="refs">
+      <li>Adobe Digital Insights — AI traffic trends report（2026-08-19）/ Q2 2026 AI-sourced traffic insights — business.adobe.com</li>
+      <li>Digital Commerce 360 — Adobe: AI-referral traffic spending, converting more than counterparts（2026-08-19）</li>
+      <li>Forrester — 2026 Buyers' Journey Survey（2026-01）</li>
+      <li>6sense — 2025 Buyer Experience Report</li>
+      <li>G2 — 2026 Buyer Behavior Report</li>
+      <li>ナイル — 就職活動における生成AI利用に関する調査（2026-03）</li>
+      <li>Global Rescue — AI use for international trip planning jumps 64% in six months（2026-08）</li>
+    </ul>
+    <p class="src">※ 業界の配置と「地域の専門店」は発表者による仮説です</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js"></script>
+</body>
+</html>
