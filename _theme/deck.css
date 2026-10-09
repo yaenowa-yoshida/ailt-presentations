@@ -1,0 +1,182 @@
+/* ============================================================
+   deck.css — ヤエノワ LT 共通スライドテーマ
+   トンマナは https://yaenowa.co.jp/ の theme.css / site.css に準拠。
+   色を変える場合は :root のトークンだけを編集すればよい。
+   ============================================================ */
+
+/* ── カラーパレット（コーポレートサイトのライト配色と同値） ── */
+:root {
+  --ink: #1a1a18;
+  --ink-mid: #3d3d38;
+  --ink-light: #6b6b64;
+  --paper: #fdf8f6;
+  --paper-mid: #f5ede8;
+  --paper-dark: #ddc8be;
+  --accent: #7a3a4a;        /* 紅梅（濃） — ボタン・帯 */
+  --accent-gold: #b06070;   /* 紅梅（中） — ラベル・強調文字 */
+  --accent-pale: #f0d8d8;
+  --sakura-deep: #c0606a;
+  --sakura-mid: #e8a0a8;
+  --sakura-light: #f5d8dc;
+  --sakura-pale: #fdf0f2;
+  --accent-cool: #3a6470;   /* 差し色（藍） — 注意・対比 */
+  --accent-cool-pale: #dbe7ea;
+  --surface-raised: #ffffff;
+  --shadow-raised: rgba(122,58,74,0.09);
+  --surface-inverse: #1a1a18;
+  --inverse-ink: #fdf8f6;
+  --inverse-ink-soft: rgba(247,244,238,0.75);
+
+  --font-mincho: "Zen Old Mincho", "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --font-sans: "Noto Sans JP", "Hiragino Sans", "WenQuanYi Zen Hei", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #e9e1dc; color: var(--ink); }
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  overflow: hidden;
+  display: grid; place-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--paper); }
+
+/* ── ステージ（1280×720 固定、deck.js が画面に合わせて拡縮） ── */
+.deck { position: relative; width: 1280px; height: 720px; transform-origin: center center; }
+.slide {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, var(--sakura-pale) 0%, var(--paper) 45%, var(--paper) 100%);
+  padding: 72px 96px 64px 112px;
+  display: none; flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px var(--shadow-raised);
+}
+.slide.active { display: flex; }
+/* 左端の紅梅の帯（OG画像のモチーフ） */
+.slide::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 14px;
+  background: linear-gradient(180deg, var(--accent) 0%, #9a5060 100%);
+}
+
+/* ── 文字 ── */
+.kicker {
+  font-size: 15px; letter-spacing: .4em; text-transform: uppercase;
+  color: var(--accent-gold); margin-bottom: 16px;
+}
+h1, h2, h3, .mincho { font-family: var(--font-mincho); font-weight: 700; letter-spacing: .06em; }
+h1 { font-size: 76px; line-height: 1.3; }
+h2 { font-size: 42px; line-height: 1.4; margin-bottom: 36px; position: relative; padding-bottom: 20px; }
+h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 48px; height: 2px; background: var(--sakura-deep); }
+h3 { font-size: 28px; line-height: 1.4; }
+p, li { font-size: 26px; line-height: 1.75; letter-spacing: .03em; color: var(--ink-mid); }
+b { font-weight: 700; color: var(--ink); }
+.muted { color: var(--ink-light); }
+.em  { color: var(--accent-gold); }
+.em2 { color: var(--accent); }
+.warn { color: var(--accent-cool); }
+.note { font-size: 22px; color: var(--ink-light); margin-top: 32px; }
+.note::before { content: "— "; color: var(--sakura-deep); }
+
+ul { list-style: none; display: grid; gap: 14px; }
+ul li { padding-left: 1.3em; position: relative; }
+ul li::before {
+  content: ""; position: absolute; left: 0; top: .78em;
+  width: .42em; height: .42em; border-radius: 50%; background: var(--sakura-mid);
+}
+
+/* ── フッター（deck.js が自動挿入） ── */
+.footer {
+  position: absolute; left: 112px; right: 96px; bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px; letter-spacing: .12em; color: var(--ink-light);
+}
+.footer img { height: 22px; width: auto; }
+.footer .page { margin-left: auto; font-variant-numeric: tabular-nums; }
+.src { font-size: 13px; letter-spacing: .04em; color: var(--ink-light); margin-top: auto; margin-bottom: 18px; }
+
+/* ── 桜の透かし（表紙・締め） ── */
+.sakura {
+  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+  width: 560px; height: 560px; pointer-events: none;
+}
+
+/* ── レイアウト: 表紙 ── */
+.slide.title { justify-content: center; }
+.title h1 { font-size: 84px; position: relative; z-index: 1; }
+.title .sub { font-size: 26px; color: var(--ink-mid); margin-top: 28px; position: relative; }
+.title .rule { width: 48px; height: 2px; background: var(--sakura-deep); margin: 40px 0 28px; }
+.title .presenter { display: flex; align-items: center; gap: 18px; }
+.title .presenter img { height: 56px; width: auto; }
+.title .presenter .org { font-size: 18px; letter-spacing: .12em; color: var(--ink-light); line-height: 1.5; }
+.title .presenter .name { font-family: var(--font-mincho); font-size: 28px; font-weight: 700; letter-spacing: .18em; color: var(--ink); line-height: 1.4; }
+
+/* ── レイアウト: 反転（メッセージ・締め） ── */
+.slide.inverse { background: var(--surface-inverse); justify-content: center; }
+.slide.inverse .kicker { color: var(--sakura-mid); }
+.slide.inverse .footer { color: var(--inverse-ink-soft); }
+.big-quote {
+  font-family: var(--font-mincho); font-weight: 700;
+  font-size: 54px; line-height: 1.6; letter-spacing: .08em; color: var(--inverse-ink);
+  position: relative; z-index: 1;
+}
+.big-quote .em { color: var(--sakura-mid); }
+
+/* ── レイアウト: タイムライン ── */
+.tl { display: grid; }
+.tl-row {
+  display: grid; grid-template-columns: 130px 1fr; align-items: baseline; gap: 28px;
+  padding: 13px 0; border-bottom: .5px solid var(--paper-dark);
+}
+.tl-row:last-child { border-bottom: 0; }
+.date { font-family: var(--font-mincho); font-size: 26px; font-weight: 700; color: var(--accent-gold); letter-spacing: .08em; }
+.tl-row p { font-size: 25px; }
+.tl-row .muted { font-size: 19px; margin-left: .6em; }
+
+/* ── レイアウト: 数字 ── */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 36px; }
+.stat {
+  background: var(--surface-raised); padding: 26px 28px 22px;
+  border-top: 2px solid var(--sakura-deep);
+  box-shadow: 0 8px 24px var(--shadow-raised);
+}
+.stat .n { font-family: var(--font-mincho); font-size: 60px; font-weight: 700; color: var(--accent); line-height: 1.15; letter-spacing: .04em; }
+.stat .l { font-size: 18px; color: var(--ink-light); margin-top: 6px; letter-spacing: .06em; }
+
+/* ── レイアウト: 2カラムカード ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1; min-height: 0; margin-bottom: 4px; }
+.card {
+  background: var(--surface-raised); padding: 28px 32px;
+  border: .5px solid var(--paper-dark);
+  box-shadow: 0 8px 24px var(--shadow-raised);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.card .who { font-size: 13px; letter-spacing: .3em; color: var(--accent-gold); }
+.card p { font-size: 21px; line-height: 1.75; }
+
+/* ── レイアウト: 番号付きの要点 ── */
+.trend {
+  display: grid; grid-template-columns: 84px 1fr; gap: 20px; align-items: start;
+  padding: 18px 0; border-bottom: .5px solid var(--paper-dark);
+}
+.trend:last-child { border-bottom: 0; }
+.trend .no { font-family: var(--font-mincho); font-size: 46px; font-weight: 700; color: var(--sakura-mid); line-height: 1; }
+.trend h3 { margin-bottom: 4px; }
+.trend p { font-size: 20px; color: var(--ink-light); }
+
+/* ── レイアウト: 出典 ── */
+.refs { gap: 5px; }
+.refs li { font-size: 15px; line-height: 1.55; }
+.refs li::before { top: .62em; width: .36em; height: .36em; }
+
+.hint { position: fixed; bottom: 10px; right: 14px; font-size: 12px; color: var(--ink-light); opacity: .6; }
+
+/* ── 印刷（PDF化）：1スライド1ページ ── */
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { overflow: visible; height: auto; display: block; background: var(--paper); }
+  .deck { transform: none !important; width: 1280px; height: auto; }
+  .slide { display: flex !important; position: relative; height: 720px; box-shadow: none; page-break-after: always;
+           -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hint { display: none; }
+}
