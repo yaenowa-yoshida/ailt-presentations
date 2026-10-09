@@ -180,3 +180,48 @@ ul li::before {
            -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .hint { display: none; }
 }
+
+/* ── 部品: コード（API・JSON の引用） ── */
+.code {
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 19px; line-height: 1.6; letter-spacing: 0;
+  background: var(--surface-inverse); color: var(--inverse-ink);
+  padding: 22px 28px; white-space: pre; overflow: hidden;
+}
+.code .k { color: var(--sakura-mid); }     /* キー */
+.code .s { color: #e9d9b8; }               /* 値 */
+.code .c { color: rgba(247,244,238,0.5); } /* コメント */
+code { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; font-size: .88em; color: var(--accent); }
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: start; }
+.split p, .split li { font-size: 22px; }
+
+/* ── 部品: 図（インラインSVG） ── */
+.figure { width: 100%; flex: 1; min-height: 0; }
+.figure svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.figure text { font-family: var(--font-sans); fill: var(--ink-mid); }
+.figure .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+/* ── 部品: 表 ── */
+table.grid { width: 100%; border-collapse: collapse; }
+table.grid th, table.grid td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: .5px solid var(--paper-dark); font-size: 19px; line-height: 1.55; color: var(--ink-mid); }
+table.grid th { font-size: 14px; letter-spacing: .25em; color: var(--accent-gold); font-weight: 400; border-bottom: 1.5px solid var(--sakura-deep); }
+table.grid td:first-child { font-family: var(--font-mincho); font-weight: 700; color: var(--ink); white-space: nowrap; }
+table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18px; }
+
+/* ── 注意書き（法務スライド用） ── */
+.disclaimer { font-size: 14px; color: var(--ink-light); letter-spacing: .04em; }
+.figure .box    { fill: var(--surface-raised); stroke: var(--paper-dark); stroke-width: 1; }
+.figure .box-em { fill: var(--accent); stroke: none; }
+.figure .box-pale { fill: var(--sakura-pale); stroke: var(--sakura-mid); stroke-width: 1; }
+.figure .box-cool { fill: var(--accent-cool-pale); stroke: var(--accent-cool); stroke-width: 1; }
+.figure .lane   { stroke: var(--paper-dark); stroke-width: 1; stroke-dasharray: 4 5; }
+.figure .msg    { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+.figure .ret    { stroke: var(--ink-light); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.figure .cool   { stroke: var(--accent-cool); stroke-width: 1.6; fill: none; }
+.figure .head   { fill: var(--ink); font-weight: 700; font-size: 17px; }
+.figure .head-inv { fill: var(--inverse-ink); font-weight: 700; font-size: 17px; }
+.figure .sub    { fill: var(--ink-light); font-size: 13px; letter-spacing: .05em; }
+.figure .lbl    { fill: var(--ink-mid); font-size: 15px; }
+.figure .lbl-em { fill: var(--accent); font-size: 15px; font-weight: 700; }
+.figure .lbl-cool { fill: var(--accent-cool); font-size: 15px; font-weight: 700; }
+.figure .num    { fill: var(--accent-gold); font-family: var(--font-mincho); font-weight: 700; font-size: 17px; }
