@@ -1,0 +1,16 @@
+# CLAUDE.md
+
+株式会社ヤエノワのLT資料リポジトリ。発表者は代表取締役 吉田 勝大。
+
+- 資料は `YYYY-MM/index.html`（スライド）と `YYYY-MM/script.md`（台本）。`_template/` をコピーして作る
+- 見た目は `_theme/deck.css` と `_theme/deck.js` に集約。トンマナは https://yaenowa.co.jp/ に合わせる
+- 5分のLTが基本。台本は1分あたり約310字で時間配分を書く
+- `main` に入ると GitHub Pages（https://yaenowa-yoshida.github.io/ailt-presentations/）に自動で公開される
+
+## 文章
+
+README の「文章のルール」に従う。要点：
+
+- AIっぽい言い回し（「〜の正体」「答えはシンプル」「まさに」「AからBへ。」の標語、「──」、見出しのコロン区切り、過剰な太字）を使わない
+- 人が書いた自然な書き言葉にする。見立ては「〜と思います」「私の見立てです」と書く
+- 数字には出典を付ける。発表者の実体験は作らず、台本では【】で本人に委ねる
