@@ -4,7 +4,7 @@
 
 | 日付 | タイトル | 資料 |
 | --- | --- | --- |
-| 2026-10 | AIが「発見」しはじめた ─ 2026年9〜10月のAI実績 | [2026-10-ai-discovers/index.html](2026-10-ai-discovers/index.html) |
+| 2026-10 | 次のお客さまは、AIかもしれない ─ ECとAIのトレンド 2026秋 | [2026-10-ec-ai-trends/index.html](2026-10-ec-ai-trends/index.html) |
 
 ## フォーマット
 
