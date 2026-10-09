@@ -6,17 +6,27 @@
 <title>ECとAIのトレンド</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_theme/deck.css">
 </head>
 <body data-title="次のお客さまは、AIかもしれない">
+
+<!-- 図で共通に使う矢印（非表示のスライド内に置くと描画されないため、ここに定義） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>
+    <marker id="arr-ret" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-light)"/></marker>
+    <marker id="arr-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent-cool)"/></marker>
+  </defs>
+</svg>
+
 <div class="deck">
 
   <!-- 1 -->
   <section class="slide title sakura-bg">
     <div class="kicker">AI Lightning Talk · 2026.10</div>
     <h1>次のお客さまは、<br><span class="em">AI</span>かもしれない</h1>
-    <p class="sub">ECとAIのトレンド 2026秋 ── 集客・購買・運営で起きていること</p>
+    <p class="sub">AIが「レジ」に立つ仕組みを分解する ── 規格の中身と、日本の法務・決済の論点</p>
     <div class="rule"></div>
     <div class="presenter">
       <img src="../_theme/logo.png" alt="ヤエノワロゴ">
@@ -30,161 +40,286 @@
   <!-- 2 -->
   <section class="slide">
     <div class="kicker">Agenda</div>
-    <h2>いまECで起きていること</h2>
+    <h2>今日の話</h2>
     <ul>
-      <li><span class="em">集客</span>：お客さまが「AIで調べてから」来るようになった</li>
-      <li><span class="em">購買</span>：AIエージェントが「代わりに買う」仕組みの陣取り合戦</li>
-      <li><span class="em">運営</span>：AIと会話しながら「店をつくる」時代に</li>
-      <li><span class="em">日本</span>：楽天を中心に、AIコンシェルジュが日常に</li>
+      <li><span class="em">前提</span>：AI経由のお客さまは、もう無視できない</li>
+      <li><span class="em">規格の中身</span>：AIはどうやって「カートを作り、払い、確定」するのか（ACP / UCP / AP2）</li>
+      <li><span class="em">日本の論点</span>：錯誤・最終確認画面・3-Dセキュア・責任の所在</li>
+      <li><span class="em">設計へ</span>：法の要請と規格の機能を、実装の言葉に翻訳する</li>
     </ul>
-    <p class="note">最後に、EC事業者がいま備えておくべきこと</p>
+    <p class="note">規格は公開仕様（2026年10月時点）をもとに要点を抜粋しています</p>
   </section>
 
   <!-- 3 -->
   <section class="slide">
-    <div class="kicker">01 · Traffic</div>
+    <div class="kicker">00 · Why now</div>
     <h2>AI経由のお客さまは「少ないが、よく買う」</h2>
     <div class="stats">
       <div class="stat"><div class="n">+62%</div><div class="l">AI経由の流入（前年同月比）</div></div>
       <div class="stat"><div class="n">+60%</div><div class="l">購入率（AI以外の流入と比べて）</div></div>
-      <div class="stat"><div class="n">+53%</div><div class="l">1訪問あたりの売上</div></div>
+      <div class="stat"><div class="n">+130%</div><div class="l">年末商戦のAI経由流入（予測）</div></div>
     </div>
     <ul>
-      <li>米国の小売サイト、2026年7月のデータ。購入率でAI以外を上回るのは<b>11か月連続</b></li>
-      <li>年末商戦（11〜12月）のAI経由流入は<b>前年比 約+130%</b>と予測</li>
+      <li>米国小売サイト・2026年7月。購入率でAI以外を上回るのは<b>11か月連続</b></li>
+      <li>OpenAI・Google・Amazon・Metaが「AIの中で買う」入口を奪い合っている</li>
     </ul>
-    <p class="note">ただし量はまだ検索やメールに及ばない。「質」が先に来ている</p>
     <p class="src">出典: Adobe Digital Insights（Digital Commerce 360 2026-08-19 / Adobe 年末商戦予測 2026-09）</p>
   </section>
 
   <!-- 4 -->
   <section class="slide">
-    <div class="kicker">02 · Checkout</div>
-    <h2>「AIの中で買う」仕組みの陣取り合戦</h2>
-    <div class="tl">
-      <div class="tl-row"><span class="date">2025/09</span><p>OpenAI：ChatGPT内で決済できる<b>Instant Checkout</b>（規格: ACP）</p></div>
-      <div class="tl-row"><span class="date">2026/01</span><p>Google：共通規格 <b>UCP</b> を発表<span class="muted">Shopify・Walmart・Target等と共同</span></p></div>
-      <div class="tl-row"><span class="date">2026/03</span><p>OpenAI：方針転換。<b>「探すのはChatGPT、買うのは店のサイト」</b>へ</p></div>
-      <div class="tl-row"><span class="date">2026/09</span><p>Meta：買い物もできるAIエージェント <b>Muse</b> を公開（9/8）</p></div>
-      <div class="tl-row"><span class="date">2026/09</span><p>Amazon：Museを<b>自社サイトから締め出し</b>（9/20）</p></div>
-    </div>
-    <p class="src">出典: Google（UCP開発者ガイド）/ CNBC 2026-03-24 / TechRepublic / The Star 2026-09-22</p>
+    <div class="kicker">01 · Protocols</div>
+    <h2>「AIのレジ」は2つの規格で動いている</h2>
+    <table class="grid compact">
+      <tr><th></th><th>ACP（Agentic Commerce Protocol）</th><th>UCP（Universal Commerce Protocol）</th></tr>
+      <tr><td>主導</td><td>OpenAI ＋ Stripe</td><td>Google ＋ Shopify・Walmart・Target ほか</td></tr>
+      <tr><td>構成</td><td>商品フィード／チェックアウト／<b>委任決済</b>の3仕様</td><td><code>/.well-known/ucp</code> で店の「できること」を公開し、機能単位で交渉</td></tr>
+      <tr><td>通信</td><td>REST（署名・冪等キー付き）</td><td>REST・MCP・A2A</td></tr>
+      <tr><td>状態</td><td>4つ（<code>ready_for_payment</code> ほか）</td><td>6つ（<code>requires_escalation</code> ほか）</td></tr>
+      <tr><td>共通</td><td colspan="2">売り手は<b>あくまで店</b>（Merchant of Record）。決済も店のPSPで行い、カード番号はAIに渡らない</td></tr>
+    </table>
+    <p class="src">出典: OpenAI Agentic Commerce（Key concepts / Agentic Checkout Spec）/ ucp.dev Checkout 仕様（2026-08-25版）</p>
   </section>
 
   <!-- 5 -->
   <section class="slide">
-    <div class="kicker">02 · Checkout — Two Camps</div>
-    <h2>「開く」陣営と「閉じる」陣営</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="who">GOOGLE · SHOPIFY ほか</div>
-        <h3>共通規格で、どのAIからでも</h3>
-        <p>UCPでカート作成から決済・購入後まで共通化。GoogleのAI ModeやGeminiの中で、保存済みのGoogle Payで数タップで買える。</p>
-        <p class="muted">販売の主体（顧客データ・関係）は<b>店側に残る</b>のが原則</p>
-      </div>
-      <div class="card">
-        <div class="who">AMAZON</div>
-        <h3>自前のAIで、自分の店の中だけ</h3>
-        <p>自社の「Alexa for Shopping」で比較・カート作成・条件付き購入まで。一方で、名乗らずにアクセスする<b>外部のAIエージェントは遮断</b>。</p>
-        <p class="muted">「誰のAIなら入れるか」をサイト側が決める時代に</p>
-      </div>
+    <div class="kicker">01 · ACP — Sequence</div>
+    <h2>ACPで「買って」が注文になるまで</h2>
+    <div class="figure">
+      <svg viewBox="0 0 1072 390">
+        <!-- 登場人物 -->
+        <rect class="box" x="10" y="0" width="160" height="46"/>
+        <text class="head" x="90" y="29" text-anchor="middle">利用者</text>
+        <rect class="box-em" x="280" y="0" width="180" height="46"/>
+        <text class="head-inv" x="370" y="29" text-anchor="middle">AI（ChatGPT）</text>
+        <rect class="box" x="600" y="0" width="180" height="46"/>
+        <text class="head" x="690" y="29" text-anchor="middle">EC事業者のAPI</text>
+        <rect class="box" x="880" y="0" width="180" height="46"/>
+        <text class="head" x="970" y="29" text-anchor="middle">決済代行（PSP）</text>
+        <line class="lane" x1="90" y1="46" x2="90" y2="390"/>
+        <line class="lane" x1="370" y1="46" x2="370" y2="390"/>
+        <line class="lane" x1="690" y1="46" x2="690" y2="390"/>
+        <line class="lane" x1="970" y1="46" x2="970" y2="390"/>
+
+        <!-- 依頼 -->
+        <line class="msg" x1="90" y1="78" x2="364" y2="78" marker-end="url(#arr)"/>
+        <text class="lbl" x="230" y="70" text-anchor="middle">「これ買って」</text>
+
+        <!-- ① create -->
+        <text class="num" x="380" y="112">①</text>
+        <line class="msg" x1="370" y1="118" x2="684" y2="118" marker-end="url(#arr)"/>
+        <text class="lbl mono" x="400" y="111">POST /checkout_sessions</text>
+        <line class="ret" x1="690" y1="146" x2="376" y2="146" marker-end="url(#arr-ret)"/>
+        <text class="sub" x="680" y="140" text-anchor="end">201 カート全体の状態（税・送料・合計）</text>
+
+        <!-- ② update -->
+        <text class="num" x="380" y="184">②</text>
+        <line class="msg" x1="370" y1="190" x2="684" y2="190" marker-end="url(#arr)"/>
+        <text class="lbl mono" x="400" y="183">POST /checkout_sessions/{id}</text>
+        <line class="ret" x1="690" y1="218" x2="376" y2="218" marker-end="url(#arr-ret)"/>
+        <text class="sub" x="680" y="212" text-anchor="end">住所・配送を反映 → ready_for_payment</text>
+
+        <!-- ③ delegate -->
+        <text class="num" x="380" y="256">③</text>
+        <line class="msg" x1="370" y1="262" x2="964" y2="262" marker-end="url(#arr)"/>
+        <text class="lbl mono" x="400" y="255">POST /agentic_commerce/delegate_payment</text>
+        <line class="ret" x1="970" y1="290" x2="376" y2="290" marker-end="url(#arr-ret)"/>
+        <text class="sub" x="960" y="284" text-anchor="end">この注文専用・1回限りのトークン</text>
+
+        <!-- ④ complete -->
+        <text class="num" x="380" y="328">④</text>
+        <line class="msg" x1="370" y1="334" x2="684" y2="334" marker-end="url(#arr)"/>
+        <text class="lbl mono" x="400" y="327">POST …/{id}/complete ＋トークン</text>
+        <line class="msg" x1="690" y1="350" x2="964" y2="350" marker-end="url(#arr)"/>
+        <text class="lbl" x="827" y="343" text-anchor="middle">店が自社のPSPで決済</text>
+        <line class="ret" x1="690" y1="378" x2="376" y2="378" marker-end="url(#arr-ret)"/>
+        <text class="sub" x="680" y="372" text-anchor="end">completed ＋ 注文番号</text>
+      </svg>
     </div>
-    <p class="src">出典: Google Merchant Center UCPガイド / Shopify “Agentic Commerce on Shopify” / Adweek / TechRepublic</p>
+    <p class="src">全リクエストに Idempotency-Key・Signature・Timestamp ヘッダー ／ 出典: OpenAI Agentic Checkout Spec / Delegated Payment Spec</p>
   </section>
 
   <!-- 6 -->
   <section class="slide">
-    <div class="kicker">02 · Checkout — Reality</div>
-    <h2>現実は<span class="warn">「調べるのはAI、買うのは自分」</span></h2>
-    <div class="stats">
-      <div class="stat"><div class="n">3%</div><div class="l">AIエージェントが関わる取引の割合（Checkout.com）</div></div>
-      <div class="stat"><div class="n">59%</div><div class="l">「購入は毎回自分で承認したい」消費者</div></div>
-      <div class="stat"><div class="n">30.6%</div><div class="l">楽天市場の利用前に生成AIで調べるZ世代</div></div>
+    <div class="kicker">01 · ACP — Delegated Payment</div>
+    <h2>カードを「渡さず」に、AIに払わせる</h2>
+    <div class="split">
+<pre class="code"><span class="c">// ③ delegate_payment の allowance</span>
+<span class="k">"allowance"</span>: {
+  <span class="k">"reason"</span>: <span class="s">"one_time"</span>,
+  <span class="k">"max_amount"</span>: <span class="s">2000</span>,
+  <span class="k">"currency"</span>: <span class="s">"usd"</span>,
+  <span class="k">"checkout_session_id"</span>: <span class="s">"cs_123"</span>,
+  <span class="k">"merchant_id"</span>: <span class="s">"shop_abc"</span>,
+  <span class="k">"expires_at"</span>: <span class="s">"2026-10-09T07:20:50Z"</span>
+}</pre>
+      <ul>
+        <li><b>この店</b>で（<code>merchant_id</code>）</li>
+        <li><b>この注文</b>に（<code>checkout_session_id</code>）</li>
+        <li><b>この金額まで</b>（<code>max_amount</code>）</li>
+        <li><b>この時刻まで</b>に<b>1回だけ</b>（<code>expires_at</code>・<code>one_time</code>）</li>
+      </ul>
     </div>
-    <ul>
-      <li>事業者の9割近くが取り組み中なのに、実際の取引はまだごく一部</li>
-      <li>壁は技術より<b>「AIが間違って買ったら誰の責任か」</b></li>
-    </ul>
-    <p class="src">出典: FinTech Weekly 2026-10-04 / Worldpay Agentic Commerce Report 2026 / 楽天グループ プレスリリース 2026-09-04</p>
+    <p class="note">返金・チャージバック・コンプライアンスは従来どおり店とPSPの責任のまま</p>
+    <p class="src">出典: OpenAI Delegated Payment Spec（値は例示）</p>
   </section>
 
   <!-- 7 -->
   <section class="slide">
-    <div class="kicker">02 · Checkout — Trust</div>
-    <h2>決済のカギは「AIに渡す権限」の設計</h2>
-    <ul>
-      <li><b>Mastercard Agent Pay</b>：AI専用のカード情報（トークン）に、<span class="em">上限額・買ってよい店や品目</span>を設定できる</li>
-      <li><b>Visa Intelligent Commerce</b>：そのAIエージェントが<span class="em">本物かどうか</span>を確かめる仕組み</li>
-      <li>米FRBのウォーラー理事（9/29）：「まだ初期段階だが、普及すれば決済を大きく変えうる」</li>
-    </ul>
-    <p class="note">「誰の意思で、どこまで買ってよいか」を記録・検証できることが前提に</p>
-    <p class="src">出典: 各社発表の解説記事（Stellagent / RisingWave ほか）/ FinTech Weekly / Worldpay</p>
+    <div class="kicker">01 · UCP — State Machine</div>
+    <h2>UCPは「AIで無理なら人へ返す」を状態で持つ</h2>
+    <div class="figure">
+      <svg viewBox="0 0 1072 330">
+        <rect class="box" x="0" y="40" width="200" height="64"/>
+        <text class="head mono" x="100" y="78" text-anchor="middle">incomplete</text>
+        <rect class="box" x="290" y="40" width="230" height="64"/>
+        <text class="head mono" x="405" y="78" text-anchor="middle">ready_for_complete</text>
+        <rect class="box" x="610" y="40" width="250" height="64"/>
+        <text class="head mono" x="735" y="78" text-anchor="middle">complete_in_progress</text>
+        <rect class="box-em" x="932" y="40" width="140" height="64"/>
+        <text class="head-inv mono" x="1002" y="78" text-anchor="middle">completed</text>
+
+        <line class="msg" x1="200" y1="72" x2="284" y2="72" marker-end="url(#arr)"/>
+        <text class="sub" x="245" y="30" text-anchor="middle">情報が揃う</text>
+        <line class="msg" x1="520" y1="72" x2="604" y2="72" marker-end="url(#arr)"/>
+        <text class="sub" x="565" y="30" text-anchor="middle">Complete Checkout</text>
+        <line class="msg" x1="860" y1="72" x2="926" y2="72" marker-end="url(#arr)"/>
+
+        <!-- エスカレーション -->
+        <rect class="box-cool" x="0" y="200" width="230" height="64"/>
+        <text class="head mono" x="115" y="238" text-anchor="middle" style="fill:var(--accent-cool)">requires_escalation</text>
+        <line class="cool" x1="80" y1="110" x2="80" y2="194" marker-start="url(#arr-cool)" marker-end="url(#arr-cool)"/>
+        <path class="cool" d="M230,232 L1002,232 L1002,110" marker-end="url(#arr-cool)"/>
+        <text class="lbl-cool" x="616" y="222" text-anchor="middle">continue_url で、人が店の画面に移って完了させる</text>
+        <text class="sub" x="250" y="292">API では渡せない情報・本人の入力が必要なとき。このとき continue_url は必須（MUST）</text>
+
+        <rect class="box" x="812" y="262" width="260" height="56" style="stroke-dasharray:4 4"/>
+        <text class="head mono" x="942" y="288" text-anchor="middle" style="font-size:15px">canceled</text>
+        <text class="sub" x="942" y="308" text-anchor="middle">どの状態からでも（期限切れ・無効）</text>
+      </svg>
+    </div>
+    <p class="note">AP2拡張がない限り、最後は「信頼できるUI」で人が確定する前提</p>
+    <p class="src">出典: ucp.dev Checkout Capability（dev.ucp.shopping.checkout, 2026-08-25版）</p>
   </section>
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">03 · Operations</div>
-    <h2>店づくりも、AIと会話しながら</h2>
-    <div class="stats">
-      <div class="stat"><div class="n">10/1</div><div class="l">Shopify「Canvas」提供開始</div></div>
-      <div class="stat"><div class="n">20分</div><div class="l">完全オリジナルの店をつくる目安（同社）</div></div>
-      <div class="stat"><div class="n">2,500万</div><div class="l">AIがテーマを編集した回数（2026年上期）</div></div>
+    <div class="kicker">01 · AP2 — Mandates</div>
+    <h2>人がいない購入を成り立たせる「署名された意思」</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="who">CART MANDATE</div>
+        <h3>何を、いくらで</h3>
+        <p>品目と価格を<b>暗号署名</b>して記録。店側はチェックアウト内容に署名（detached JWS）を付けて返す（<code>ap2.merchant_authorization</code>）。</p>
+      </div>
+      <div class="card">
+        <div class="who">PAYMENT MANDATE</div>
+        <h3>どの支払い手段で</h3>
+        <p>支払い手段と承認を結びつけ、決済ネットワーク側にも「AIが関わった取引」であることを伝える。</p>
+      </div>
     </div>
-    <ul>
-      <li>店の全ページを1枚のボードに並べ、AI（Sidekick）に<b>話しかけて店全体を編集</b></li>
-      <li>AIが自分の変更を画面で見直し、直してから返してくれる</li>
-    </ul>
-    <p class="src">出典: Shopify “Introducing Canvas” / eesel.ai（数字は同社発表）</p>
+    <p class="note">「あとで否認できない証跡」があって初めて、人の最終確認を省ける</p>
+    <p class="src">出典: ucp.dev（AP2 Mandates 拡張 dev.ucp.common.payment.ap2_mandate）/ Descope “What Is UCP?”</p>
   </section>
 
   <!-- 9 -->
   <section class="slide">
-    <div class="kicker">04 · Japan</div>
-    <h2>日本では、楽天がAIコンシェルジュを全面展開</h2>
-    <div class="tl">
-      <div class="tl-row"><span class="date">01/05</span><p>「楽天市場」アプリに <b>Rakuten AI</b><span class="muted">予算・用途を文字・音声・画像で相談</span></p></div>
-      <div class="tl-row"><span class="date">06/02</span><p><b>楽天スーパーSALE</b> でAIコンシェルジュとAIのおすすめ機能を活用</p></div>
-      <div class="tl-row"><span class="date">07/29</span><p>日本HPと <b>Rakuten AI for Desktop</b><span class="muted">PCからも楽天のAIへ</span></p></div>
-      <div class="tl-row"><span class="date">09/04</span><p>Z世代の<b>30.6%</b>が楽天市場の利用前に生成AIで情報収集</p></div>
-    </div>
-    <p class="note">ポイント・決済の経済圏の中で、AIが「売り場の入口」になりつつある</p>
-    <p class="src">出典: 楽天グループ プレスリリース（2026-01-05 / 06-02 / 07-29 / 09-04）</p>
+    <div class="kicker">02 · Japan — Contract</div>
+    <h2>論点① AIが間違えて注文したら、取り消せる？</h2>
+    <ul>
+      <li>AIは権利義務の主体ではない → 注文の効果は<b>利用者本人</b>に帰属するのが基本</li>
+      <li>民法95条：重大な過失がある錯誤は、原則として取り消せない</li>
+      <li><b>電子消費者契約法3条</b>：事業者が<span class="em">「確認を求める措置」</span>を取っていなければ、消費者は重過失があっても錯誤を主張できる</li>
+      <li>ただし消費者が<b>「確認は不要」と自ら表明</b>した場合は例外</li>
+    </ul>
+    <p class="note"><span class="warn">AIが確認画面を飛ばしたとき、それは「確認措置」になるのか？</span>── 公的な整理はまだない</p>
+    <p class="src">出典: 経済産業省「電子商取引及び情報財取引等に関する準則」/ STORIA法律事務所「AIエージェントの法的論点」</p>
   </section>
 
   <!-- 10 -->
   <section class="slide">
-    <div class="kicker">Takeaways</div>
-    <h2>EC事業者が、いま備えること</h2>
-    <div>
-      <div class="trend"><span class="no">01</span><div><h3>商品データを「AIが読める」形に</h3><p>価格・在庫・仕様を正確に、構造化して外に出す。AIに選ばれるかはデータ次第</p></div></div>
-      <div class="trend"><span class="no">02</span><div><h3>注文・決済は自社の仕組みで受ける</h3><p>どの規格でも販売の主体は店側。基幹システムとAPIでつなげる準備を</p></div></div>
-      <div class="trend"><span class="no">03</span><div><h3>AIのお客さまへのルールを決める</h3><p>どのAIを受け入れ、どこまで任せるか。認証・権限・記録の設計が必要に</p></div></div>
+    <div class="kicker">02 · Japan — Final Screen</div>
+    <h2>論点② 最終確認画面を「見る」のがAIだったら？</h2>
+    <div class="split">
+      <div>
+        <p style="margin-bottom:14px"><b>特商法12条の6</b>（2022年6月施行）</p>
+        <ul>
+          <li>申込み直前の画面に<b>分量・価格・支払時期と方法・引渡時期・撤回や解除・申込期間</b>を表示</li>
+          <li>表示がない・誤認させる表示 → 消費者に<b>取消権</b></li>
+          <li>画面の名前や形式は問わない</li>
+        </ul>
+      </div>
+      <div>
+        <p style="margin-bottom:14px"><span class="warn"><b>残る問い</b></span></p>
+        <ul>
+          <li>APIの応答に全項目を載せれば「表示した」ことになる？</li>
+          <li>AI側の確認画面は、店の義務を代わりに果たせる？</li>
+          <li>規約で「確認の省略」に同意させるのは有効？</li>
+        </ul>
+      </div>
     </div>
+    <p class="note">どれも公的見解は見当たらない。だから規格の「人に返す」機能が効いてくる</p>
+    <p class="src">出典: 消費者庁「通信販売の申込み段階における表示についてのガイドライン」</p>
   </section>
 
   <!-- 11 -->
-  <section class="slide inverse sakura-bg">
-    <div class="kicker">Message</div>
-    <p class="big-quote">AIに<span class="em">選ばれる店</span>は、<br>見た目より先に、<br>データと仕組みで決まる。</p>
+  <section class="slide">
+    <div class="kicker">02 · Japan — Payment &amp; Liability</div>
+    <h2>論点③④ 本人認証と、責任の所在</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="who">③ 3-D SECURE</div>
+        <h3>AIは本人認証に答えられない</h3>
+        <p>EC加盟店は<b>2025年3月末</b>までにEMV 3-Dセキュアを原則導入（クレジットカード・セキュリティガイドライン＝割賦販売法の実務指針）。</p>
+        <p class="muted">AIの購入では、委任トークンやカード会社のAI向け認証とどう両立させるかをPSPと要確認</p>
+      </div>
+      <div class="card">
+        <div class="who">④ METI GUIDE · 2026/04</div>
+        <h3>責任の整理は「現時点では困難」</h3>
+        <p>経産省「AI利活用における民事責任の解釈適用に関する手引き」は既存の民法・製造物責任法で整理。AIエージェントは<b>補論</b>扱い。</p>
+        <p class="muted">新しいルールを待つより、契約・規約・ログで自衛する段階</p>
+      </div>
+    </div>
+    <p class="src">出典: 経済産業省（2024-03 ガイドライン改訂 / 2026-04-09 手引き公表・06-09更新）/ BUSINESS LAWYERS / PwC</p>
   </section>
 
   <!-- 12 -->
   <section class="slide">
+    <div class="kicker">03 · Design</div>
+    <h2>法の要請 × 規格の機能 → 実装でやること</h2>
+    <table class="grid">
+      <tr><th>日本の論点</th><th>規格の機能</th><th>実装でやること</th></tr>
+      <tr><td>錯誤・確認措置</td><td>UCPの人による確定・<code>requires_escalation</code></td><td>迷ったら <code>continue_url</code> で自社の確認画面へ返す</td></tr>
+      <tr><td>最終確認画面</td><td>チェックアウト応答（品目・合計・配送・メッセージ）</td><td>12条の6の6項目を<b>API応答に漏れなく</b>載せる</td></tr>
+      <tr><td>本人認証（3DS）</td><td>委任トークン／カード会社のAI向けトークン</td><td>PSPの対応範囲と、不正時の負担を契約で確認</td></tr>
+      <tr><td>証跡・責任</td><td>署名・冪等キー・AP2 mandate</td><td>誰の指示で何をいくらで、を<b>署名付きで保存</b></td></tr>
+    </table>
+    <p class="disclaimer" style="margin-top:18px">※ 本資料は技術・実務の観点からの整理であり、法的助言ではありません。個別の判断は専門家にご相談ください。</p>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">AIに<span class="em">任せられる店</span>は、<br>「人に返せる」設計と<br>「証明できる」記録で決まる。</p>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
     <div class="kicker">References</div>
     <h2>出典（2026年10月9日時点）</h2>
     <ul class="refs">
-      <li>Digital Commerce 360 — Adobe: AI-referral traffic spending, converting more than counterparts（2026-08-19）</li>
-      <li>Adobe — 2026 Adobe Digital Insights Holiday Forecast（2026-09）/ Business Wire</li>
-      <li>Google — Universal Commerce Protocol (UCP) Guide — developers.google.com / blog.google</li>
-      <li>Shopify — Agentic Commerce on Shopify: How It Works / Introducing Canvas — shopify.com</li>
-      <li>CNBC — OpenAI revamps shopping experience in ChatGPT after struggling with Instant Checkout（2026-03-24）</li>
-      <li>TechRepublic / Adweek / The Star — Amazon blocks Meta’s Muse AI agent（2026-09）</li>
-      <li>FinTech Weekly — Agentic Commerce Had Its Biggest Launch Month. Nobody Wants to Own the Risk.（2026-10-04）</li>
-      <li>Worldpay — Agentic Commerce Report 2026</li>
-      <li>楽天グループ — プレスリリース（2026-01-05 / 06-02 / 07-29 / 09-04）— corp.rakuten.co.jp</li>
-      <li>Stellagent / RisingWave — Visa Intelligent Commerce・Mastercard Agent Pay の解説</li>
+      <li>OpenAI Developers — Agentic Commerce: Key concepts / Agentic Checkout Spec / Delegated Payment Spec — developers.openai.com/commerce</li>
+      <li>Universal Commerce Protocol — Checkout Capability（2026-08-25）/ Core Concepts — ucp.dev</li>
+      <li>Google — Universal Commerce Protocol (UCP) Guide — developers.google.com/merchant/ucp</li>
+      <li>Descope — What Is the Universal Commerce Protocol (UCP)?</li>
+      <li>Digital Commerce 360 — Adobe AI-referral traffic data（2026-08-19）/ Adobe 2026 Holiday Forecast</li>
+      <li>経済産業省 — 電子商取引及び情報財取引等に関する準則（令和7年2月）</li>
+      <li>消費者庁 — 通信販売の申込み段階における表示についてのガイドライン</li>
+      <li>経済産業省 — クレジットカード・セキュリティガイドライン改訂（2024-03）/ BUSINESS LAWYERS「EMV 3Dセキュア導入義務化」</li>
+      <li>経済産業省 — AI利活用における民事責任の解釈適用に関する手引き〔第1.0版〕（2026-04-09）</li>
+      <li>STORIA法律事務所 — AIエージェントの法的論点 / PwC — AIエージェント利用者に求められるAIガバナンス</li>
     </ul>
-    <p class="src">※ 各社の数字は自社発表・調査に基づく値です</p>
+    <p class="src">※ 仕様はバージョンにより変わります。実装時は各規格の最新版をご確認ください</p>
   </section>
 
 </div>
