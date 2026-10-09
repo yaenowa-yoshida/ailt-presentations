@@ -40,7 +40,10 @@
     slides.forEach((s, k) => s.classList.toggle('active', k === i));
     history.replaceState(null, '', '#' + (i + 1));
   }
+  // スマホ幅では拡大縮小をやめ、全スライドを縦に並べて読めるようにする（見た目は deck.css 側）
+  const mobile = matchMedia('(max-width: 760px)');
   function fit() {
+    if (mobile.matches) { deck.style.transform = ''; return; }
     const s = Math.min(innerWidth / 1280, innerHeight / 720) * 0.96;
     deck.style.transform = `scale(${s})`;
   }
@@ -65,6 +68,17 @@
     document.body.style.cursor = e.clientX < r.left ? 'w-resize' : e.clientX > r.right ? 'e-resize' : '';
   });
   addEventListener('resize', fit);
+  mobile.addEventListener('change', fit);
   fit();
   show(i);
+  // スマホでは図を横スクロールで見せるので、その案内を図の下に添える
+  document.querySelectorAll('.figure').forEach(f => {
+    const h = document.createElement('p');
+    h.className = 'figure-hint';
+    h.textContent = '← 図は横にスクロールできます →';
+    f.after(h);
+  });
+  // data-mobile-scroll="end" の図は、スマホでは右端（見せたい側）から表示する
+  if (mobile.matches) document.querySelectorAll('.figure[data-mobile-scroll="end"]').forEach(f => { f.scrollLeft = f.scrollWidth; });
+  if (mobile.matches && i > 0) slides[i].scrollIntoView();
 })();
