@@ -236,3 +236,7 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
 .profile li { font-size: 21px; line-height: 1.65; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
 .tag { font-size: 14px; letter-spacing: .08em; padding: 4px 12px; color: var(--accent); background: var(--sakura-pale); border: .5px solid var(--sakura-mid); }
+.cards.three { grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+.cards.three .card { padding: 24px 24px; }
+.cards.three h3 { font-size: 22px; }
+.cards.three p { font-size: 17px; line-height: 1.7; }
