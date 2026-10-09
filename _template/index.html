@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>タイトルをここに</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css">
+</head>
+<!-- data-title はフッターに表示される短いタイトル -->
+<body data-title="タイトルをここに">
+<div class="deck">
+
+  <!-- 表紙 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · YYYY.MM</div>
+    <h1>見出しを<span class="em">ここに</span></h1>
+    <p class="sub">サブタイトル（一行で）</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 箇条書き -->
+  <section class="slide">
+    <div class="kicker">01 · Section</div>
+    <h2>箇条書きのスライド</h2>
+    <ul>
+      <li><span class="em">キーワード</span>：説明を一行で</li>
+      <li><b>太字</b>で強調、<span class="warn">藍</span>は注意・対比に</li>
+    </ul>
+    <p class="note">補足のひとこと</p>
+    <p class="src">出典: …</p>
+  </section>
+
+  <!-- 時系列 -->
+  <section class="slide">
+    <div class="kicker">02 · Timeline</div>
+    <h2>時系列のスライド</h2>
+    <div class="tl">
+      <div class="tl-row"><span class="date">01/01</span><p>出来事<span class="muted">（補足）</span></p></div>
+      <div class="tl-row"><span class="date">02/01</span><p>出来事</p></div>
+    </div>
+  </section>
+
+  <!-- 数字 -->
+  <section class="slide">
+    <div class="kicker">03 · Numbers</div>
+    <h2>数字で見せるスライド</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">100</div><div class="l">説明</div></div>
+      <div class="stat"><div class="n">10倍</div><div class="l">説明</div></div>
+      <div class="stat"><div class="n">1位</div><div class="l">説明</div></div>
+    </div>
+    <ul><li>数字の意味を一行で</li></ul>
+  </section>
+
+  <!-- 2カラム -->
+  <section class="slide">
+    <div class="kicker">04 · Compare</div>
+    <h2>2つを並べるスライド</h2>
+    <div class="cards">
+      <div class="card"><div class="who">SOURCE · DATE</div><h3>項目A</h3><p>説明文。</p></div>
+      <div class="card"><div class="who">SOURCE · DATE</div><h3>項目B</h3><p>説明文。</p></div>
+    </div>
+  </section>
+
+  <!-- 番号付きの要点 -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>まとめのスライド</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>要点</h3><p>補足</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>要点</h3><p>補足</p></div></div>
+    </div>
+  </section>
+
+  <!-- メッセージ（反転） -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">一番伝えたい<br><span class="em">ひとこと</span>を、ここに。</p>
+  </section>
+
+  <!-- 出典 -->
+  <section class="slide">
+    <div class="kicker">References</div>
+    <h2>出典</h2>
+    <ul class="refs">
+      <li>発行元 — 記事タイトル — URL</li>
+    </ul>
+  </section>
+
+</div>
+<div class="hint">← → / クリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js"></script>
+</body>
+</html>
