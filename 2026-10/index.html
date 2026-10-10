@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261010b">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261010c">
 </head>
 <body data-title="来る前に、決まっている">
 
@@ -129,7 +129,7 @@
       <svg viewBox="0 0 1072 350">
         <!-- 右上の象限 -->
         <rect class="box-pale" x="560" y="14" width="500" height="166" style="stroke-dasharray:5 5"/>
-        <text class="lbl-em" x="1048" y="170" text-anchor="end">いちばん影響を受けそうな領域</text>
+        <text class="lbl-em" x="1048" y="34" text-anchor="end">いちばん影響を受けそうな領域</text>
         <!-- 軸 -->
         <line class="msg" x1="80" y1="320" x2="1060" y2="320" marker-end="url(#arr)"/>
         <line class="msg" x1="80" y1="320" x2="80" y2="10" marker-end="url(#arr)"/>
@@ -141,8 +141,9 @@
           <circle cx="680" cy="260" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="694" y="265">アパレル</text>
           <circle cx="330" cy="70" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="344" y="75">住宅</text>
           <circle cx="780" cy="215" r="8" style="fill:var(--sakura-mid)"/><text class="lbl" x="796" y="220">家電・EC（出発点）</text>
-          <circle cx="860" cy="62" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="874" y="67">採用</text>
+          <circle cx="860" cy="62" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="874" y="67">お部屋探し</text>
           <circle cx="950" cy="105" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="964" y="110">旅行</text>
+          <circle cx="790" cy="150" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="804" y="155">スマホ選び</text>
           <circle cx="1010" cy="140" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="996" y="145" text-anchor="end">地域の専門店</text>
           <!-- ヤエノワの領域 -->
           <circle cx="600" cy="44" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="618" y="50">システムリプレース</text>
@@ -173,28 +174,30 @@
   <!-- 7 -->
   <section class="slide">
     <div class="kicker">02 · More Cases</div>
-    <h2>採用、旅行、地域のお店でも同じことが起きている</h2>
-    <div class="cards three">
-      <div class="card">
-        <div class="who">採用</div>
-        <h3>志望理由がはっきりした応募者</h3>
-        <p>就活生の7割以上が生成AIを使い、調べたあと約9割が公式サイトで確かめています。</p>
-        <p class="muted">社員の声や評価制度など、AIには書けない情報を厚くしておきたい</p>
-      </div>
+    <h2>旅行や部屋探し、スマホ選びでも同じことが起きそう</h2>
+    <div class="cards four">
       <div class="card">
         <div class="who">旅行</div>
         <h3>行き先が決まった旅行者</h3>
         <p>海外旅行の計画にAIを使う人は、半年で22%から36%に増えました。行き先は出発前に決まっています。</p>
-        <p class="muted">選ばれる工夫より、着いてからの体験を充実させるほうが効きそう</p>
+      </div>
+      <div class="card">
+        <div class="who">お部屋探し（見立て）</div>
+        <h3>条件を整理してから来るお客さま</h3>
+        <p>家賃や駅、間取りの希望をAIと整理し、見たい物件を絞ってから不動産会社に来るようになると思います。</p>
+      </div>
+      <div class="card">
+        <div class="who">スマホの機種選び（見立て）</div>
+        <h3>候補を2〜3機種に絞ってきたお客さま</h3>
+        <p>新機種の比較はAIで済ませ、お店では実物を触って確かめるだけ。そんな買い方が増えそうです。</p>
       </div>
       <div class="card">
         <div class="who">地域の専門店（見立て）</div>
         <h3>条件の合う、少数のお客さま</h3>
-        <p>検索では上位に出にくい小さなお店も、AIは条件に合うかどうかで探してくれます。</p>
-        <p class="muted">たくさん集めるより、合う人に来てもらう商売には追い風だと思います</p>
+        <p>検索では上位に出にくい小さなお店も、AIは条件に合うかどうかで探してくれます。合う人に来てもらう商売には追い風だと思います。</p>
       </div>
     </div>
-    <p class="src">出典: ナイル 就活生調査（2026-03）/ Global Rescue 旅行者調査（2026-08）</p>
+    <p class="src">出典: Global Rescue 旅行者調査（2026-08）</p>
   </section>
 
   <!-- 8 -->
@@ -279,14 +282,13 @@
       <li>Forrester — 2026 Buyers' Journey Survey（2026-01）</li>
       <li>TrustRadius — 2026 B2B Buying Disconnect Report（2026-07-15）</li>
       <li>Rithum — AIの誤情報と買い物客の信頼に関する調査（Business Wire 2026-03-25）</li>
-      <li>ナイル — 就職活動における生成AI利用に関する調査（2026-03）</li>
       <li>Global Rescue — AI use for international trip planning jumps 64% in six months（2026-08）</li>
     </ul>
-    <p class="src">※ 業界の配置と「地域の専門店」は私の見立てです</p>
+    <p class="src">※ 業界の配置と、7枚目の「見立て」と書いた例は私の見立てです</p>
   </section>
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261010b"></script>
+<script src="../_theme/deck.js?v=20261010c"></script>
 </body>
 </html>
