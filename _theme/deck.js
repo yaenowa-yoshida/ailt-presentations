@@ -35,17 +35,19 @@
     s.appendChild(f);
   });
 
+  let onShow = () => {};
   function show(n) {
     i = Math.min(Math.max(n, 0), total - 1);
     slides.forEach((s, k) => s.classList.toggle('active', k === i));
     history.replaceState(null, '', '#' + (i + 1));
+    onShow(i);
   }
   // スマホ幅では拡大縮小をやめ、全スライドを縦に並べて読めるようにする（見た目は deck.css 側）
-  const mobile = matchMedia('(max-width: 760px)');
+  const mobile = matchMedia('(max-width: 760px) and (orientation: portrait)');
   function fit() {
     if (mobile.matches) { deck.style.transform = ''; return; }
     const s = Math.min(innerWidth / 1280, innerHeight / 720) * 0.96;
-    deck.style.transform = `scale(${s})`;
+    deck.style.transform = `translate(-50%, -50%) scale(${s})`;
   }
   addEventListener('keydown', e => {
     if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
@@ -78,6 +80,44 @@
     h.textContent = '← 図は横にスクロールできます →';
     f.after(h);
   });
+  // スマホ・タブレット用：右下の前後ボタンと、左右スワイプでのページ送り
+  // 縦に並べた表示のときは、隣のスライドまでスクロールする
+  const current = () => {
+    if (!mobile.matches) return i;
+    let k = 0;
+    slides.forEach((s, n) => { if (s.getBoundingClientRect().top <= innerHeight * 0.3) k = n; });
+    return k;
+  };
+  const go = d => {
+    const n = Math.min(Math.max(current() + d, 0), total - 1);
+    if (mobile.matches) { slides[n].scrollIntoView({ behavior: 'smooth' }); history.replaceState(null, '', '#' + (n + 1)); }
+    else show(n);
+    updateNav(n);
+  };
+  const nav = document.createElement('div');
+  nav.className = 'touch-nav';
+  nav.innerHTML = '<button type="button" aria-label="前のスライド">‹</button><span></span><button type="button" aria-label="次のスライド">›</button>';
+  const [prevBtn, label, nextBtn] = nav.children;
+  const updateNav = (n = current()) => { label.textContent = `${n + 1} / ${total}`; };
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); go(-1); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); go(1); });
+  document.body.appendChild(nav);
+  addEventListener('scroll', () => updateNav(), { passive: true });
+  onShow = updateNav;
+  updateNav();
+
+  let touch = null;
+  addEventListener('touchstart', e => {
+    // 図の横スクロールや、文字の選択とはぶつからないようにする
+    touch = e.target.closest('.figure, table') ? null : { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
+  addEventListener('touchend', e => {
+    if (!touch) return;
+    const dx = e.changedTouches[0].clientX - touch.x, dy = e.changedTouches[0].clientY - touch.y;
+    touch = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
   // data-mobile-scroll="end" の図は、スマホでは右端（見せたい側）から表示する
   if (mobile.matches) document.querySelectorAll('.figure[data-mobile-scroll="end"]').forEach(f => { f.scrollLeft = f.scrollWidth; });
   if (mobile.matches && i > 0) slides[i].scrollIntoView();

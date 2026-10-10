@@ -39,11 +39,13 @@ body {
   overflow: hidden;
   display: grid; place-items: center;
   -webkit-font-smoothing: antialiased;
+  /* 1280px のステージが画面幅をはみ出しても、スマホのブラウザがページ全体を縮小しないよう画面に固定する */
+  position: fixed; inset: 0;
 }
 ::selection { background: var(--accent); color: var(--paper); }
 
 /* ── ステージ（1280×720 固定、deck.js が画面に合わせて拡縮） ── */
-.deck { position: relative; width: 1280px; height: 720px; transform-origin: center center; }
+.deck { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center center; transform: translate(-50%, -50%); }
 .slide {
   position: absolute; inset: 0;
   background: linear-gradient(120deg, var(--sakura-pale) 0%, var(--paper) 45%, var(--paper) 100%);
@@ -174,8 +176,8 @@ ul li::before {
 /* ── 印刷（PDF化）：1スライド1ページ ── */
 @media print {
   @page { size: 1280px 720px; margin: 0; }
-  html, body { overflow: visible; height: auto; display: block; background: var(--paper); }
-  .deck { transform: none !important; width: 1280px; height: auto; }
+  html, body { overflow: visible; height: auto; display: block; background: var(--paper); position: static; }
+  .deck { position: static; transform: none !important; width: 1280px; height: auto; }
   .slide { display: flex !important; position: relative; height: 720px; box-shadow: none; page-break-after: always;
            -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .hint { display: none; }
@@ -255,11 +257,11 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
 .before-after .stat.now .n { color: var(--accent); }
 .before-after .arrow { font-size: 40px; color: var(--sakura-deep); align-self: center; }
 
-/* ── スマホ（幅760px以下）：拡大縮小をやめ、スライドを縦に並べて読む ── */
-@media (max-width: 760px) {
+/* ── スマホ縦向き（幅760px以下）：拡大縮小をやめ、スライドを縦に並べて読む ── */
+@media (max-width: 760px) and (orientation: portrait) {
   html, body { height: auto; overflow: auto; }
-  body { display: block; background: var(--paper-mid); }
-  .deck { width: 100%; height: auto; transform: none !important; padding: 12px 0; }
+  body { display: block; background: var(--paper-mid); position: static; }
+  .deck { position: relative; left: auto; top: auto; width: 100%; height: auto; transform: none !important; padding: 12px 0; }
   .slide {
     display: flex !important; position: relative; inset: auto;
     height: auto; min-height: 0; margin: 0 0 12px;
@@ -316,3 +318,23 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
   .footer img { height: 16px; }
   .hint { display: none; }
 }
+
+/* ── タッチ端末用の前後ボタン（マウス操作の端末では出さない） ── */
+.touch-nav { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .touch-nav {
+    position: fixed; right: 14px; bottom: 14px; z-index: 10;
+    display: flex; align-items: center; gap: 4px;
+    background: var(--surface-inverse); color: var(--inverse-ink);
+    border-radius: 999px; padding: 4px; box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    font-family: var(--font-sans);
+  }
+  .touch-nav button {
+    width: 40px; height: 40px; border: 0; border-radius: 50%;
+    background: transparent; color: inherit; font-size: 26px; line-height: 1; cursor: pointer;
+  }
+  .touch-nav button:active { background: rgba(255,255,255,.15); }
+  .touch-nav span { font-size: 12px; letter-spacing: .08em; min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; }
+  .hint { display: none; }
+}
+@media print { .touch-nav { display: none !important; } }
