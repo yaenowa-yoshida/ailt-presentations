@@ -382,3 +382,10 @@ ul.tight li { font-size: 19px; }
   .stats.two .stat .n { font-size: 30px; }
   .lead { font-size: 14px; }
 }
+
+/* ── 部品: 一文を大きく見せるカード（引用・仮説など） ── */
+.cards.one { grid-template-columns: 1fr; flex: 0 0 auto; }
+.cards.one h3 { font-size: 32px; line-height: 1.6; }
+@media (max-width: 760px) and (orientation: portrait) {
+  .cards.one h3 { font-size: 19px; }
+}
