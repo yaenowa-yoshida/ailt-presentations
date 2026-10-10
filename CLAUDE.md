@@ -4,6 +4,7 @@
 
 - 資料は `YYYY-MM/index.html`（スライド）と `YYYY-MM/script.md`（台本）。`_template/` をコピーして作る
 - 見た目は `_theme/deck.css` と `_theme/deck.js` に集約。トンマナは https://yaenowa.co.jp/ に合わせる
+- `_theme/` を変えたら、各資料の `deck.css?v=` / `deck.js?v=` の日付を更新する（GitHub Pages は10分ほどキャッシュされ、スマホに古い表示が残るため）
 - 5分のLTが基本。台本は1分あたり約310字で時間配分を書く
 - `main` に入ると GitHub Pages（https://yaenowa-yoshida.github.io/ailt-presentations/）に自動で公開される
 
