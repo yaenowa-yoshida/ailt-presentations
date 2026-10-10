@@ -7,6 +7,7 @@
 - `_theme/` を変えたら、各資料の `deck.css?v=` / `deck.js?v=` の日付を更新する（GitHub Pages は10分ほどキャッシュされ、スマホに古い表示が残るため）
 - 5分のLTが基本。台本は1分あたり約310字で時間配分を書く
 - `main` に入ると GitHub Pages（https://yaenowa-yoshida.github.io/ailt-presentations/）に自動で公開される
+- 発表が終わったら、発表時の版を `archive/YYYY-MM-DD_イベント名/` にテーマごとコピーして保存し、README とトップの `index.html`（登壇実績）に1件足す。手順は README の「発表が終わったら」。`archive/` はあとから直さない
 
 ## 文章
 

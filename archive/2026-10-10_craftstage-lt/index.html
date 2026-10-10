@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>来る前に、決まっている</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body data-title="来る前に、決まっている">
+
+<!-- 図で共通に使う矢印（非表示のスライド内に置くと描画されないため、ここに定義） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-light)"/></marker>
+  </defs>
+</svg>
+
+<div class="deck">
+
+  <!-- 1 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · 2026.10</div>
+    <h1>来る前に、<br><span class="em">決まっている</span></h1>
+    <p class="sub">AIが調べて、比べて、まとめてくれる。<br>では、人に残る仕事は何か</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">About Me</div>
+    <h2>自己紹介</h2>
+    <div class="profile">
+      <div class="id">
+        <img src="logo.png" alt="ヤエノワロゴ">
+        <div class="name">吉田 勝大</div>
+        <div class="roman">Yoshida Katsuhiro</div>
+        <div class="role">株式会社ヤエノワ<br>代表取締役</div>
+      </div>
+      <div>
+        <ul>
+          <li>金融・EC領域の業務システムを、設計・開発から運用保守まで担当</li>
+          <li>基幹システムとEC・OMSの<b>連携設計</b>が専門（SAP連携など）</li>
+          <li>2025年4月にヤエノワを設立。要件定義・設計を軸に、生成AI活用・アプリ開発まで</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">要件定義</span><span class="tag">システム設計</span><span class="tag">基幹システム連携</span><span class="tag">EC・OMS</span><span class="tag">PM</span><span class="tag">生成AI</span><span class="tag">Shopify</span><span class="tag">生成AIパスポート</span>
+        </div>
+      </div>
+    </div>
+    <p class="src">yaenowa.co.jp</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">00 · Discovery</div>
+    <h2>AI経由で来た顧客は、よく買う</h2>
+    <div class="stats two">
+      <div class="stat"><div class="n">+60%</div><div class="l">購入率（AI以外の流入と比べて）</div></div>
+      <div class="stat"><div class="n">+53%</div><div class="l">1訪問あたりの売上</div></div>
+    </div>
+    <ul>
+      <li>米国の小売サイトのデータです。AI経由の来訪は、全体から見ればまだ一部です</li>
+      <li>ただ、来た人の買う気がまるで違います</li>
+    </ul>
+    <p class="note">なぜここまで違うのか。顧客の動き方から考えてみます</p>
+    <p class="src">出典: Adobe Digital Insights（2026年7月のデータ。2026-08-19公表）</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">01 · Insight</div>
+    <h2>「比べて選ぶ」は、来店前にAIで済んでいそう</h2>
+    <div class="figure">
+      <svg viewBox="0 0 1072 330">
+        <text class="sub" x="260" y="22" text-anchor="middle" style="font-size:15px;letter-spacing:.3em">これまで</text>
+        <rect class="box-pale" x="40" y="40" width="440" height="96"/>
+        <text class="head" x="260" y="83" text-anchor="middle">検索や広告で、いくつものお店を知る</text>
+        <text class="sub" x="260" y="110" text-anchor="middle">気になるお店を順に見て回る</text>
+        <rect class="box" x="48" y="150" width="92" height="50"/><text class="head" x="94" y="181" text-anchor="middle" style="font-size:16px">A店</text>
+        <rect class="box" x="158" y="150" width="92" height="50"/><text class="head" x="204" y="181" text-anchor="middle" style="font-size:16px">B店</text>
+        <rect class="box" x="268" y="150" width="92" height="50"/><text class="head" x="314" y="181" text-anchor="middle" style="font-size:16px">C店</text>
+        <rect class="box" x="378" y="150" width="92" height="50"/><text class="head" x="424" y="181" text-anchor="middle" style="font-size:16px">D店</text>
+        <text class="sub" x="260" y="220" text-anchor="middle">1人が何店舗も回って比べる</text>
+        <rect class="box-em" x="185" y="232" width="150" height="44"/>
+        <text class="head-inv" x="260" y="260" text-anchor="middle">1店で買う</text>
+        <text class="lbl" x="260" y="304" text-anchor="middle">お店との出会いは多いが、買われるのは一部</text>
+
+        <line class="lane" x1="536" y1="10" x2="536" y2="310"/>
+
+        <text class="sub" x="810" y="22" text-anchor="middle" style="font-size:15px;letter-spacing:.3em">AI経由</text>
+        <rect class="box-cool" x="590" y="40" width="440" height="96"/>
+        <text class="head" x="810" y="83" text-anchor="middle" style="fill:var(--accent-cool)">AIとの会話の中で比べ終わる</text>
+        <text class="sub" x="810" y="110" text-anchor="middle">予算・用途・候補の絞り込み</text>
+        <rect class="box" x="598" y="150" width="92" height="50"/><text class="head" x="644" y="181" text-anchor="middle" style="font-size:16px">A店</text>
+        <rect class="box" x="708" y="150" width="92" height="50" style="stroke-dasharray:4 4;opacity:.45"/><text class="sub" x="754" y="181" text-anchor="middle">B店</text>
+        <rect class="box" x="818" y="150" width="92" height="50" style="stroke-dasharray:4 4;opacity:.45"/><text class="sub" x="864" y="181" text-anchor="middle">C店</text>
+        <rect class="box" x="928" y="150" width="92" height="50" style="stroke-dasharray:4 4;opacity:.45"/><text class="sub" x="974" y="181" text-anchor="middle">D店</text>
+        <text class="sub" x="810" y="220" text-anchor="middle">足を運ぶお店は少なくなる</text>
+        <rect class="box-em" x="715" y="232" width="190" height="44"/>
+        <text class="head-inv" x="810" y="260" text-anchor="middle">来たら、買う人が多い</text>
+        <text class="lbl-em" x="810" y="304" text-anchor="middle">出会いは減るが、1回の来店が濃くなる</text>
+      </svg>
+    </div>
+    <p class="note">1人の顧客が足を運ぶお店の数が減り、そのぶん来店1回の重みが増しているのだと思います</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">01 · More Cases</div>
+    <h2>旅行や部屋探し、スマホ選びでも同じことが起きそう</h2>
+    <div class="cards four">
+      <div class="card">
+        <div class="who">旅行</div>
+        <h3>旅程の案をAIに出してもらう</h3>
+        <p>目的と地域と日数がある程度決まれば、回る場所やルート、順番の案がAIからいくつも出てきます。</p>
+      </div>
+      <div class="card">
+        <div class="who">お部屋探し（見立て）</div>
+        <h3>あとは契約しに来るだけの顧客</h3>
+        <p>家賃や駅、間取りの希望をAIと整理して物件を絞る。不動産会社には、契約しに行くだけになると思います。</p>
+      </div>
+      <div class="card">
+        <div class="who">スマホの機種選び（見立て）</div>
+        <h3>機種を決めてから来る顧客</h3>
+        <p>新機種の比較はAIで済ませ、お店では実物を確かめて契約するだけ。そんな買い方が増えそうです。</p>
+      </div>
+      <div class="card">
+        <div class="who">地域の専門店（見立て）</div>
+        <h3>条件の合う、少数の顧客</h3>
+        <p>検索では上位に出にくい小さなお店も、AIは条件に合うかどうかで探してくれます。合う人に来てもらう商売には追い風だと思います。</p>
+      </div>
+    </div>
+    <p class="note">私の妄想に近いですが、比較サイトや仲介が担ってきた「比べて紹介する」役割まで、AIが食ってしまうかもしれません</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">01 · Abstraction</div>
+    <h2>選ぶのが大変な商売ほど、来る前にAIに頼りそう</h2>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>要件を決める仕事（ヤエノワの領域）</span>
+      <span><i style="background:var(--sakura-deep)"></i>ほかの業界</span>
+      <span><i style="background:var(--paper-dark)"></i>参考</span>
+    </div>
+    <div class="figure" data-mobile-scroll="end">
+      <svg viewBox="0 0 1072 350">
+        <!-- 右上の象限 -->
+        <rect class="box-pale" x="560" y="14" width="500" height="166" style="stroke-dasharray:5 5"/>
+        <text class="lbl-em" x="1048" y="34" text-anchor="end">来る前にAIに頼りそうな領域</text>
+        <!-- 軸 -->
+        <line class="msg" x1="80" y1="320" x2="1060" y2="320" marker-end="url(#arr)"/>
+        <line class="msg" x1="80" y1="320" x2="80" y2="10" marker-end="url(#arr)"/>
+        <text class="lbl" x="1060" y="344" text-anchor="end">選択肢の多さ →</text>
+        <text class="lbl" x="92" y="16">↑ 検討の重さ（時間・金額・失敗の痛さ）</text>
+        <!-- 点 -->
+        <g>
+          <circle cx="220" cy="290" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="234" y="295">日用品</text>
+          <circle cx="680" cy="260" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="694" y="265">アパレル</text>
+          <circle cx="330" cy="70" r="7" style="fill:var(--paper-dark)"/><text class="lbl" x="344" y="75">住宅</text>
+          <circle cx="780" cy="215" r="8" style="fill:var(--sakura-mid)"/><text class="lbl" x="796" y="220">小売EC（出発点）</text>
+          <circle cx="860" cy="62" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="874" y="67">お部屋探し</text>
+          <circle cx="950" cy="105" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="964" y="110">旅行</text>
+          <circle cx="790" cy="150" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="804" y="155">スマホ選び</text>
+          <circle cx="1010" cy="140" r="8" style="fill:var(--sakura-deep)"/><text class="lbl" x="996" y="145" text-anchor="end">地域の専門店</text>
+          <!-- ヤエノワの領域 -->
+          <circle cx="600" cy="44" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="618" y="50">システムリプレース</text>
+          <circle cx="700" cy="96" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="718" y="102">システム導入</text>
+          <circle cx="610" cy="138" r="10" style="fill:var(--accent)"/><text class="lbl-em" x="628" y="144">HP制作</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">02 · Requirements 1/3</div>
+    <h2>HP制作では、構成案のたたき台をAIで作ってきそう</h2>
+    <div class="cards pair">
+      <div class="card">
+        <div class="who">顧客がAIで作ってきそうなもの</div>
+        <h3>構成案と文章のたたき台</h3>
+        <p>AIと一緒に作ってから来られる方が増えそうです。</p>
+      </div>
+      <div class="card">
+        <div class="who">一緒に決めること</div>
+        <h3>そのたたき台が、ブランドと運用に合うか</h3>
+        <p>トーンや言葉づかいがそろっているか、更新し続けられるか、AIに読まれる情報設計になっているか。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">02 · Requirements 2/3</div>
+    <h2>システム導入では、困りごとをAIで整理してきそう</h2>
+    <div class="cards pair">
+      <div class="card">
+        <div class="who">顧客がAIで整理してきそうなこと</div>
+        <h3>今の業務と困りごと、候補の製品</h3>
+        <p>業務の流れや聞きたいこと、候補になりそうな製品まで、AIで整理してから相談に来られると思います。</p>
+      </div>
+      <div class="card">
+        <div class="who">一緒に決めること</div>
+        <h3>その候補が、本当に業務に合うか</h3>
+        <p>要件の抜け漏れも含めて、その会社の業務を知らないと決められないことです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">02 · Requirements 3/3</div>
+    <h2>リプレースでは、不満の洗い出しにAIが使われそう</h2>
+    <div class="cards pair">
+      <div class="card">
+        <div class="who">顧客がAIで整理してきそうなこと</div>
+        <h3>今の不満と、残したい機能</h3>
+        <p>こうした下ごしらえをAIで済ませてから、相談に来られる方は増えそうです。</p>
+      </div>
+      <div class="card">
+        <div class="who">一緒に決めること</div>
+        <h3>AIが知らない現場の事情</h3>
+        <p>基幹連携、データ移行、切替の段取り。今のシステムを見ないと決められません。</p>
+      </div>
+    </div>
+    <p class="note">AIが一般論を引き受ける分、その会社ならではの事情を扱う仕事に集中できる</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">03 · Risk</div>
+    <h2>ただし、AIの答えはもっともらしく間違える</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="who">顧客の側</div>
+        <h3>前提を間違えたまま来る</h3>
+        <p>古い価格、ない機能、ずれた相場。AIで調べてきた人ほど、その思い込みも強いと思います。</p>
+      </div>
+      <div class="card">
+        <div class="who">お店・会社の側</div>
+        <h3>信頼を落とすのはこちら</h3>
+        <p>AIが商品について間違えると、そのブランドへの信頼が下がる。米英の買い物客の58%がそう答えています。</p>
+        <p class="muted">AIが自社をどう説明するか、確かめておく</p>
+      </div>
+    </div>
+    <p class="note">決まっているように見えても、間違いうる。会社の事情に照らして確かめるのが人の仕事です</p>
+    <p class="src" style="margin-top:12px">出典: Rithum「The New Discovery Engine」（Business Wire 2026-03-25）</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="kicker">03 · Verify</div>
+    <h2>自分でAIを使うときも、確かめるのは人に残る</h2>
+    <p class="lead">ECの新機能の画面づくりで、前提を書いた基本設計書とレイアウト図をClaude Codeに渡して試しました</p>
+    <div class="before-after">
+      <div class="stat"><div class="l">これまで</div><div class="n">約5時間</div><div class="l">開発に依頼して戻るまで約3時間、直しを入れて約5時間</div></div>
+      <div class="arrow">→</div>
+      <div class="stat now"><div class="l">Claude Code で</div><div class="n">約5分</div><div class="l">基本設計書とレイアウト図から動くモックを作り、挙動の直しまで</div></div>
+    </div>
+    <p class="note">Anthropicの実験では、AIに手伝ってもらった人は作業時間にはっきりした差がないまま、理解度テストの点が低く（50%対67%）、いちばん差が出たのは間違いを見つける問題でした</p>
+    <p class="src">作業時間は発表者の実例 / 実験: Anthropic（2026-01。52人の無作為化比較試験。初めて使うPythonライブラリの課題を、チャット型のAIに手伝ってもらって解く。Claude Codeは対象外）</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="kicker">03 · Takeaways</div>
+    <h2>明日から試せること</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>前提を書いて渡し、動くモックで確かめる</h3><p>設計書とレイアウト図に前提を書いてAIに渡し、できたモックを人が触ってから作り始める</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>自社のことをAIに聞いて、答えを確かめる</h3><p>顧客が聞きそうなことをAIに聞き、価格や対応範囲が古ければ、公開している情報を直す</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>顧客がAIで整理してきた内容は、たたき台として受け取る</h3><p>価格・機能・前提が合っているかを、最初の打ち合わせで確かめる</p></div></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">調べる、比べる、まとめる仕事は、<br>AIに移ってきました。<br>人に残るのは、<br><span class="em">確かめる仕事</span>だと思います。</p>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="kicker">References</div>
+    <h2>出典（2026年10月10日時点）</h2>
+    <ul class="refs">
+      <li>Adobe Digital Insights — AI traffic trends report（2026-08-19）— business.adobe.com</li>
+      <li>Digital Commerce 360 — Adobe: AI-referral traffic spending, converting more than counterparts（2026-08-19）</li>
+      <li>Rithum — The New Discovery Engine（米英のオンライン買い物客1,046人。Business Wire 2026-03-25）</li>
+      <li>Anthropic — How AI assistance impacts the formation of coding skills（2026-01-29）/ Shen &amp; Tamkin, How AI Impacts Skill Formation, arXiv:2601.20245</li>
+    </ul>
+    <p class="src">※ 4枚目の図、5枚目の「見立て」の例と比較サイト・仲介の話、6枚目の業界の配置、7〜9枚目の顧客の動きは、出典のない私の見立てです</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="deck.js"></script>
+</body>
+</html>

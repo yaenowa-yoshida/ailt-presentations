@@ -2,9 +2,24 @@
 
 株式会社ヤエノワのAI関連LT（ライトニングトーク）資料置き場。
 
-| 日付 | タイトル | 資料 |
-| --- | --- | --- |
-| 2026-10 | 来る前に、決まっている（AI経由の顧客がよく買う理由を、ほかの商売や自社の仕事に当てはめて考える。5分） | [スライド](2026-10/index.html) ／ [台本](2026-10/script.md) |
+公開ページ（登壇実績の一覧）：https://yaenowa-yoshida.github.io/ailt-presentations/
+
+## 登壇実績
+
+| 日付 | イベント・会場 | タイトル | 資料 |
+| --- | --- | --- | --- |
+| 2026-10-10 | CraftStage LT会 ／ 富士通UIS（川崎） | 来る前に、決まっている（5分） | [発表時の版](archive/2026-10-10_craftstage-lt/index.html) ／ [台本](archive/2026-10-10_craftstage-lt/script.md) ／ [作業版](2026-10/index.html) |
+
+## 発表が終わったら
+
+発表したときの版を `archive/YYYY-MM-DD_イベント名/` にそのまま保存します。
+
+1. `YYYY-MM/` の `index.html` と `script.md`、`_theme/` の `deck.css`・`deck.js`・`logo.png` を、`archive/YYYY-MM-DD_イベント名/` にコピーする
+2. コピーした `index.html` の `../_theme/` への参照を、同じフォルダのファイルに書き換える（あとでテーマを変えても見た目が変わらないように）
+3. 台本の冒頭に、発表日・イベント名・会場を書き足す
+4. このREADMEの「登壇実績」と、トップの `index.html` に1件ずつ足す
+
+`archive/` の中身は、発表したときの記録なのであとから直しません。直すときは `YYYY-MM/` のほうを編集します。
 
 ## フォーマット
 
