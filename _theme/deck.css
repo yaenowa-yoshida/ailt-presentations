@@ -210,6 +210,7 @@ table.grid th, table.grid td { text-align: left; vertical-align: top; padding: 1
 table.grid th { font-size: 14px; letter-spacing: .25em; color: var(--accent-gold); font-weight: 400; border-bottom: 1.5px solid var(--sakura-deep); }
 table.grid td:first-child { font-family: var(--font-mincho); font-weight: 700; color: var(--ink); white-space: nowrap; }
 table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18px; }
+table.grid.small th, table.grid.small td { padding: 8px 12px; font-size: 16px; }
 
 /* ── 注意書き（法務スライド用） ── */
 .disclaimer { font-size: 14px; color: var(--ink-light); letter-spacing: .04em; }
@@ -252,6 +253,24 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
 .cards.pair { flex: 0 0 auto; margin-top: 8px; }
 .cards.pair .card { padding: 32px 36px; gap: 12px; }
 .cards.pair p { font-size: 22px; }
+/* 文章の多いカード（箇条書きを含む）は文字を小さめにする */
+.cards.dense .card { padding: 22px 26px; gap: 8px; }
+.cards.dense h3 { font-size: 22px; }
+.cards.dense p { font-size: 17px; line-height: 1.7; }
+/* スライド内のリンクは紅梅色に */
+.slide a { color: var(--accent); text-underline-offset: 3px; }
+/* 文字の多い箇条書き・注記を少し小さくする */
+ul.tight { gap: 8px; }
+ul.tight li { font-size: 19px; }
+.split ul.tight li { font-size: 17px; }
+.note.sm { font-size: 18px; }
+.split p.sm { font-size: 19px; }
+.slide.inverse a { color: var(--sakura-mid); }
+/* 横に並ぶ工程（例: 7段階のフロー）。.pc の付いた段は反転色 */
+.steps { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; margin: 4px 0 24px; }
+.steps div { background: var(--surface-raised); border: .5px solid var(--paper-dark); padding: 14px 6px; text-align: center; font-family: var(--font-mincho); font-weight: 700; font-size: 19px; color: var(--accent); }
+.steps div.pc { background: var(--accent); color: #fff; border-color: var(--accent); }
+.steps small { display: block; font-family: var(--font-sans); font-weight: 400; font-size: 13px; margin-top: 4px; opacity: .85; letter-spacing: .1em; }
 
 /* ── 部品: 図の凡例（図の外に置く） ── */
 .legend { display: flex; gap: 28px; justify-content: flex-end; margin: -12px 0 6px; font-size: 15px; color: var(--ink-mid); }
@@ -300,8 +319,13 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
   .stat .n, .before-after .stat .n { font-size: 38px; }
   .stat .l { font-size: 13px; }
   .before-after .arrow { transform: rotate(90deg); justify-self: center; font-size: 28px; line-height: 1; }
-  .card, .cards.three .card, .cards.four .card, .cards.pair .card { padding: 18px; }
-  .card p, .cards.three p, .cards.four p, .cards.pair p { font-size: 14px; }
+  .card, .cards.three .card, .cards.four .card, .cards.pair .card, .cards.dense .card { padding: 18px; }
+  .card p, .cards.three p, .cards.four p, .cards.pair p, .cards.dense p { font-size: 14px; }
+  .cards.dense h3 { font-size: 18px; }
+  ul.tight li, .split ul.tight li, .split p.sm { font-size: 15px; }
+  .note.sm { font-size: 14px; }
+  .steps { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); }
+  .steps div { font-size: 14px; padding: 10px 4px; }
   .profile { gap: 20px; }
   .profile .id img { width: 72px; margin-bottom: 12px; }
   .profile .id .name { font-size: 28px; }
