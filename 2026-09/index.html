@@ -7,15 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261010f">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261010g">
 </head>
-<body data-title="人を笑顔にして、悲しむ人を生まないシステム設計">
+<body data-title="悲しむ人を生まない設計">
 <div class="deck">
 
   <!-- 1 -->
   <section class="slide title sakura-bg">
     <div class="kicker">AI Lightning Talk · 2026.09</div>
-    <h1 style="font-size:60px">人を笑顔にして、<br><span class="em">悲しむ人を生まない</span><br>システム設計</h1>
+    <h1>人を笑顔にして、<br><span class="em">悲しむ人を生まない</span><br>システム設計</h1>
     <p class="sub">宮本佳林（元Juice=Juice）のCloudflare登壇の話</p>
     <div class="rule"></div>
     <div class="presenter">
@@ -69,11 +69,11 @@
     <div class="kicker">Who</div>
     <h2>宮本佳林とは、そして今どこで話しているか</h2>
     <div class="split">
-      <ul style="gap:8px">
-        <li style="font-size:17px">1998年生まれ。9歳でハロプロエッグ、2013年 Juice=Juice 結成メンバー、2020年卒業、2021年ソロデビュー</li>
-        <li style="font-size:17px">プログラミング経験ゼロ。「コードも一切読めません」。ChatGPTで音楽アプリを作ろうとして失敗したのがきっかけでITを学び始め、AWSなどを独学</li>
-        <li style="font-size:17px">いまは Cursor と Claude Code でバイブコーディング。公式プロフィールの趣味欄に「バイブコーディング」</li>
-        <li style="font-size:17px">7/31 10時間配信のシステムを自作。8/1 ブログ2本「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974432505.html">アイドルがAIと配信のシステムを全部作った話</a>」「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974440752.html">HANAKIN配信システムの技術構成</a>」</li>
+      <ul class="tight">
+        <li>1998年生まれ。9歳でハロプロエッグ、2013年 Juice=Juice 結成メンバー、2020年卒業、2021年ソロデビュー</li>
+        <li>プログラミング経験ゼロ。「コードも一切読めません」。ChatGPTで音楽アプリを作ろうとして失敗したのがきっかけでITを学び始め、AWSなどを独学</li>
+        <li>いまは Cursor と Claude Code でバイブコーディング。公式プロフィールの趣味欄に「バイブコーディング」</li>
+        <li>7/31 10時間配信のシステムを自作。8/1 ブログ2本「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974432505.html">アイドルがAIと配信のシステムを全部作った話</a>」「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974440752.html">HANAKIN配信システムの技術構成</a>」</li>
       </ul>
       <div class="cards dense" style="grid-template-columns:1fr;gap:14px">
         <div class="card"><div class="who">8/27</div><h3>Cloudflare Workers Tech Talks in Tokyo #8</h3><p>開発者向けイベントに初登壇、20分。題：「アイドルから見たものづくりの本質」。YouTubeアーカイブあり</p></div>
@@ -95,7 +95,7 @@
       <tr><td>イベント参加者</td><td>アンケート＆ボイス配布</td><td>満足度向上、品質改善</td><td>Workers・D1・R2・KV・Turnstile</td></tr>
       <tr><td>既存ファン</td><td>全イベント参加特典の動画配信</td><td>継続参加への感謝</td><td>Workers・R2</td></tr>
     </table>
-    <p class="note" style="font-size:18px;margin-top:20px">4つは別々のアプリ。アンケートは回答を保存するのでDBとボット対策を足し、特典動画は大きなファイルを配るのでストレージだけ。用途ごとに必要な構成だけを選んでいる</p>
+    <p class="note sm" style="margin-top:20px">4つは別々のアプリ。アンケートは回答を保存するのでDBとボット対策を足し、特典動画は大きなファイルを配るのでストレージだけ。用途ごとに必要な構成だけを選んでいる</p>
     <p class="src">出典: Cloudflare登壇、Qiita「現役アイドルに学ぶ、AI駆動開発のはじめ方」（tomy0610）</p>
   </section>
 
@@ -107,12 +107,13 @@
     <div class="steps" style="margin-top:16px">
       <div>1 着想<small>スマホ</small></div><div>2 安全確認<small>スマホ</small></div><div>3 仕様書化<small>スマホ</small></div><div class="pc">4 試作<small>PC</small></div><div>5 テスト<small>スマホ</small></div><div class="pc">6 修正<small>PC</small></div><div>7 公開・運用<small>スマホ</small></div>
     </div>
-    <ul style="gap:8px">
-      <li style="font-size:19px">着想：スマホでAIに相談。「最小限に絞るなら何を残すか」「個人開発の規模で実現できるか」</li>
-      <li style="font-size:19px">安全確認：「この仕組みで悲しむ人はいないか」を洗い出す。開発者側（コスト・復旧・両立）とユーザー側（環境・分かりやすさ・期待）</li>
-      <li style="font-size:19px">仕様書化：「どう動けば成功か」を書く。当日の運用と、問題が起きた時の対応までMarkdownに</li>
-      <li style="font-size:19px">スキマ時間の積み上げで、全体3〜4時間ほど（登壇での整理）</li>
+    <ul class="tight">
+      <li>着想：スマホでAIに相談。「最小限に絞るなら何を残すか」「個人開発の規模で実現できるか」</li>
+      <li>安全確認：「この仕組みで悲しむ人はいないか」を洗い出す。開発者側（コスト・復旧・両立）とユーザー側（環境・分かりやすさ・期待）</li>
+      <li>仕様書化：「どう動けば成功か」を書く。当日の運用と、問題が起きた時の対応までMarkdownに</li>
+      <li>スキマ時間の積み上げで、全体3〜4時間ほど（登壇での整理）</li>
     </ul>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 7 -->
@@ -126,22 +127,24 @@
       <div class="card"><div class="who">守り ③</div><h3>無料枠を最大活用</h3><p>コストも機能要件。無料枠か低コスト枠で成立するか。クレカ登録なしで試せるか。上限に近づいたらアラート</p></div>
       <div class="card"><div class="who">守り ④</div><h3>サービスへの想い</h3><p>既存の競合施策を下調べする。絶対に損ないたくない体験を明確にする。ファンへのメッセージはAIに書かせず自分の言葉で</p></div>
     </div>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">守り ① · Time</div>
+    <div class="kicker">The Four 1/4 · Time</div>
     <h2>「時短」＋「誰かの悲しみを想像する」</h2>
     <p class="lead">多忙な本業と両立するための設計。これも要件</p>
     <div class="cards dense" style="margin-top:16px">
       <div class="card"><h3>時短＝運用できる範囲に絞る</h3><p>・着想〜仕様書はスマホ。PCは試作と修正だけ<br>・設計は1日以内が目標。時間をかけると「何がしたかったか」がぼやける<br>・配信中はスマホの管理画面から数字もテロップも直せる。アンケートは当日スマホで声を録音してアップ、QRをその場で発行、イベント日を過ぎたら締切<br>・ツアーで移動しながら回せる範囲でしか作らない</p></div>
       <div class="card"><h3>安全確認＝2つの悲しみ</h3><p>開発者側：高コストになってないか、トラブル時に自分で復旧できるか、本業と両立できるか<br><br>ユーザー側：特定の端末でしか見られなくないか、受け取り方が分かりにくくないか、期待させた体験を本当に届けられるか</p></div>
     </div>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 9 -->
   <section class="slide">
-    <div class="kicker">守り ② · Security</div>
+    <div class="kicker">The Four 2/4 · Security</div>
     <h2>「壊れても笑えるものだけ作る」</h2>
     <p class="lead">セキュリティを「作らない判断」から始めてる</p>
     <div class="cards dense" style="margin-top:16px">
@@ -149,11 +152,12 @@
       <div class="card"><div class="who">同じ週のニュース</div><h3>預かった情報を守れなかった話</h3><p>RIZAP、社員が個人利用の生成AIに氏名・疾患情報を誤アップロード。IHI健保分は210人（Ledge.ai 2026/9/8）<br><br>企業の側が「預かった情報を守れなかった」話をしてる横で、本人は「預からない」から始めてる。</p></div>
     </div>
     <p class="note" style="margin-top:20px">預からなければ漏れない。壊れても笑えるものなら止まっても困らない。守りの一番上流は「何を持たないか」</p>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 10 -->
   <section class="slide">
-    <div class="kicker">守り ③ · Cost</div>
+    <div class="kicker">The Four 3/4 · Cost</div>
     <h2>「コストも機能要件」</h2>
     <p class="lead">無料枠で成立するかを、設計の条件に入れてる</p>
     <div class="cards three dense" style="margin-top:16px">
@@ -161,19 +165,21 @@
       <div class="card"><h3>制約は設計を変える理由</h3><p>Cron が Workers 無料プランで使えない → 自動ポーリングを捨てて手動ボタンに。「盛り上がりに合わせて取得間隔を制御できて、運用はむしろ良くなった」</p></div>
       <div class="card"><h3>本人の言葉</h3><p>従量課金に不安があった。Cloudflareはクレカ登録なしで試せるサービスがあり、心理的ハードルが低かった。「AI開発を応援してもらえているような気がした」</p></div>
     </div>
-    <p class="note" style="font-size:18px;margin-top:20px">AIのAPIはモデルごとにトークン単価が決まっていて、従量課金で使うほど請求が伸びる。新しいモデルが出るたびに単価も変わる夏に、「上限のある枠で成立させる」を先に決めてる</p>
+    <p class="note sm" style="margin-top:20px">AIのAPIはモデルごとにトークン単価が決まっていて、従量課金で使うほど請求が伸びる。新しいモデルが出るたびに単価も変わる夏に、「上限のある枠で成立させる」を先に決めてる</p>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 11 -->
   <section class="slide">
-    <div class="kicker">守り ④ · Message</div>
+    <div class="kicker">The Four 4/4 · Message</div>
     <h2>「メッセージは、AIに書かせない」</h2>
     <p class="lead">何をAIに任せて、何を任せないかを先に決めてる</p>
-    <div class="cards dense" style="margin-top:16px">
+    <div class="cards dense" style="margin-top:12px">
       <div class="card"><h3>本人が線を引いたところ</h3><p>・実装：全部AI。コードは1行も読まない<br>・仕様書：AIと壁打ちしながら自分で書く<br>・ファンへのメッセージ、ボイス、企画：自分の言葉、自分の声<br>・既存の競合施策を下調べしてから作る（ファンの気持ちで）</p></div>
-      <div class="card"><div class="who">同じ週のニュース</div><h3>AI生成文書をAIで要約する「doom loop」</h3><p>Microsoft Office責任者が、職場のこの流れを指摘（Ledge.ai 2026/9/8）。AIスロップ＝AIで量産された中身の薄いコンテンツ（slopは残飯の意）。AIで書いた文書を相手がAIで要約し、誰も読まない文書が増え続ける。出るのは、任せる範囲を決めずに全部投げるから</p></div>
+      <div class="card"><div class="who">同じ週のニュース</div><h3>AI生成文書をAIで要約する「doom loop」</h3><p>Microsoft Office責任者が、AI生成文書をAIで要約する職場の流れを「doom loop」と指摘（Ledge.ai 2026/9/8）。AIスロップ＝AIで量産された中身の薄いコンテンツ（slopは残飯の意）。職場では、AIで書いた文書を相手がAIで要約し、誰も読まない文書が増え続ける状態。出るのは、任せる範囲を決めずに全部投げるから。</p></div>
     </div>
-    <p class="note" style="margin-top:20px">「絶対に損ないたくない体験」を先に決めると、AIに投げていい範囲が決まる。順番が逆だとスロップになる</p>
+    <p class="note sm" style="margin-top:14px">「絶対に損ないたくない体験」を先に決めると、AIに投げていい範囲が決まる。順番が逆だとスロップになる</p>
+    <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 12 -->
@@ -195,7 +201,7 @@
       <div class="card"><div class="who">01</div><h3>ファンとの関係ごとに4つのシステム</h3><p>診断は静的ファイルだけ、アンケートはDBとボット対策、特典動画はストレージだけ。用途ごとに独立させ、必要な構成だけ選んだ</p></div>
       <div class="card"><div class="who">02</div><h3>着想、安全確認、仕様書化をスマホで</h3><p>「この仕組みで悲しむ人はいないか」を、仕様書より前に確認した</p></div>
       <div class="card"><div class="who">03</div><h3>4つの守り</h3><p>個人情報を預からない／無料枠で成立させる／ファンへのメッセージはAIに書かせない／スマホで回せる範囲で作る</p></div>
-      <div class="card"><div class="who">04</div><h3>笑顔にする側が機能要件、悲しむ人を生まない側が非機能要件</h3><p>どちらも先に決めてから、AIに実装を投げた</p></div>
+      <div class="card"><div class="who">04</div><h3>笑顔にする側が機能要件、悲しむ人を生まない側が非機能要件</h3><p>笑顔にする側はゲージ・解禁演出・AI採点・ボイス。どちらも先に決めてから、AIに実装を投げた</p></div>
     </div>
   </section>
 
@@ -211,18 +217,19 @@
     <h2>ご清聴ありがとうございました</h2>
     <div class="split">
       <div>
-        <p style="font-size:18px;margin-bottom:8px" class="muted">追う順番</p>
-        <ul style="gap:6px">
-          <li style="font-size:19px">Cloudflare Workers Tech Talks #8 アーカイブ（YouTube、20分）</li>
-          <li style="font-size:19px">ブログ本編と技術構成（<a href="https://ameblo.jp/miyamotokarin-official/">ameblo</a>）</li>
-          <li style="font-size:19px">10/27 Qiita Conference 19:35〜</li>
-          <li style="font-size:19px">「HANAKIN／シャニカマー」</li>
-          <li style="font-size:19px">5周年記念LIVE TOUR 2026</li>
+        <p class="muted sm" style="margin-bottom:8px">追う順番</p>
+        <ul class="tight">
+          <li>① Cloudflare Workers Tech Talks #8 アーカイブ（YouTube、20分）</li>
+          <li>② ブログ本編と技術構成（<a href="https://ameblo.jp/miyamotokarin-official/">ameblo</a>）</li>
+          <li>③ 10/27 Qiita Conference 19:35〜</li>
+          <li>④ 「HANAKIN／シャニカマー」</li>
+          <li>⑤ 5周年記念LIVE TOUR 2026</li>
         </ul>
       </div>
       <div>
-        <p style="font-size:20px">質問は、非機能要件の話でも推しの話でもどっちでも受けます。</p>
-        <p style="font-size:19px;margin-top:20px"><b>株式会社ヤエノワ　吉田 勝大</b><br><a href="https://yaenowa.co.jp">yaenowa.co.jp</a><br><a href="mailto:yoshida@yaenowa.co.jp">yoshida@yaenowa.co.jp</a></p>
+        <p class="sm">ブログ：<a href="https://ameblo.jp/miyamotokarin-official/">ameblo.jp/miyamotokarin-official/</a><br>X：@karin__miyamoto</p>
+        <p class="sm" style="margin-top:16px">質問は、非機能要件の話でも推しの話でもどっちでも受けます。</p>
+        <p class="sm" style="margin-top:16px"><b>株式会社ヤエノワ　吉田 勝大</b><br><a href="https://yaenowa.co.jp">yaenowa.co.jp</a><br><a href="mailto:yoshida@yaenowa.co.jp">yoshida@yaenowa.co.jp</a></p>
       </div>
     </div>
   </section>
@@ -238,12 +245,12 @@
       <li>Qiita公式 — Qiita Conference 2026 Autumn 登壇情報（2026-09-08）</li>
       <li>Qiita — 「現役アイドルに学ぶ、AI駆動開発のはじめ方」（tomy0610）</li>
       <li>Ledge.ai（2026-09-08）— RIZAPの生成AIへの誤アップロード、Microsoft Office責任者の「doom loop」発言</li>
-      <li>宮本佳林 Instagram @karin_miyamoto.official（2026-08-27の投稿。公開版では写真を載せていません）</li>
+      <li>宮本佳林 Instagram @karin_miyamoto.official（2026-08-27の投稿。公開版では写真を載せていません）— instagram.com/karin_miyamoto.official/</li>
     </ul>
   </section>
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261010f"></script>
+<script src="../_theme/deck.js?v=20261010g"></script>
 </body>
 </html>

@@ -259,6 +259,12 @@ table.grid.small th, table.grid.small td { padding: 8px 12px; font-size: 16px; }
 .cards.dense p { font-size: 17px; line-height: 1.7; }
 /* スライド内のリンクは紅梅色に */
 .slide a { color: var(--accent); text-underline-offset: 3px; }
+/* 文字の多い箇条書き・注記を少し小さくする */
+ul.tight { gap: 8px; }
+ul.tight li { font-size: 19px; }
+.split ul.tight li { font-size: 17px; }
+.note.sm { font-size: 18px; }
+.split p.sm { font-size: 19px; }
 .slide.inverse a { color: var(--sakura-mid); }
 /* 横に並ぶ工程（例: 7段階のフロー）。.pc の付いた段は反転色 */
 .steps { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; margin: 4px 0 24px; }
@@ -316,6 +322,8 @@ table.grid.small th, table.grid.small td { padding: 8px 12px; font-size: 16px; }
   .card, .cards.three .card, .cards.four .card, .cards.pair .card, .cards.dense .card { padding: 18px; }
   .card p, .cards.three p, .cards.four p, .cards.pair p, .cards.dense p { font-size: 14px; }
   .cards.dense h3 { font-size: 18px; }
+  ul.tight li, .split ul.tight li, .split p.sm { font-size: 15px; }
+  .note.sm { font-size: 14px; }
   .steps { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); }
   .steps div { font-size: 14px; padding: 10px 4px; }
   .profile { gap: 20px; }
