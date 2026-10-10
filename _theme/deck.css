@@ -338,3 +338,14 @@ table.grid.compact th, table.grid.compact td { padding: 9px 14px; font-size: 18p
   .hint { display: none; }
 }
 @media print { .touch-nav { display: none !important; } }
+
+/* ── 部品: 2列の数字、見出し直下の導入文 ── */
+.stats.two { grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+.stats.two .stat { padding: 14px 24px 12px; }
+.stats.two .stat .n { font-size: 44px; }
+.lead { font-size: 20px; margin: 4px 0 0; color: var(--ink-mid); }
+@media (max-width: 760px) and (orientation: portrait) {
+  .stats.two { grid-template-columns: 1fr 1fr; }
+  .stats.two .stat .n { font-size: 30px; }
+  .lead { font-size: 14px; }
+}

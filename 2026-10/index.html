@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261010">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261010b">
 </head>
 <body data-title="来る前に、決まっている">
 
@@ -156,34 +156,18 @@
   <!-- 6 -->
   <section class="slide">
     <div class="kicker">02 · BtoB</div>
-    <h2>システム開発でも、作り始める前に決まる</h2>
-    <div class="figure" style="flex:0 0 auto">
-      <svg viewBox="0 0 1072 120">
-        <rect class="box" x="0" y="10" width="236" height="84"/>
-        <text class="head" x="118" y="46" text-anchor="middle">基本設計書と</text>
-        <text class="head" x="118" y="72" text-anchor="middle">画面のレイアウト図</text>
-        <line class="msg" x1="240" y1="52" x2="272" y2="52" marker-end="url(#arr)"/>
-        <rect class="box-em" x="278" y="10" width="236" height="84"/>
-        <text class="head-inv" x="396" y="46" text-anchor="middle">Claude Code に</text>
-        <text class="head-inv" x="396" y="72" text-anchor="middle">渡す</text>
-        <line class="msg" x1="518" y1="52" x2="550" y2="52" marker-end="url(#arr)"/>
-        <rect class="box-pale" x="556" y="10" width="236" height="84"/>
-        <text class="head" x="674" y="46" text-anchor="middle">動くモックが</text>
-        <text class="head" x="674" y="72" text-anchor="middle">すぐにできる</text>
-        <line class="msg" x1="796" y1="52" x2="828" y2="52" marker-end="url(#arr)"/>
-        <rect class="box-cool" x="834" y="10" width="236" height="84"/>
-        <text class="head" x="952" y="46" text-anchor="middle" style="fill:var(--accent-cool)">クライアントと開発が</text>
-        <text class="head" x="952" y="72" text-anchor="middle" style="fill:var(--accent-cool)">同じ画面で確かめる</text>
-        <text class="sub" x="0" y="116">ECの新機能の画面づくりで、実際にやってみたこと</text>
-      </svg>
+    <h2>BtoBでも、相談の前にAIで決めてくる</h2>
+    <div class="stats two">
+      <div class="stat"><div class="n">94%</div><div class="l">直近の購買で生成AIを使ったBtoBの買い手</div></div>
+      <div class="stat"><div class="n">47%</div><div class="l">業者に連絡する前に、AIで社内向けの資料まで作成</div></div>
     </div>
+    <p class="lead">受ける側も、決める作業を作り始める前に済ませられる。ECの新機能の画面づくりで試しました</p>
     <div class="before-after">
-      <div class="stat"><div class="l">これまで</div><div class="n">約5時間</div><div class="l">依頼して戻るまで約3時間、直しを入れて約5時間</div></div>
+      <div class="stat"><div class="l">これまで</div><div class="n">約5時間</div><div class="l">開発に依頼して戻るまで約3時間、直しを入れて約5時間</div></div>
       <div class="arrow">→</div>
-      <div class="stat now"><div class="l">Claude Code で</div><div class="n">約5分</div><div class="l">モックづくりから挙動の直しまで</div></div>
+      <div class="stat now"><div class="l">Claude Code で</div><div class="n">約5分</div><div class="l">基本設計書とレイアウト図から動くモックを作り、挙動の直しまで</div></div>
     </div>
-    <p class="note">買い手側も、94%が生成AIを使い、47%は業者に連絡する前にAIで資料まで作っている</p>
-    <p class="src">出典: 作業時間は発表者の実例 / Forrester 2026 Buyers' Journey Survey（94%・47%）</p>
+    <p class="src">出典: Forrester 2026 Buyers' Journey Survey（94%・47%）/ 作業時間は発表者の実例</p>
   </section>
 
   <!-- 7 -->
@@ -242,22 +226,50 @@
 
   <!-- 9 -->
   <section class="slide">
+    <div class="kicker">03 · Risk</div>
+    <h2>ただし、AIの答えはもっともらしく間違える</h2>
+    <div class="cards three">
+      <div class="card">
+        <div class="who">お客さまの側</div>
+        <h3>前提を間違えたまま来る</h3>
+        <p>古い価格、ない機能、ずれた相場。決めて来た人ほど、その思い込みも強いと思います。</p>
+        <p class="muted">AIを使ったBtoBの買い手も、ほとんどが答えを裏取りしている</p>
+      </div>
+      <div class="card">
+        <div class="who">お店・会社の側</div>
+        <h3>責められるのはこちら</h3>
+        <p>AIが商品について間違った情報を出したとき、買い物客の58%がそのブランドへの信頼をなくすという調査があります。</p>
+        <p class="muted">だから正しい情報を、自分で出しておく</p>
+      </div>
+      <div class="card">
+        <div class="who">作る側</div>
+        <h3>AIのモックも間違える</h3>
+        <p>速く作れる分、もっともらしい間違いも速く出てきます。</p>
+        <p class="muted">動く画面を人が触って確かめてから、作り始める</p>
+      </div>
+    </div>
+    <p class="note">来る前に決まっていることが、間違っている場合もある。そこを確かめるのが人の仕事です</p>
+    <p class="src" style="margin-top:12px">出典: TrustRadius 2026 B2B Buying Disconnect Report（2026-07）/ Rithum（Business Wire 2026-03-25）</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
     <div class="kicker">03 · Vision</div>
     <h2>ヤエノワとして、これからやっていきたいこと</h2>
     <div>
-      <div class="trend"><span class="no">01</span><div><h3>「AIで整理してきました」という相談を歓迎したい</h3><p>AIと話したメモや要件のたたき台を持ってきてもらえれば、最初の打ち合わせから中身のある話ができます</p></div></div>
+      <div class="trend"><span class="no">01</span><div><h3>「AIで整理してきました」という相談を歓迎したい</h3><p>メモや設計書を持ってきてもらえれば、その場で動くモックにして、前提が合っているかを一緒に確かめられます</p></div></div>
       <div class="trend"><span class="no">02</span><div><h3>自社サイトに、判断の材料をきちんと載せる</h3><p>対応範囲、進め方、事例、費用の目安。AIに紹介してもらうときにも、正しく伝わるようにしておきたいです</p></div></div>
       <div class="trend"><span class="no">03</span><div><h3>問い合わせは、件数より中身を見る</h3><p>数が少なくても、要件が見えている相談を大事にしたい。一つひとつのご縁を長く続けていくことを目指します</p></div></div>
     </div>
   </section>
 
-  <!-- 10 -->
+  <!-- 11 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">たくさん集めるより、<br><span class="em">来る前に選んでもらえる</span><br>会社でありたい。</p>
   </section>
 
-  <!-- 11 -->
+  <!-- 12 -->
   <section class="slide">
     <div class="kicker">References</div>
     <h2>出典（2026年10月9日時点）</h2>
@@ -265,7 +277,8 @@
       <li>Adobe Digital Insights — AI traffic trends report（2026-08-19）/ Q2 2026 AI-sourced traffic insights — business.adobe.com</li>
       <li>Digital Commerce 360 — Adobe: AI-referral traffic spending, converting more than counterparts（2026-08-19）</li>
       <li>Forrester — 2026 Buyers' Journey Survey（2026-01）</li>
-      <li>G2 — 2026 Buyer Behavior Report</li>
+      <li>TrustRadius — 2026 B2B Buying Disconnect Report（2026-07-15）</li>
+      <li>Rithum — AIの誤情報と買い物客の信頼に関する調査（Business Wire 2026-03-25）</li>
       <li>ナイル — 就職活動における生成AI利用に関する調査（2026-03）</li>
       <li>Global Rescue — AI use for international trip planning jumps 64% in six months（2026-08）</li>
     </ul>
@@ -274,6 +287,6 @@
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261010"></script>
+<script src="../_theme/deck.js?v=20261010b"></script>
 </body>
 </html>
