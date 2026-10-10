@@ -55,7 +55,7 @@
 
   <!-- 3 -->
   <section class="slide">
-    <div class="kicker">Conclusion First</div>
+    <div class="kicker">00 · Conclusion</div>
     <h2>先に結論</h2>
     <ul>
       <li>AIに実装を任せるなら、人間が先に決めるべきは「何をして、何をしないか」</li>
@@ -66,142 +66,131 @@
 
   <!-- 4 -->
   <section class="slide">
-    <div class="kicker">Who</div>
+    <div class="kicker">01 · Who</div>
     <h2>宮本佳林とは、そして今どこで話しているか</h2>
-    <div class="split">
-      <ul class="tight">
-        <li>1998年生まれ。9歳でハロプロエッグ、2013年 Juice=Juice 結成メンバー、2020年卒業、2021年ソロデビュー</li>
-        <li>プログラミング経験ゼロ。「コードも一切読めません」。ChatGPTで音楽アプリを作ろうとして失敗したのがきっかけでITを学び始め、AWSなどを独学</li>
-        <li>いまは Cursor と Claude Code でバイブコーディング。公式プロフィールの趣味欄に「バイブコーディング」</li>
-        <li>7/31 10時間配信のシステムを自作。8/1 ブログ2本「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974432505.html">アイドルがAIと配信のシステムを全部作った話</a>」「<a href="https://ameblo.jp/miyamotokarin-official/entry-12974440752.html">HANAKIN配信システムの技術構成</a>」</li>
-      </ul>
-      <div class="cards dense" style="grid-template-columns:1fr;gap:14px">
-        <div class="card"><div class="who">8/27</div><h3>Cloudflare Workers Tech Talks in Tokyo #8</h3><p>開発者向けイベントに初登壇、20分。題：「アイドルから見たものづくりの本質」。YouTubeアーカイブあり</p></div>
-        <div class="card"><div class="who">10/27</div><h3>Qiita Conference 2026 Autumn</h3><p>19:35〜19:55 登壇予定。題：「AI時代だからこそ大事にするべき、開発という名の愛情」</p></div>
-      </div>
+    <div class="cards four">
+      <div class="card"><div class="who">経歴</div><h3>元Juice=Juice、2021年ソロデビュー</h3><p>1998年生まれ。9歳でハロプロエッグ、2013年 Juice=Juice 結成メンバー、2020年卒業</p></div>
+      <div class="card"><div class="who">開発</div><h3>プログラミング経験ゼロから</h3><p>ChatGPTで音楽アプリを作ろうとして失敗したのがきっかけ。いまは Cursor と Claude Code でバイブコーディング</p></div>
+      <div class="card"><div class="who">8/27</div><h3>Cloudflare Workers Tech Talks #8</h3><p>開発者向けイベントに初登壇、20分。題「アイドルから見たものづくりの本質」</p></div>
+      <div class="card"><div class="who">10/27</div><h3>Qiita Conference 2026 Autumn</h3><p>19:35〜19:55 登壇予定。題「AI時代だからこそ大事にするべき、開発という名の愛情」</p></div>
     </div>
+    <p class="note sm" style="margin-top:16px">7/31 に10時間配信のシステムを自作。8/1 にブログ2本（<a href="https://ameblo.jp/miyamotokarin-official/entry-12974432505.html">配信のシステムを全部作った話</a>、<a href="https://ameblo.jp/miyamotokarin-official/entry-12974440752.html">技術構成</a>）</p>
     <p class="src">出典: ITmedia NEWS 2026/8/7・8/28、Qiita公式 2026/9/8 ／ 写真は本人の<a href="https://www.instagram.com/karin_miyamoto.official/">Instagram</a>（2026/8/27の投稿）を参照</p>
   </section>
 
   <!-- 5 -->
   <section class="slide">
-    <div class="kicker">Built</div>
+    <div class="kicker">01 · Built</div>
     <h2>ファンとの関係ごとに、4つのシステム</h2>
-    <p class="lead">目的は「自分を知ってる人にも、知らない人にも、新曲と活動をリーチする」</p>
-    <table class="grid compact small" style="margin-top:8px">
-      <tr><th>相手</th><th>システム</th><th>ねらい</th><th>構成</th></tr>
-      <tr><td>新規層</td><td>休日生態系診断</td><td>興味を持ってもらう入口</td><td>Workers（完全静的）</td></tr>
-      <tr><td>購入を迷ってる層</td><td>10時間配信システム</td><td>購入の後押し、拡散のきっかけ</td><td>Workers・KV＋ローカルNode.js</td></tr>
-      <tr><td>イベント参加者</td><td>アンケート＆ボイス配布</td><td>満足度向上、品質改善</td><td>Workers・D1・R2・KV・Turnstile</td></tr>
-      <tr><td>既存ファン</td><td>全イベント参加特典の動画配信</td><td>継続参加への感謝</td><td>Workers・R2</td></tr>
-    </table>
-    <p class="note sm" style="margin-top:20px">4つは別々のアプリ。アンケートは回答を保存するのでDBとボット対策を足し、特典動画は大きなファイルを配るのでストレージだけ。用途ごとに必要な構成だけを選んでいる</p>
+    <div class="cards four">
+      <div class="card"><div class="who">新規層</div><h3>休日生態系診断</h3><p>興味を持ってもらう入口。Workers（完全静的）</p></div>
+      <div class="card"><div class="who">購入を迷ってる層</div><h3>10時間配信システム</h3><p>購入の後押し、拡散のきっかけ。Workers・KV＋ローカルNode.js</p></div>
+      <div class="card"><div class="who">イベント参加者</div><h3>アンケート＆ボイス配布</h3><p>満足度向上、品質改善。Workers・D1・R2・KV・Turnstile</p></div>
+      <div class="card"><div class="who">既存ファン</div><h3>全イベント参加特典の動画配信</h3><p>継続参加への感謝。Workers・R2</p></div>
+    </div>
+    <p class="note sm" style="margin-top:16px">目的は「自分を知ってる人にも、知らない人にも、新曲と活動をリーチする」。用途ごとに独立させ、必要な構成だけを選んでいる</p>
     <p class="src">出典: Cloudflare登壇、Qiita「現役アイドルに学ぶ、AI駆動開発のはじめ方」（tomy0610）</p>
   </section>
 
   <!-- 6 -->
   <section class="slide">
-    <div class="kicker">Flow</div>
+    <div class="kicker">01 · Flow</div>
     <h2>ものづくりのフローは7段階、PCは2回だけ</h2>
-    <p class="lead">登壇で示された流れ。設計は「1日以内に終える」のが目標（実際は3日）</p>
-    <div class="steps" style="margin-top:16px">
+    <div class="steps">
       <div>1 着想<small>スマホ</small></div><div>2 安全確認<small>スマホ</small></div><div>3 仕様書化<small>スマホ</small></div><div class="pc">4 試作<small>PC</small></div><div>5 テスト<small>スマホ</small></div><div class="pc">6 修正<small>PC</small></div><div>7 公開・運用<small>スマホ</small></div>
     </div>
-    <ul class="tight">
-      <li>着想：スマホでAIに相談。「最小限に絞るなら何を残すか」「個人開発の規模で実現できるか」</li>
-      <li>安全確認：「この仕組みで悲しむ人はいないか」を洗い出す。開発者側（コスト・復旧・両立）とユーザー側（環境・分かりやすさ・期待）</li>
-      <li>仕様書化：「どう動けば成功か」を書く。当日の運用と、問題が起きた時の対応までMarkdownに</li>
-      <li>スキマ時間の積み上げで、全体3〜4時間ほど（登壇での整理）</li>
-    </ul>
+    <div class="cards three" style="flex:0 0 auto">
+      <div class="card"><div class="who">着想</div><h3>スマホでAIに相談</h3><p>「最小限に絞るなら何を残すか」「個人開発の規模で実現できるか」</p></div>
+      <div class="card"><div class="who">安全確認</div><h3>悲しむ人はいないか</h3><p>開発者側（コスト・復旧・両立）とユーザー側（環境・分かりやすさ・期待）を洗い出す</p></div>
+      <div class="card"><div class="who">仕様書化</div><h3>どう動けば成功か</h3><p>当日の運用と、問題が起きた時の対応までMarkdownに書く</p></div>
+    </div>
+    <p class="note sm" style="margin-top:16px">設計は「1日以内に終える」のが目標（実際は3日）。スキマ時間の積み上げで、全体3〜4時間ほど</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 7 -->
   <section class="slide">
-    <div class="kicker">The Four</div>
+    <div class="kicker">02 · The Four</div>
     <h2>「悲しむ人を生まない」ための4つの守り</h2>
-    <p class="lead">登壇で本人が挙げた4つ</p>
-    <div class="cards four" style="margin-top:16px">
-      <div class="card"><div class="who">守り ①</div><h3>時短</h3><p>スマホで完結。移動中でも対応できる状態を作る。Markdownのフォーマットに落として再利用する</p></div>
-      <div class="card"><div class="who">守り ②</div><h3>セキュリティ</h3><p>個人情報を預からない。複数のAIにレビューさせる。壊れても笑って済ませられるものしか作らない。本番運用まで想像して設計する</p></div>
-      <div class="card"><div class="who">守り ③</div><h3>無料枠を最大活用</h3><p>コストも機能要件。無料枠か低コスト枠で成立するか。クレカ登録なしで試せるか。上限に近づいたらアラート</p></div>
-      <div class="card"><div class="who">守り ④</div><h3>サービスへの想い</h3><p>既存の競合施策を下調べする。絶対に損ないたくない体験を明確にする。ファンへのメッセージはAIに書かせず自分の言葉で</p></div>
+    <div class="cards four">
+      <div class="card"><div class="who">守り ①</div><h3>時短</h3><p>スマホで完結。移動中でも対応できる状態を作る</p></div>
+      <div class="card"><div class="who">守り ②</div><h3>セキュリティ</h3><p>個人情報を預からない。壊れても笑って済ませられるものしか作らない</p></div>
+      <div class="card"><div class="who">守り ③</div><h3>無料枠を最大活用</h3><p>コストも機能要件。無料枠か低コスト枠で成立するか</p></div>
+      <div class="card"><div class="who">守り ④</div><h3>サービスへの想い</h3><p>絶対に損ないたくない体験を明確にする。ファンへのメッセージはAIに書かせない</p></div>
     </div>
+    <p class="note sm" style="margin-top:16px">登壇で本人が挙げた4つ</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">The Four 1/4 · Time</div>
+    <div class="kicker">02 · The Four 1/4</div>
     <h2>「時短」＋「誰かの悲しみを想像する」</h2>
-    <p class="lead">多忙な本業と両立するための設計。これも要件</p>
-    <div class="cards dense" style="margin-top:16px">
-      <div class="card"><h3>時短＝運用できる範囲に絞る</h3><p>・着想〜仕様書はスマホ。PCは試作と修正だけ<br>・設計は1日以内が目標。時間をかけると「何がしたかったか」がぼやける<br>・配信中はスマホの管理画面から数字もテロップも直せる。アンケートは当日スマホで声を録音してアップ、QRをその場で発行、イベント日を過ぎたら締切<br>・ツアーで移動しながら回せる範囲でしか作らない</p></div>
-      <div class="card"><h3>安全確認＝2つの悲しみ</h3><p>開発者側：高コストになってないか、トラブル時に自分で復旧できるか、本業と両立できるか<br><br>ユーザー側：特定の端末でしか見られなくないか、受け取り方が分かりにくくないか、期待させた体験を本当に届けられるか</p></div>
+    <div class="cards pair">
+      <div class="card"><div class="who">時短</div><h3>運用できる範囲に絞る</h3><p>着想〜仕様書はスマホ、PCは試作と修正だけ。配信中もスマホの管理画面から数字もテロップも直せる</p></div>
+      <div class="card"><div class="who">安全確認</div><h3>2つの悲しみを想像する</h3><p>開発者側は、コスト・復旧・本業との両立。ユーザー側は、端末・受け取り方の分かりやすさ・期待させた体験</p></div>
     </div>
+    <p class="note">ツアーで移動しながら回せる範囲でしか作らない。これも要件</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 9 -->
   <section class="slide">
-    <div class="kicker">The Four 2/4 · Security</div>
+    <div class="kicker">02 · The Four 2/4</div>
     <h2>「壊れても笑えるものだけ作る」</h2>
-    <p class="lead">セキュリティを「作らない判断」から始めてる</p>
-    <div class="cards dense" style="margin-top:16px">
-      <div class="card"><h3>本人が決めたこと</h3><p>・個人情報はなるべく預からない（診断サイトは個別診断するが個人情報を持たない）<br>・アンケートのデータは一定期間で削除か匿名化<br>・Turnstileでボット対策、書き込みAPIは全部トークン保護<br>・複数のAIに製品をレビューさせる</p></div>
-      <div class="card"><div class="who">同じ週のニュース</div><h3>預かった情報を守れなかった話</h3><p>RIZAP、社員が個人利用の生成AIに氏名・疾患情報を誤アップロード。IHI健保分は210人（Ledge.ai 2026/9/8）<br><br>企業の側が「預かった情報を守れなかった」話をしてる横で、本人は「預からない」から始めてる。</p></div>
+    <div class="cards pair">
+      <div class="card"><div class="who">本人が決めたこと</div><h3>預からない</h3><p>個人情報はなるべく持たない。アンケートは一定期間で削除か匿名化。Turnstileと複数AIのレビュー</p></div>
+      <div class="card"><div class="who">同じ週のニュース</div><h3>預かった情報を守れなかった話</h3><p>RIZAP、社員が個人利用の生成AIに氏名・疾患情報を誤アップロード。IHI健保分は210人（Ledge.ai 2026/9/8）</p></div>
     </div>
-    <p class="note" style="margin-top:20px">預からなければ漏れない。壊れても笑えるものなら止まっても困らない。守りの一番上流は「何を持たないか」</p>
+    <p class="note">預からなければ漏れない。守りの一番上流は「何を持たないか」</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 10 -->
   <section class="slide">
-    <div class="kicker">The Four 3/4 · Cost</div>
+    <div class="kicker">02 · The Four 3/4</div>
     <h2>「コストも機能要件」</h2>
-    <p class="lead">無料枠で成立するかを、設計の条件に入れてる</p>
-    <div class="cards three dense" style="margin-top:16px">
-      <div class="card"><h3>無料枠で組んだ構成</h3><p>診断サイトは .workers.dev のまま完全静的で無料。特典動画は R2 の月10GB無料枠とエグレス無料。X検索は RapidAPI 月1ドル・1,000リクエスト上限で超過課金なし</p></div>
-      <div class="card"><h3>制約は設計を変える理由</h3><p>Cron が Workers 無料プランで使えない → 自動ポーリングを捨てて手動ボタンに。「盛り上がりに合わせて取得間隔を制御できて、運用はむしろ良くなった」</p></div>
-      <div class="card"><h3>本人の言葉</h3><p>従量課金に不安があった。Cloudflareはクレカ登録なしで試せるサービスがあり、心理的ハードルが低かった。「AI開発を応援してもらえているような気がした」</p></div>
+    <div class="cards three" style="flex:0 0 auto">
+      <div class="card"><div class="who">構成</div><h3>無料枠で組む</h3><p>診断は .workers.dev で完全静的、特典動画は R2 の月10GB無料枠、X検索は月1ドル・1,000リクエスト上限</p></div>
+      <div class="card"><div class="who">制約</div><h3>設計を変える理由にする</h3><p>Cron が無料プランで使えず、手動ボタンに。「運用はむしろ良くなった」</p></div>
+      <div class="card"><div class="who">本人の言葉</div><h3>心理的ハードルの低さ</h3><p>クレカ登録なしで試せた。「AI開発を応援してもらえているような気がした」</p></div>
     </div>
-    <p class="note sm" style="margin-top:20px">AIのAPIはモデルごとにトークン単価が決まっていて、従量課金で使うほど請求が伸びる。新しいモデルが出るたびに単価も変わる夏に、「上限のある枠で成立させる」を先に決めてる</p>
+    <p class="note sm" style="margin-top:16px">AIのAPIは従量課金で、使うほど請求が伸びる。「上限のある枠で成立させる」を先に決めてる</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 11 -->
   <section class="slide">
-    <div class="kicker">The Four 4/4 · Message</div>
+    <div class="kicker">02 · The Four 4/4</div>
     <h2>「メッセージは、AIに書かせない」</h2>
-    <p class="lead">何をAIに任せて、何を任せないかを先に決めてる</p>
-    <div class="cards dense" style="margin-top:12px">
-      <div class="card"><h3>本人が線を引いたところ</h3><p>・実装：全部AI。コードは1行も読まない<br>・仕様書：AIと壁打ちしながら自分で書く<br>・ファンへのメッセージ、ボイス、企画：自分の言葉、自分の声<br>・既存の競合施策を下調べしてから作る（ファンの気持ちで）</p></div>
-      <div class="card"><div class="who">同じ週のニュース</div><h3>AI生成文書をAIで要約する「doom loop」</h3><p>Microsoft Office責任者が、AI生成文書をAIで要約する職場の流れを「doom loop」と指摘（Ledge.ai 2026/9/8）。AIスロップ＝AIで量産された中身の薄いコンテンツ（slopは残飯の意）。職場では、AIで書いた文書を相手がAIで要約し、誰も読まない文書が増え続ける状態。出るのは、任せる範囲を決めずに全部投げるから。</p></div>
+    <div class="cards pair">
+      <div class="card"><div class="who">AIに任せること</div><h3>実装は全部AI</h3><p>コードは1行も読まない。仕様書はAIと壁打ちしながら、自分で書く</p></div>
+      <div class="card"><div class="who">自分でやること</div><h3>言葉と声は自分</h3><p>ファンへのメッセージ、ボイス、企画は自分の言葉と声で。既存の競合施策も、ファンの気持ちで下調べしてから作る</p></div>
     </div>
-    <p class="note sm" style="margin-top:14px">「絶対に損ないたくない体験」を先に決めると、AIに投げていい範囲が決まる。順番が逆だとスロップになる</p>
+    <p class="note">「絶対に損ないたくない体験」を先に決めると、AIに投げていい範囲が決まる</p>
     <p class="src">出典: Cloudflare Workers Tech Talks in Tokyo #8 での本人の登壇（2026-08-27）、本人ブログ（2026-08-01）</p>
   </section>
 
   <!-- 12 -->
   <section class="slide">
-    <div class="kicker">Requirements</div>
+    <div class="kicker">03 · Requirements</div>
     <h2>機能要件と非機能要件に分けると</h2>
-    <p class="lead">彼女の言葉を、僕の仕事の言葉に置き換える</p>
-    <div class="cards dense" style="margin-top:16px">
-      <div class="card"><div class="who">笑顔にする</div><h3>機能要件</h3><p>・CD購入と応援投稿でゲージが伸びる<br>・閾値を超えたら「衣装 解禁！」の演出<br>・AIがMVの再現度を採点して画面に出す<br>・アンケートに答えたらその日だけのボイスが届く<br>・全イベント参加でコンプリート動画</p></div>
-      <div class="card"><div class="who">悲しむ人を生まない</div><h3>非機能要件</h3><p>① 時短 → 運用性。誰が・どの端末で・何分で対応するか<br>② セキュリティ → 情報の保持方針。何を持たないか。持つなら期限と削除<br>③ 無料枠 → コスト上限。予算を要件に入れる。超えたら検知して止める<br>④ 想い → 体験の品質。損なってはいけないものを先に固定する</p></div>
+    <div class="cards pair">
+      <div class="card"><div class="who">笑顔にする</div><h3>機能要件</h3><p>ゲージが伸びる、衣装解禁の演出、AIによるMVの採点、その日だけのボイス、コンプリート動画</p></div>
+      <div class="card"><div class="who">悲しむ人を生まない</div><h3>非機能要件</h3><p>時短は運用性、セキュリティは情報の保持方針、無料枠はコスト上限、想いは体験の品質</p></div>
     </div>
+    <p class="note">彼女の言葉を、僕の仕事の言葉に置き換えると、こうなる</p>
   </section>
 
   <!-- 13 -->
   <section class="slide">
-    <div class="kicker">Summary</div>
+    <div class="kicker">03 · Summary</div>
     <h2>まとめ</h2>
     <div class="cards four">
-      <div class="card"><div class="who">01</div><h3>ファンとの関係ごとに4つのシステム</h3><p>診断は静的ファイルだけ、アンケートはDBとボット対策、特典動画はストレージだけ。用途ごとに独立させ、必要な構成だけ選んだ</p></div>
-      <div class="card"><div class="who">02</div><h3>着想、安全確認、仕様書化をスマホで</h3><p>「この仕組みで悲しむ人はいないか」を、仕様書より前に確認した</p></div>
-      <div class="card"><div class="who">03</div><h3>4つの守り</h3><p>個人情報を預からない／無料枠で成立させる／ファンへのメッセージはAIに書かせない／スマホで回せる範囲で作る</p></div>
-      <div class="card"><div class="who">04</div><h3>笑顔にする側が機能要件、悲しむ人を生まない側が非機能要件</h3><p>笑顔にする側はゲージ・解禁演出・AI採点・ボイス。どちらも先に決めてから、AIに実装を投げた</p></div>
+      <div class="card"><div class="who">01</div><h3>関係ごとに4つのシステム</h3><p>用途ごとに独立させ、必要な構成だけ選んだ</p></div>
+      <div class="card"><div class="who">02</div><h3>着想・安全確認・仕様書化はスマホで</h3><p>「悲しむ人はいないか」を、仕様書より前に確認した</p></div>
+      <div class="card"><div class="who">03</div><h3>4つの守り</h3><p>預からない／無料枠で成立させる／メッセージはAIに書かせない／スマホで回せる範囲で作る</p></div>
+      <div class="card"><div class="who">04</div><h3>機能要件と非機能要件</h3><p>笑顔にする側（ゲージ・解禁演出・AI採点・ボイス）と悲しむ人を生まない側。どちらも先に決めてから、AIに実装を投げた</p></div>
     </div>
   </section>
 
@@ -244,7 +233,7 @@
       <li>ITmedia NEWS（2026-08-07、2026-08-28）</li>
       <li>Qiita公式 — Qiita Conference 2026 Autumn 登壇情報（2026-09-08）</li>
       <li>Qiita — 「現役アイドルに学ぶ、AI駆動開発のはじめ方」（tomy0610）</li>
-      <li>Ledge.ai（2026-09-08）— RIZAPの生成AIへの誤アップロード、Microsoft Office責任者の「doom loop」発言</li>
+      <li>Ledge.ai（2026-09-08）— RIZAPの生成AIへの誤アップロード</li>
       <li>宮本佳林 Instagram @karin_miyamoto.official（2026-08-27の投稿。公開版では写真を載せていません）— instagram.com/karin_miyamoto.official/</li>
     </ul>
   </section>
