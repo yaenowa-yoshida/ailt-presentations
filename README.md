@@ -13,6 +13,7 @@
 | 2026-08-22 | CraftStage LT会 ／ 富士通UIS（川崎） | 日報を、あとで書かない。（自社の日報入力ツールの紹介） | [Instagram](https://www.instagram.com/p/DcVhxF6R_Zo/) |
 | 2026-07-18 | CraftStage LT会 ／ 富士通UIS（川崎） | AIは業務システムの中から浸透する | [スライド](2026-07/index.html) |
 | 2026-01-13 | CraftStage LT会 ／ 富士通UIS（川崎） | イーロン・マスクの“シンギュラリティ”発言 | [Instagram](https://www.instagram.com/p/DTc-i4cEWz-/) |
+| 2025-10-01 | CraftStage AI活用アイデアソン ／ 富士通UIS（川崎） | 3文で「自分専用AI」をつくってみよう | [Instagram](https://www.instagram.com/p/DPi-WXxkZW-/) |
 
 資料は発表ごとに `YYYY-MM/` のフォルダに入れます。発表したら、この表とトップの `index.html` に1件足します。
 
