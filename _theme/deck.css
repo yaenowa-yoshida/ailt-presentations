@@ -396,6 +396,7 @@ body.white {
   --ink-mid: #5c2a36;
   --ink-light: #8a5d68;
 }
+html:has(body.white), body.white { background: #ffffff; }
 body.white .slide, body.white .slide.inverse { background: #ffffff; }
 body.white .slide.inverse .kicker { color: var(--accent-gold); }
 body.white .slide.inverse .footer { color: var(--ink-light); }
@@ -415,7 +416,7 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .middle, .cards.roomy { margin-top: auto; margin-bottom: auto; }
 .cards.roomy { flex: 0 0 auto; }
 .cards.roomy .card { padding: 34px 32px; gap: 14px; }
-.cards.roomy h3 { font-size: 27px; }
+.cards.roomy h3 { font-size: 27px; word-break: auto-phrase; }
 .cards.roomy p { font-size: 21px; line-height: 1.7; }
 @media (max-width: 760px) and (orientation: portrait) {
   .middle, .cards.roomy { margin-top: 0; margin-bottom: 0; }
