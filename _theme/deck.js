@@ -1,7 +1,7 @@
 // deck.js — ヤエノワ LT 共通スライド制御
 // <body data-title="…"> の値をフッターに表示する。
 // .slide.title 以外の各スライドにフッター（ロゴ・社名・タイトル・ページ番号）を挿入し、
-// .sakura-bg を持つスライドには桜の透かしを入れる。
+// .sakura-bg を持つスライドには桜の透かしを入れる（白地の配色では多面体の飾りを入れる）。
 (() => {
   const script = document.currentScript;
   const base = script.src.replace(/deck\.js(\?.*)?$/, '');
@@ -21,8 +21,26 @@
       <circle r="90" fill="none" stroke="${line}" stroke-dasharray="3 5"/>
     </svg>`;
 
+  // 白地の配色（<body class="white">）では、桜の代わりにピンクの多面体を飾る
+  const white = document.body.classList.contains('white');
+  const poly = cls => {
+    const pt = (r, deg) => [r * Math.cos(deg * Math.PI / 180), r * Math.sin(deg * Math.PI / 180)];
+    const O = [-90, -30, 30, 90, 150, 210].map(a => pt(100, a));
+    const I = [-90, 30, 150].map(a => pt(50, a));
+    const faces = [
+      [O[0], O[1], I[0], '#f9d5dc'], [O[1], I[1], I[0], '#f2b3c0'], [O[1], O[2], I[1], '#eea0b1'],
+      [O[2], O[3], I[1], '#e58ba0'], [O[3], I[2], I[1], '#f4bfca'], [O[3], O[4], I[2], '#ec9aad'],
+      [O[4], O[5], I[2], '#f7cad3'], [O[5], I[0], I[2], '#f0aabb'], [O[5], O[0], I[0], '#fbe3e8'],
+      [I[0], I[1], I[2], '#e88ea3'],
+    ];
+    return `<svg class="poly ${cls}" viewBox="-104 -104 208 208" aria-hidden="true">${faces.map(([a, b, c, f]) =>
+      `<polygon points="${[a, b, c].map(p => p.map(v => v.toFixed(1)).join(',')).join(' ')}" fill="${f}" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/>`).join('')}</svg>`;
+  };
+
   slides.forEach((s, n) => {
-    if (s.classList.contains('sakura-bg')) {
+    if (white) {
+      s.insertAdjacentHTML('afterbegin', poly(s.classList.contains('sakura-bg') ? 'big' : 'corner'));
+    } else if (s.classList.contains('sakura-bg')) {
       const dark = s.classList.contains('inverse');
       s.insertAdjacentHTML('afterbegin', dark
         ? sakura('rgba(232,160,168,0.10)', 'rgba(232,160,168,0.22)')
