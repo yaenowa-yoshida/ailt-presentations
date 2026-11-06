@@ -389,3 +389,38 @@ ul.tight li { font-size: 19px; }
 @media (max-width: 760px) and (orientation: portrait) {
   .cards.one h3 { font-size: 19px; }
 }
+
+/* ── 白地の配色（<body class="white">）: 白背景・ワインレッドの文字・ピンクの多面体 ── */
+body.white {
+  --ink: #6e2233;
+  --ink-mid: #5c2a36;
+  --ink-light: #8a5d68;
+}
+body.white .slide, body.white .slide.inverse { background: #ffffff; }
+body.white .slide.inverse .kicker { color: var(--accent-gold); }
+body.white .slide.inverse .footer { color: var(--ink-light); }
+body.white .big-quote { color: var(--ink); }
+body.white .big-quote .em { color: var(--sakura-deep); }
+body.white .card { border-color: var(--sakura-light); }
+.poly { position: absolute; pointer-events: none; }
+.poly.big { right: -30px; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; opacity: .9; }
+.poly.corner { right: 32px; top: 24px; width: 72px; height: 72px; }
+@media (max-width: 760px) and (orientation: portrait) {
+  .poly.big { width: 240px; height: 240px; right: -60px; opacity: .6; }
+  .poly.corner { width: 36px; height: 36px; right: 12px; top: 12px; }
+}
+body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px; opacity: .55; }
+
+/* ── 部品: 上下の真ん中に置く（.middle）、文字を大きくしたカード（.cards.roomy） ── */
+.middle, .cards.roomy { margin-top: auto; margin-bottom: auto; }
+.cards.roomy { flex: 0 0 auto; }
+.cards.roomy .card { padding: 34px 32px; gap: 14px; }
+.cards.roomy h3 { font-size: 27px; }
+.cards.roomy p { font-size: 21px; line-height: 1.7; }
+@media (max-width: 760px) and (orientation: portrait) {
+  .middle, .cards.roomy { margin-top: 0; margin-bottom: 0; }
+  .cards.roomy .card { padding: 18px; gap: 10px; }
+  .cards.roomy h3 { font-size: 18px; }
+  .cards.roomy p { font-size: 14px; }
+  body.white .slide.inverse .poly.big { width: 200px; height: 200px; right: -70px; opacity: .4; }
+}
