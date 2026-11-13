@@ -490,6 +490,7 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .price-cmp .cmp.four { grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .price-cmp .cmp.four .v { font-size: 25px; }
 .price-cmp .cmp.four .muted { font-size: 13px; line-height: 1.5; }
+.cards.pair.basics { margin-top: 28px; }
 /* 表紙の副題が2行になる資料（.slide.title.sub2）は、行間と余白を少し詰める */
 .title.sub2 .sub { font-size: 24px; line-height: 1.6; }
 .title.sub2 .rule { margin: 28px 0 22px; }
