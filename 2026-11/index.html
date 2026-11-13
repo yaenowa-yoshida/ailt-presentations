@@ -150,7 +150,20 @@
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">05 · Stop</div>
+    <div class="kicker">05 · Agents</div>
+    <h2>4つのエージェントを紹介します</h2>
+    <div class="cards four">
+      <div class="card"><div class="who">test-run-planner · 読むだけ</div><h3>実行計画係</h3><p>次にどのスクリプトを、どの得意先・設定で流すかを決め、いまの進み具合を伝える</p></div>
+      <div class="card"><div class="who">test-script-builder · 流さない</div><h3>スクリプト作成係</h3><p>画面の帯や保存先の確認など、決めた作りを守ってスクリプトを作り、直す</p></div>
+      <div class="card"><div class="who">test-result-recorder · 許可制</div><h3>結果記録係</h3><p>OK・NG・要確認・保留を判定してシートに記録する。書き込むのは「書き込んでよい」と言われたときだけ</p></div>
+      <div class="card"><div class="who">spec-finder · 読むだけ</div><h3>仕様調査係</h3><p>仕様書や経緯の記録を横断して調べ、ファイル・シート・セルの根拠つきで返す</p></div>
+    </div>
+    <p class="note sm">案件1で使った4つ。役割と権限を分け、シートに書けるのは結果記録係だけにした</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">06 · Stop</div>
     <h2>想定と違えば、押さずに止まる</h2>
     <div class="cards four">
       <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>開始前にカートが空かを確かめ、アカウントや得意先が違えば発注しない</p></div>
@@ -161,22 +174,21 @@
     <p class="note sm">案件1では、実行中の表示や画面のスリープ止めも含めた7つを、スクリプトの共通の型にした</p>
   </section>
 
-  <!-- 9 -->
+  <!-- 10 -->
   <section class="slide">
-    <div class="kicker">06 · Remember</div>
+    <div class="kicker">07 · Remember</div>
     <h2>ルールと訂正を、次の会話に残す</h2>
-    <div class="cards four">
+    <div class="cards three roomy">
       <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：流してもらう前に毎回、ファイル名・設定・アカウント・注意を伝える</p></div>
       <div class="card"><div class="who">メモリ · 両方</div><h3>決めたことと訂正を残す</h3><p>案件1は約35件。例：判断できない結果は「要確認」にする</p></div>
-      <div class="card"><div class="who">サブエージェント · 案件1</div><h3>役割と権限を分ける</h3><p>実行計画（読むだけ）、スクリプト作成、結果の記録、仕様調査の4つ</p></div>
       <div class="card"><div class="who">根拠 · 案件2</div><h3>OKの理由を書く</h3><p>どのログ・どのPDFで確かめたか、または「担当判断」かを備考に</p></div>
     </div>
     <p class="note sm">案件2では、途中から伝えた「いちいち確認しなくていい」も、メモリに残した</p>
   </section>
 
-  <!-- 10 -->
+  <!-- 11 -->
   <section class="slide">
-    <div class="kicker">07 · Results</div>
+    <div class="kicker">08 · Results</div>
     <h2>回帰テストなど決まった手順が、圧倒的に速くなった</h2>
     <p class="lead">どちらの案件でも同じでした。3つの数字は案件2のものです</p>
     <div class="stats">
@@ -190,9 +202,9 @@
     </ul>
   </section>
 
-  <!-- 11 -->
+  <!-- 12 -->
   <section class="slide">
-    <div class="kicker">08 · Limits</div>
+    <div class="kicker">09 · Limits</div>
     <h2>このテストで確かめられないこと</h2>
     <div class="cards four">
       <div class="card"><div class="who">見た目</div><h3>レイアウトや色は確かめられない</h3><p>結果は文字で残し、画像は撮らない（案件1）。見た目で決めるところは人が判断した（案件2）</p></div>
@@ -203,9 +215,9 @@
     <p class="note sm">画面や商品が変わると、スクリプトの直しも要る。案件1では、商品を固定せず、流すときに画面から選ぶようにした</p>
   </section>
 
-  <!-- 12 -->
+  <!-- 13 -->
   <section class="slide">
-    <div class="kicker">09 · Compared</div>
+    <div class="kicker">10 · Compared</div>
     <h2>似たサービスとの違い</h2>
     <p class="lead">最初に紹介したサービスと比べると、違いは次の4つです</p>
     <div class="cards four">
@@ -217,9 +229,9 @@
     <p class="src">比べたのは、3・4枚目のサービスです（公式サイト、2026-11-13確認）</p>
   </section>
 
-  <!-- 13 -->
+  <!-- 14 -->
   <section class="slide">
-    <div class="kicker">10 · Thoughts</div>
+    <div class="kicker">11 · Thoughts</div>
     <h2>なぜ速くなったのかを考えた</h2>
     <div class="cards four">
       <div class="card"><div class="who">分ける</div><h3>流すのは人、判定はAI</h3><p>結果を文字で受け取るので、AIが判定でき、人もその判定を確かめられる</p></div>
@@ -229,9 +241,9 @@
     </div>
   </section>
 
-  <!-- 14 -->
+  <!-- 15 -->
   <section class="slide">
-    <div class="kicker">11 · Other Uses</div>
+    <div class="kicker">12 · Other Uses</div>
     <h2>同じ型が使えそうな仕事</h2>
     <p class="lead">同じ手順を何度も流すか、期待する結果を文字で書けるか。この2つで見分けられると思います</p>
     <div class="cards four">
@@ -242,7 +254,7 @@
     </div>
   </section>
 
-  <!-- 15 -->
+  <!-- 16 -->
   <section class="slide">
     <div class="kicker">Takeaways</div>
     <h2>持ち帰ってほしいこと</h2>
@@ -253,7 +265,7 @@
     </div>
   </section>
 
-  <!-- 16 -->
+  <!-- 17 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
