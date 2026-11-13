@@ -279,33 +279,21 @@
     <div class="kicker">08 · Results</div>
     <h2>回帰テストなど決まった手順が、圧倒的に速くなった</h2>
     <p class="lead">どちらの案件でも同じでした。3つの数字は案件2のものです</p>
-    <div class="stats">
+    <div class="stats" style="margin-bottom:18px">
       <div class="stat"><div class="n">約30秒</div><div class="l">注文1件（手作業では10分以上）</div></div>
       <div class="stat"><div class="n">33件</div><div class="l">デザインの自動作成から、注文書・確定・データ取得まで</div></div>
       <div class="stat"><div class="n">183</div><div class="l">工場向け送付パッケージのファイル数</div></div>
     </div>
-    <ul>
+    <ul style="gap:8px">
       <li>案件2では、提出用ブックのオプションシート1万2千行を全件照合し、差がないことを確かめた</li>
       <li>案件1では、スクリプト約15本。1本をコピーして作り替える流れができた</li>
+      <li>テストデータの選定と回帰テストが段違いに楽になった</li>
     </ul>
   </section>
 
   <!-- 15 -->
   <section class="slide">
-    <div class="kicker">09 · Limits</div>
-    <h2>このテストで確かめられないこと</h2>
-    <div class="cards four">
-      <div class="card"><div class="who">見た目</div><h3>レイアウトや色は確かめられない</h3><p>結果は文字で残し、画像は撮らない（案件1）。<br>見た目で決めるところは人が判断した（案件2）</p></div>
-      <div class="card"><div class="who">画面の裏側</div><h3>データベースは見られない</h3><p>見られるのはテスト環境の画面だけ。データベースの中身は、直接は確かめられない（案件1）</p></div>
-      <div class="card"><div class="who">無人の実行</div><h3>決まった時刻に無人では流せない</h3><p>流すのは人なので、人が貼らないと始まらない</p></div>
-      <div class="card"><div class="who">本番の環境</div><h3>流したのはテスト環境だけ</h3><p>本番だけで起きることは、別のやり方で確かめる必要がある</p></div>
-    </div>
-    <p class="note sm">画面や商品が変わると、スクリプトの直しも要る。案件1では、商品を固定せず、流すときに画面から選ぶようにした</p>
-  </section>
-
-  <!-- 16 -->
-  <section class="slide">
-    <div class="kicker">10 · Compared</div>
+    <div class="kicker">09 · Compared</div>
     <h2>似たサービスとの違い</h2>
     <p class="lead" style="margin:-14px 0 14px">今回の要求は、1つのサービスではまかないきれず、組み合わせが要ります。比べると、違いは次の4つです</p>
     <div class="cards four">
@@ -318,21 +306,22 @@
     <p class="src">比べたのは、4・5枚目のサービスです（公式サイト、2026-11-13確認）</p>
   </section>
 
-  <!-- 17 -->
+  <!-- 16 -->
   <section class="slide">
-    <div class="kicker">11 · Thoughts</div>
-    <h2>なぜ速くなったのかを考えた</h2>
+    <div class="kicker">10 · Limits</div>
+    <h2>このテストで確かめられないこと</h2>
     <div class="cards four">
-      <div class="card"><div class="who">分ける</div><h3>流すのは人、判定はAI</h3><p>結果を文字で受け取るので、AIが判定でき、人もその判定を確かめられる</p></div>
-      <div class="card"><div class="who">止まる</div><h3>止まって画面を残す</h3><p>想定と違えば押さずに止まり、画面を残すので、あとから何が起きたかを確かめられる</p></div>
-      <div class="card"><div class="who">使い回す</div><h3>速くなるのは2回目からだと思う</h3><p>一度できたスクリプトを貼り直せば、同じ手順と判定基準で流せる。前回の実施との差も見分けられる</p></div>
-      <div class="card"><div class="who">人に残る</div><h3>前提と見た目は人が決める</h3><p>前提が合っているかの確認と、見た目で決めるところは人がする</p></div>
+      <div class="card"><div class="who">見た目</div><h3>レイアウトや色は確かめられない</h3><p>結果は文字で残し、画像は撮らない（案件1）。<br>見た目で決めるところは人が判断した（案件2）</p></div>
+      <div class="card"><div class="who">画面の裏側</div><h3>データベースは見られない</h3><p>見られるのはテスト環境の画面だけ。データベースの中身は、直接は確かめられない（案件1）</p></div>
+      <div class="card"><div class="who">無人の実行</div><h3>決まった時刻に無人では流せない</h3><p>流すのは人なので、人が貼らないと始まらない</p></div>
+      <div class="card"><div class="who">本番の環境</div><h3>流したのはテスト環境だけ</h3><p>本番だけで起きることは、別のやり方で確かめる必要がある</p></div>
     </div>
+    <p class="note sm">画面や商品が変わると、スクリプトの直しも要る。案件1では、商品を固定せず、流すときに画面から選ぶようにした</p>
   </section>
 
-  <!-- 18 -->
+  <!-- 17 -->
   <section class="slide">
-    <div class="kicker">12 · Other Uses</div>
+    <div class="kicker">11 · Other Uses</div>
     <h2>同じ型が使えそうな仕事</h2>
     <p class="lead">同じ手順を何度も流すか、期待する結果を文字で書けるか。この2つで見分けられると思います</p>
     <div class="cards four">
@@ -343,7 +332,7 @@
     </div>
   </section>
 
-  <!-- 19 -->
+  <!-- 18 -->
   <section class="slide">
     <div class="kicker">Takeaways</div>
     <h2>持ち帰ってほしいこと</h2>
@@ -354,7 +343,7 @@
     </div>
   </section>
 
-  <!-- 20 -->
+  <!-- 19 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
