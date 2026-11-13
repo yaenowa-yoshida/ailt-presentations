@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>僕のMuse活用法</title>
+<title>ブラウザのコンソールに貼るだけ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_theme/deck.css?v=20261106a">
 </head>
-<body class="white" data-title="僕のMuse活用法">
+<body class="white" data-title="コンソールに貼るだけ">
 <div class="deck">
 
   <!-- 1 -->
   <section class="slide title sakura-bg">
     <div class="kicker">AI Lightning Talk · 2026.11</div>
-    <h1>僕の<span class="em">Muse</span>活用法</h1>
-    <p class="sub">チャットではなく、生活と仕事の<br>細々したことを任せる相棒として</p>
+    <h1>ブラウザの<br>コンソールに<br><span class="em">貼るだけ</span></h1>
+    <p class="sub">Claude Code と回した、2つのサイトの受け入れテスト</p>
     <div class="rule"></div>
     <div class="presenter">
       <img src="../_theme/logo.png" alt="ヤエノワロゴ">
@@ -54,63 +54,108 @@
 
   <!-- 3 -->
   <section class="slide">
-    <div class="kicker">Case 1/4 · 減量</div>
-    <h2>食べる前に「これ食べていいかな」と聞く</h2>
-    <div class="cards three roomy">
-      <div class="card"><div class="who">送るもの</div><h3>食事やレシートの写真</h3><p>カロリーを計算して、記録してくれる</p></div>
-      <div class="card"><div class="who">聞くこと</div><h3>食べていいかどうか</h3><p>その日の残りカロリーで答えてくれる</p></div>
-      <div class="card"><div class="who">相談したこと</div><h3>鶏むね肉＋塩麹の鍋</h3><p>レシピを相談して決めた</p></div>
+    <div class="kicker">00 · Two Projects</div>
+    <h2>どちらも、AIがサイトを直接さわれない現場</h2>
+    <div class="cards pair middle">
+      <div class="card">
+        <div class="who">案件1 · 受発注システムの改修</div>
+        <h3>受け入れテスト 81ケース</h3>
+        <p>見られるのはテスト環境の画面だけ。node もヘッドレスの Chrome も使えない。発注するとテスト環境に受注ができ、在庫も減る</p>
+      </div>
+      <div class="card">
+        <div class="who">案件2 · ユニフォームのカスタム注文サイト</div>
+        <h3>新商品 70品番あまり</h3>
+        <p>デザイン作成から注文書、管理画面での確定、工場向けデータまでを全品番で通す。シナリオは1品番あたり約270手順</p>
+      </div>
     </div>
   </section>
 
   <!-- 4 -->
   <section class="slide">
-    <div class="kicker">Case 2/4 · 出費</div>
-    <h2>写真を送るだけで、その日の実支出がわかる</h2>
+    <div class="kicker">01 · How It Works</div>
+    <h2>AIが書いて、人が貼って、AIが確かめる</h2>
+    <div class="steps">
+      <div>1 書く<small>Claude Code</small></div>
+      <div class="pc">2 貼って流す<small>人</small></div>
+      <div>3 結果を読む<small>Claude Code</small></div>
+      <div>4 判定・検算<small>Claude Code</small></div>
+      <div>5 記録<small>シート・Excel</small></div>
+    </div>
     <div class="cards three roomy">
-      <div class="card"><div class="who">送るもの</div><h3>レシートや支払い画面の写真</h3><p>撮って送るだけ</p></div>
-      <div class="card"><div class="who">してくれること</div><h3>その日の実支出を集計</h3><p>実際に出ていったお金を数えてくれる</p></div>
-      <div class="card"><div class="who">覚えているルール</div><h3>クーポン分は実支出に含めない</h3><p>こういう細かい決まりも覚えている</p></div>
+      <div class="card"><div class="who">人</div><h3>ログインと貼り付け</h3><p>仕様の決定、社外とのやりとり、最後の判断も人</p></div>
+      <div class="card"><div class="who">Claude Code</div><h3>書く・読む・判定する</h3><p>スクリプト作成、結果の解析、ファイルの作成と検算、記録</p></div>
+      <div class="card"><div class="who">結果の形</div><h3>文字で残す</h3><p>案件1はCSV・JSON・テキストを毎回出す。案件2は操作ログ・画面の文字・金額をJSONに残す</p></div>
     </div>
   </section>
 
   <!-- 5 -->
   <section class="slide">
-    <div class="kicker">Case 3/4 · 予定と連絡</div>
-    <h2>スクショを送れば、あとは向こうから知らせてくれる</h2>
-    <div class="cards three roomy">
-      <div class="card"><div class="who">送るもの</div><h3>LINEのスクリーンショット</h3><p>内容を読み取って、カレンダーに登録してくれる</p></div>
-      <div class="card"><div class="who">当日</div><h3>リマインド</h3><p>予定の日に、忘れないよう知らせてくれる</p></div>
-      <div class="card"><div class="who">先回り</div><h3>天気の急変、期限のある手続きのメール</h3><p>聞く前に、Museのほうから知らせてくれる</p></div>
+    <div class="kicker">02 · Stop</div>
+    <h2>想定と違えば、押さずに止まる</h2>
+    <div class="cards four">
+      <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>アカウントや得意先が想定と違うとき</p></div>
+      <div class="card"><div class="who">金額の検証 · 案件2</div><h3>その場で計算する</h3><p>行ごと・合計が違えば、止まって画面を残す</p></div>
+      <div class="card"><div class="who">番号のずれ · 案件2</div><h3>確定を押さない</h3><p>注文番号が予想とずれたら、そこで止まる</p></div>
+      <div class="card"><div class="who">二重注文の防止 · 案件2</div><h3>「済み」を記録する</h3><p>流し終えた注文を、ブラウザに記録しておく</p></div>
     </div>
+    <p class="note sm">案件1では、テストで発注した注文を直後に画面から自動でキャンセルして、在庫を戻した</p>
   </section>
 
   <!-- 6 -->
   <section class="slide">
-    <div class="kicker">Case 4/4 · 調べものと記憶</div>
-    <h2>覚えていてくれるので、説明し直さずに頼める</h2>
-    <div class="cards three roomy">
-      <div class="card"><div class="who">店選び</div><h3>条件に合う候補を提示</h3><p>選ぶと、予約の段取りまで進めてくれる</p></div>
-      <div class="card"><div class="who">下書き</div><h3>お礼メッセージの文面</h3><p>送る前の下書きを作ってくれる</p></div>
-      <div class="card"><div class="who">記憶</div><h3>仕事・目標・人間関係</h3><p>覚えているので、毎回説明し直さなくていい</p></div>
+    <div class="kicker">03 · Remember</div>
+    <h2>ルールと訂正を、次の会話に残す</h2>
+    <div class="cards four">
+      <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：実行中のスクリプト名を、画面の上に出す</p></div>
+      <div class="card"><div class="who">メモリ</div><h3>決めたことを残す</h3><p>例：判断できない結果は「要確認」（案件1）。「いちいち確認しなくていい」（案件2）</p></div>
+      <div class="card"><div class="who">サブエージェント · 案件1</div><h3>役割と権限を分ける</h3><p>実行計画（読むだけ）、スクリプト作成、結果の記録、仕様調査</p></div>
+      <div class="card"><div class="who">根拠 · 案件2</div><h3>OKの理由を書く</h3><p>どのログ・どのPDFで確かめたか、または「担当判断」かを備考に</p></div>
     </div>
   </section>
 
   <!-- 7 -->
   <section class="slide">
-    <div class="kicker">Points</div>
-    <h2>小さく任せて、決めるのは自分</h2>
-    <div class="middle">
-      <div class="trend"><span class="no">01</span><div><h3>「写真を送る」「一言聞く」だけ</h3><p>派手な自動化はせず、小さな頼みごとを積み重ねている</p></div></div>
-      <div class="trend"><span class="no">02</span><div><h3>任せるのは、判断材料の整理と記録</h3><p>最後は自分で決めている</p></div></div>
-      <div class="trend"><span class="no">03</span><div><h3>1人で会社を回していると、細かい相棒が効く</h3><p>社員は自分1人なので、細々したことを頼める同僚がいない</p></div></div>
+    <div class="kicker">04 · Results</div>
+    <h2>注文1件を、約30秒で流せるようになった</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">約30秒</div><div class="l">注文1件（手作業では10分以上）</div></div>
+      <div class="stat"><div class="n">33件</div><div class="l">デザインの自動作成から、注文書・確定・データ取得まで</div></div>
+      <div class="stat"><div class="n">183</div><div class="l">工場向け送付パッケージのファイル数</div></div>
     </div>
+    <ul>
+      <li>提出用ブックのオプションシート1万2千行を、マスタと全件照合して、差がないことを確かめた</li>
+      <li>案件1では、直った指摘を画面で再確認し、新しい指摘も再現手順つきで伝えられた</li>
+    </ul>
+    <p class="src">数字はすべて案件2のもの。2つめの箇条書きのみ案件1</p>
   </section>
 
   <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">05 · Failures</div>
+    <h2>うまくいかなかったこと</h2>
+    <div class="cards four dense">
+      <div class="card"><div class="who">予想が外れた · 案件1</div><h3>4伝票のはずが3伝票</h3><p>商品の区分を取り違えていた</p><p class="muted">予想より先に、データで裏を取る</p></div>
+      <div class="card"><div class="who">ガードが後から · 案件1</div><h3>同じ失敗を3回</h3><p>得意先を切り替えられないまま、スクリプトが発注まで進めた</p><p class="muted">ガードは、失敗する前に入れる</p></div>
+      <div class="card"><div class="who">推測で決めつけた · 案件2</div><h3>「このIDでは開けないはず」</h3><p>人に「開ける」と言われて、本当の原因（古いページを見続けていた）が分かった</p><p class="muted">原因は推測で断定しない</p></div>
+      <div class="card"><div class="who">別の行を書き換えた · 案件2</div><h3>番号ではなく位置で引いた</h3><p>PowerShell の辞書の罠。バックアップからすぐ戻した</p><p class="muted">書き込む前に、必ずバックアップを取る</p></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>持ち帰ってほしいこと</h2>
+    <div class="middle">
+      <div class="trend"><span class="no">01</span><div><h3>書くのはAI、貼るのは人</h3><p>AIが直接さわれない環境でも、こう分けて自動化できた</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>止まる・残す・照合する</h3><p>想定と違えば止まり、結果は文字で残し、全件で検算する</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>失敗する前提で用意する</h3><p>バックアップと全件検算を先に用意し、人の訂正はメモリに残す</p></div></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
-    <p class="big-quote">小さく任せて、<br><span class="em">最後は自分で決めています</span>。</p>
+    <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
   </section>
 
 </div>
