@@ -6,7 +6,7 @@
 - 見た目は `_theme/deck.css` と `_theme/deck.js` に集約。トンマナは https://yaenowa.co.jp/ に合わせる
 - `_theme/` を変えたら、各資料の `deck.css?v=` / `deck.js?v=` の日付を更新する（GitHub Pages は10分ほどキャッシュされ、スマホに古い表示が残るため）
 - 5分のLTが基本。台本は1分あたり約310字で時間配分を書く
-- 台本はリポジトリに入れない（リポジトリが公開のため）。作ったら発表者にファイルで渡す。`script.md` は `.gitignore` で除外している
+- 台本は、話す本文だけを `YYYY-MM/script.md` に入れる（リポジトリは公開。GitHub Pages には載せない）。社名・業界の扱いなどの注意書きや【】の本人への指示は入れず、それらを含む版は発表者に別に渡す。手元に置くときは `*.private.md` にすると `.gitignore` で除外される
 - `main` に入ると GitHub Pages（https://yaenowa-yoshida.github.io/ailt-presentations/）に自動で公開される
 - 発表したら、README の「登壇実績」とトップの `index.html`（登壇実績の一覧）に1件足す。資料は `YYYY-MM/` に入れるだけでよい
 
