@@ -435,8 +435,21 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .cards.peek .card:hover .peek-body, .cards.peek .card:focus-visible .peek-body { opacity: 1; transform: none; }
 .cards.four.peek .peek-body { gap: 4px; }
 .peek-hint { font-size: 14px; letter-spacing: .04em; color: var(--ink-light); margin: -20px 0 14px; }
-@media (hover: none), print {
-  .cards.peek .peek-body { opacity: 1; transform: none; }
+.peek-hint .touch { display: none; }
+/* マウスのない端末：タップで開閉するアコーディオン（開閉は deck.js） */
+@media (hover: none) {
+  .cards.peek .card { cursor: pointer; transform: none !important; }
+  .cards.peek .peek-body { opacity: 1; transform: none; max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .cards.peek .card.open .peek-body { max-height: 480px; }
+  .cards.peek .card h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .cards.peek .card h3::after { content: "＋"; font-family: var(--font-sans); font-weight: 400; color: var(--accent-gold); flex: none; }
+  .cards.peek .card.open h3::after { content: "−"; }
+  .peek-hint .mouse { display: none; }
+  .peek-hint .touch { display: inline; }
+}
+@media print {
+  .cards.peek .peek-body { opacity: 1; transform: none; max-height: none; }
+  .cards.peek .card h3::after { content: none; }
   .peek-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
