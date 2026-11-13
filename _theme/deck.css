@@ -455,3 +455,15 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 @media (prefers-reduced-motion: reduce) {
   .cards.peek .card, .cards.peek .peek-body { transition: none; }
 }
+
+/* ── 部品: 1枚だけ暗い地にする（.slide.dark）。色はコーポレートサイトのダーク配色と同値 ── */
+.slide.dark, body.white .slide.dark {
+  --ink: #ede6e4; --ink-mid: #c9bfc0; --ink-light: #968b8e;
+  --paper-dark: #3a3037;
+  --accent: #d98a9b; --accent-gold: #d4919e; --accent-pale: #3b2a31;
+  --sakura-deep: #e79aa4; --sakura-mid: #a56671; --sakura-light: #4a333c; --sakura-pale: #251d23;
+  --surface-raised: #24231f; --shadow-raised: rgba(0,0,0,0.5);
+  background: #161316; color: var(--ink);
+}
+.slide.dark .poly polygon { stroke: #161316; }
+.slide.dark .footer img { border-radius: 4px; }
