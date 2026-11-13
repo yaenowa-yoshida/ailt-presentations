@@ -476,7 +476,8 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .cards.price-cmp .card { padding: 16px 32px; gap: 6px; }
 .price-cmp .row { display: flex; align-items: baseline; gap: 18px; }
 .cards.price-cmp h3 { font-size: 22px; line-height: 1.4; }
-.price-cmp .row .peek-hint { margin: 0; }
+.price-cmp .row .peek-hint { margin: 0; transition: opacity .2s ease; }
+.price-cmp .card:hover .row .peek-hint, .price-cmp .card:focus-visible .row .peek-hint { opacity: 0; }
 .price-cmp .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .price-cmp .cmp .who { margin-bottom: 2px; }
 .price-cmp .v { font-family: var(--font-mincho); font-weight: 700; font-size: 32px; line-height: 1.3; letter-spacing: .04em; color: var(--accent); }
