@@ -136,6 +136,17 @@
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
   }, { passive: true });
 
+  // マウスのない端末では、.cards.peek のカードをタップで開閉する（アコーディオン）
+  const noHover = matchMedia('(hover: none)');
+  document.querySelectorAll('.cards.peek .card').forEach(c => {
+    c.setAttribute('aria-expanded', 'false');
+    c.addEventListener('click', () => {
+      if (!noHover.matches) return;
+      const open = c.classList.toggle('open');
+      c.setAttribute('aria-expanded', String(open));
+    });
+  });
+
   // data-mobile-scroll="end" の図は、スマホでは右端（見せたい側）から表示する
   if (mobile.matches) document.querySelectorAll('.figure[data-mobile-scroll="end"]').forEach(f => { f.scrollLeft = f.scrollWidth; });
   if (mobile.matches && i > 0) slides[i].scrollIntoView();
