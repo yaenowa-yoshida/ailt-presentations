@@ -73,7 +73,6 @@
       <div>注文書<small>PDF</small></div>
       <div>受付・確定<small>管理画面</small></div>
       <div>工場向けデータ<small>一括で取得</small></div>
-      <div>送付資料<small>ZIP・見取り図</small></div>
     </div>
   </section>
 
@@ -100,7 +99,7 @@
     <div class="kicker">02 · Stop</div>
     <h2>想定と違えば、押さずに止まる</h2>
     <div class="cards four">
-      <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>カートが空か、アカウントと得意先が想定どおりかを先に確かめる</p></div>
+      <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>開始前にカートが空かを確かめ、アカウントや得意先が違えば発注しない</p></div>
       <div class="card"><div class="who">商品と在庫 · 案件1</div><h3>流すときに選び、戻す</h3><p>在庫と次回予定を読んで商品を選び、発注した直後に画面からキャンセルする</p></div>
       <div class="card"><div class="who">金額と番号 · 案件2</div><h3>合わなければ押さない</h3><p>金額をその場で計算し、注文番号が予想とずれたら確定を押さずに止まる</p></div>
       <div class="card"><div class="who">二重注文の防止 · 案件2</div><h3>「済み」を記録する</h3><p>流し終えた注文をブラウザに記録し、同じ注文を二度流さない</p></div>
@@ -114,18 +113,18 @@
     <h2>ルールと訂正を、次の会話に残す</h2>
     <div class="cards four">
       <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：流してもらう前に毎回、ファイル名・設定・アカウント・注意を伝える</p></div>
-      <div class="card"><div class="who">メモリ · 両方</div><h3>訂正を残す</h3><p>案件1は約35件。例：判断できない結果は「要確認」にする</p></div>
+      <div class="card"><div class="who">メモリ · 両方</div><h3>決めたことと訂正を残す</h3><p>案件1は約35件。例：判断できない結果は「要確認」にする</p></div>
       <div class="card"><div class="who">サブエージェント · 案件1</div><h3>役割と権限を分ける</h3><p>実行計画（読むだけ）、スクリプト作成、結果の記録、仕様調査の4つ</p></div>
       <div class="card"><div class="who">根拠 · 案件2</div><h3>OKの理由を書く</h3><p>どのログ・どのPDFで確かめたか、または「担当判断」かを備考に</p></div>
     </div>
-    <p class="note sm">案件2では、最初は1件ずつ確認していたが、慣れてから「いちいち確認しなくていい」と伝えた</p>
+    <p class="note sm">案件2では、途中から伝えた「いちいち確認しなくていい」も、メモリに残した</p>
   </section>
 
   <!-- 7 -->
   <section class="slide">
     <div class="kicker">04 · Results</div>
-    <h2>回帰テストと再現作業の時間が、圧倒的に短くなった</h2>
-    <p class="lead">どちらの案件でも同じだった。下の数字は案件2のもの</p>
+    <h2>回帰テストなど決まった手順が、圧倒的に速くなった</h2>
+    <p class="lead">どちらの案件でも同じでした。3つの数字は案件2のものです</p>
     <div class="stats">
       <div class="stat"><div class="n">約30秒</div><div class="l">注文1件（手作業では10分以上）</div></div>
       <div class="stat"><div class="n">33件</div><div class="l">デザインの自動作成から、注文書・確定・データ取得まで</div></div>
@@ -141,10 +140,10 @@
   <section class="slide">
     <div class="kicker">05 · Thoughts</div>
     <h2>なぜ速くなったのかを考えた</h2>
-    <p class="lead">2つの案件から考えた、私の見立てです</p>
+    <p class="lead">2つの案件からの、私の見立てです</p>
     <div class="cards four">
       <div class="card"><div class="who">分ける</div><h3>流すのは人、判定はAI</h3><p>結果を文字で受け取るので、AIが判定でき、人もその判定を確かめられる</p></div>
-      <div class="card"><div class="who">止まる</div><h3>見張らずに何度でも流せる</h3><p>想定と違えば押さずに止まるので、毎回画面を見張らなくて済む</p></div>
+      <div class="card"><div class="who">止まる</div><h3>止まって画面を残す</h3><p>想定と違えば押さずに止まり、画面を残すので、あとから何が起きたかを確かめられる</p></div>
       <div class="card"><div class="who">使い回す</div><h3>速くなるのは2回目からだと思う</h3><p>一度できたスクリプトを貼り直せば、同じ手順と判定基準で流せる</p></div>
       <div class="card"><div class="who">人に残る</div><h3>前提と見た目は人が決める</h3><p>前提が合っているかの確認と、見た目で決めるところは人がする</p></div>
     </div>
@@ -157,18 +156,18 @@
     <p class="lead">同じ手順を何度も流すか、期待する結果を文字で書けるか。この2つで見分けられると思います</p>
     <div class="cards four">
       <div class="card"><div class="who">実績に近い</div><h3>リリースごとの回帰テスト</h3><p>同じ手順と期待結果を流し直す。直った不具合の確認にも使える</p></div>
-      <div class="card"><div class="who">実績に近い</div><h3>帳票と出力の検算</h3><p>注文書や工場向けのデータを読み、計算し直して突き合わせる</p></div>
+      <div class="card"><div class="who">実績に近い</div><h3>帳票と出力の検算</h3><p>注文の金額をその場で計算し直し、注文書やデータと突き合わせる</p></div>
       <div class="card"><div class="who">見立て</div><h3>移行後のデータ照合</h3><p>移行先の管理画面を読み、移行元のデータと突き合わせる。読むだけで済む</p></div>
       <div class="card"><div class="who">見立て</div><h3>受注システムと基幹の突き合わせ</h3><p>受注番号をキーに両方の画面やCSVを読み、件数と中身を合わせる</p></div>
     </div>
-    <p class="note sm">向かないのは、本番での取り消せない書き込み、見た目の確認、毎日無人で回したい作業</p>
+    <p class="note sm">向かないのは、本番での取り消せない書き込み、見た目の確認、毎日無人で回したい作業だと思います</p>
   </section>
 
   <!-- 10 -->
   <section class="slide">
     <div class="kicker">07 · Service</div>
     <h2>ヤエノワのサービスにするなら</h2>
-    <p class="lead">いま考えている形です。お客様の環境に何も入れずに使えるのが強みだと思います</p>
+    <p class="lead">考えられる形です。お客様の環境に何も入れずに使えるのが強みだと思います</p>
     <div class="cards four">
       <div class="card"><div class="who">要件定義・システム導入支援</div><h3>受け入れテストの支援</h3><p>何ができればOKかを一緒に決め、スクリプト、判定、記録、修正の確認まで</p></div>
       <div class="card"><div class="who">システム導入支援</div><h3>移行のときの全件照合</h3><p>移行先の画面を読むだけで全件たどり、移行元のデータと突き合わせる</p></div>
@@ -184,7 +183,7 @@
     <h2>持ち帰ってほしいこと</h2>
     <div class="middle">
       <div class="trend"><span class="no">01</span><div><h3>書くのはAI、貼るのは人</h3><p>AIが直接さわれない環境でも、こう分けて自動化できた</p></div></div>
-      <div class="trend"><span class="no">02</span><div><h3>止まる・残す・照合する</h3><p>この仕組みがあるので、同じテストを見張らずに何度でも流せる</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>止まる・残す・照合する</h3><p>想定と違えば止まり、結果を文字で残し、全件で照合して確かめる</p></div></div>
       <div class="trend"><span class="no">03</span><div><h3>繰り返す仕事から試す</h3><p>回帰テストや修正の確認のように、同じ手順を何度も流す仕事から始めるとよいと思います</p></div></div>
     </div>
   </section>
