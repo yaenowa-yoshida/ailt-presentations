@@ -425,3 +425,20 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
   .cards.roomy p { font-size: 14px; }
   body.white .slide.inverse .poly.big { width: 200px; height: 200px; right: -70px; opacity: .4; }
 }
+
+/* ── 部品: マウスを乗せると中身が出るカード（.cards.peek） ──
+   見出しだけを見せておき、乗せると .peek-body が浮かび上がる。
+   マウスのない端末と印刷では、最初から全部見せる */
+.cards.peek .card { transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; outline: none; }
+.cards.peek .card:hover, .cards.peek .card:focus-visible { border-color: var(--sakura-mid); box-shadow: 0 12px 30px var(--shadow-raised); transform: translateY(-2px); }
+.cards.peek .peek-body { opacity: 0; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease; display: flex; flex-direction: column; gap: 10px; }
+.cards.peek .card:hover .peek-body, .cards.peek .card:focus-visible .peek-body { opacity: 1; transform: none; }
+.cards.four.peek .peek-body { gap: 4px; }
+.peek-hint { font-size: 14px; letter-spacing: .04em; color: var(--ink-light); margin: -20px 0 14px; }
+@media (hover: none), print {
+  .cards.peek .peek-body { opacity: 1; transform: none; }
+  .peek-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cards.peek .card, .cards.peek .peek-body { transition: none; }
+}

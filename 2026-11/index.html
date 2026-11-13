@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261106a">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113a">
 </head>
 <body class="white" data-title="コンソールに貼るだけ">
 <div class="deck">
@@ -56,18 +56,23 @@
   <section class="slide">
     <div class="kicker">00 · Without AI</div>
     <h2>AIを使わずにテストを作って動かすサービス</h2>
-    <div class="cards pair middle">
-      <div class="card">
+    <p class="peek-hint">カードにマウスを乗せると、概要と参考の料金が出ます</p>
+    <div class="cards pair middle peek">
+      <div class="card" tabindex="0">
         <div class="who">テスト代行・第三者検証</div>
         <h3>人が作って、人が流す</h3>
-        <p>テスト項目づくりから実行、不具合の報告までを、テストの会社の人が受け持つ。時間や人日で頼む</p>
-        <p class="muted">参考：1日（8時間）約3.2万〜18万円</p>
+        <div class="peek-body">
+          <p>テスト項目づくりから実行、不具合の報告までを、テストの会社の人が受け持つ。時間や人日で頼む</p>
+          <p class="muted">参考：1日（8時間）約3.2万〜18万円</p>
+        </div>
       </div>
-      <div class="card">
+      <div class="card" tabindex="0">
         <div class="who">テスト自動化ツール</div>
         <h3>人が作って、ツールが流す</h3>
-        <p>画面の操作を人が記録やノーコードで作り、ツールが何度でも流す。例：T-DASH の Standard</p>
-        <p class="muted">参考：月 約5千円〜（1日 約170〜250円）</p>
+        <div class="peek-body">
+          <p>画面の操作を人が記録やノーコードで作り、ツールが何度でも流す。例：T-DASH の Standard</p>
+          <p class="muted">参考：月 約5千円〜（1日 約170〜250円）</p>
+        </div>
       </div>
     </div>
     <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし。テスト代行はテスター10とSHIFTのUIテスト、ツールはT-DASHの年払いから計算</p>
@@ -77,14 +82,13 @@
   <section class="slide">
     <div class="kicker">01 · With AI</div>
     <h2>AIでテストを作って動かすサービス</h2>
-    <div class="cards four">
-      <div class="card"><div class="who">仕様から作る</div><h3>テストケースをAIが作る</h3><p>仕様書や要件から、テストの観点とケースを作る。例：Autify Genesis、Katalon</p></div>
-      <div class="card"><div class="who">文章で頼む</div><h3>指示からテストを作って流す</h3><p>日本語や文章の指示で、テストを作ってブラウザを動かす。例：MagicPod、QA Wolf</p></div>
-      <div class="card"><div class="who">自動で直す</div><h3>壊れたテストをAIが直す</h3><p>画面が変わったときに直し、失敗の原因も調べる。例：mabl、BrowserStack</p></div>
-      <div class="card"><div class="who">受け入れテスト</div><h3>判定と記録まで受け持つ</h3><p>設計書からテストケース、実行、合否判定、不具合の記録まで。例：AGEST の TFACT</p></div>
+    <div class="cards four peek">
+      <div class="card" tabindex="0"><div class="who">仕様から作る</div><h3>テストケースをAIが作る</h3><div class="peek-body"><p>仕様書や要件から、テストの観点とケースを作る。例：Autify Genesis、Katalon</p><p class="muted">参考：Katalon TestOps 1シート月 約1.1万〜1.3万円</p></div></div>
+      <div class="card" tabindex="0"><div class="who">文章で頼む</div><h3>指示からテストを作って流す</h3><div class="peek-body"><p>日本語や文章の指示で、テストを作ってブラウザを動かす。例：MagicPod、QA Wolf</p><p class="muted">参考：MagicPod 月 約4万〜5.5万円、QA Wolf 1回 約160円〜</p></div></div>
+      <div class="card" tabindex="0"><div class="who">自動で直す</div><h3>壊れたテストをAIが直す</h3><div class="peek-body"><p>画面が変わったときに直し、失敗の原因も調べる。例：mabl、BrowserStack</p><p class="muted">参考：BrowserStack 月 約1.6万〜4.4万円（mabl は見積）</p></div></div>
+      <div class="card" tabindex="0"><div class="who">受け入れテスト</div><h3>判定と記録まで受け持つ</h3><div class="peek-body"><p>設計書からテストケース、実行、合否判定、不具合の記録まで。例：AGEST の TFACT</p><p class="muted">参考：TFACT 1シート月2,000円＋AIの従量</p></div></div>
     </div>
-    <p class="note sm">参考：月額 約2千〜9万円（1日あたり 約70〜4,400円）。回数払いは1回 約160円〜</p>
-    <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし、1ドル＝159.91円（三菱UFJ銀行 TTM）で換算。見積のみのもの（mabl、Autify の日本向けなど）は除く</p>
+    <p class="src">各社の公式サイト（2026-11-13確認）。税抜か税表記なし、1ドル＝159.91円（三菱UFJ銀行 TTM）で換算</p>
   </section>
 
   <!-- 5 -->
@@ -277,6 +281,6 @@
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261106a"></script>
+<script src="../_theme/deck.js?v=20261113a"></script>
 </body>
 </html>
