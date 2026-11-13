@@ -56,17 +56,24 @@
   <section class="slide">
     <div class="kicker">00 · Two Projects</div>
     <h2>どちらも、AIがサイトを直接さわれない現場</h2>
-    <div class="cards pair middle">
+    <div class="cards pair">
       <div class="card">
         <div class="who">案件1 · 受発注システムの改修</div>
         <h3>受け入れテスト 81ケース</h3>
-        <p>見られるのはテスト環境の画面だけ。node もヘッドレスの Chrome も使えない。発注するとテスト環境に受注ができ、在庫も減る</p>
+        <p>画面しか見られず、node もヘッドレスの Chrome も使えない。発注するとテスト環境に受注ができ、在庫も減る</p>
       </div>
       <div class="card">
         <div class="who">案件2 · ユニフォームのカスタム注文サイト</div>
         <h3>新商品 70品番あまり</h3>
-        <p>デザイン作成から注文書、管理画面での確定、工場向けデータまでを全品番で通す。シナリオは1品番あたり約270手順</p>
+        <p>下の流れを全品番で通して確かめる。シナリオは1品番あたり約270手順</p>
       </div>
+    </div>
+    <div class="steps" style="margin-top:20px">
+      <div>デザイン<small>自動で作成</small></div>
+      <div>注文書<small>PDF</small></div>
+      <div>受付・確定<small>管理画面</small></div>
+      <div>工場向けデータ<small>一括で取得</small></div>
+      <div>送付資料<small>ZIP・見取り図</small></div>
     </div>
   </section>
 
@@ -81,10 +88,10 @@
       <div>4 判定・検算<small>Claude Code</small></div>
       <div>5 記録<small>シート・Excel</small></div>
     </div>
-    <div class="cards three roomy">
+    <div class="cards three">
       <div class="card"><div class="who">人</div><h3>ログインと貼り付け</h3><p>仕様の決定、社外とのやりとり、最後の判断も人（案件2）</p></div>
-      <div class="card"><div class="who">Claude Code</div><h3>書く・読む・判定する</h3><p>スクリプト作成、結果の解析、ファイルの作成と検算、記録</p></div>
-      <div class="card"><div class="who">結果の形</div><h3>文字で残す</h3><p>案件1はCSV・JSON・テキストを毎回出す。案件2は操作ログ・画面の文字・金額をJSONに残す</p></div>
+      <div class="card"><div class="who">Claude Code</div><h3>書く・読む・判定する</h3><p>OK・NG・要確認・保留に分け（案件1）、シートやExcelに記録して次の指示を出す</p></div>
+      <div class="card"><div class="who">結果の形</div><h3>文字で残す</h3><p>案件1は画像を撮らずCSV・JSON・テキストに。案件2は操作ログと金額もJSONに</p></div>
     </div>
   </section>
 
@@ -93,12 +100,12 @@
     <div class="kicker">02 · Stop</div>
     <h2>想定と違えば、押さずに止まる</h2>
     <div class="cards four">
-      <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>アカウントや得意先が想定と違うとき</p></div>
-      <div class="card"><div class="who">金額の検証 · 案件2</div><h3>その場で計算する</h3><p>行ごと・合計が違えば、止まって画面を残す</p></div>
-      <div class="card"><div class="who">番号のずれ · 案件2</div><h3>確定を押さない</h3><p>注文番号が予想とずれたら、そこで止まる</p></div>
-      <div class="card"><div class="who">二重注文の防止 · 案件2</div><h3>「済み」を記録する</h3><p>流し終えた注文を、ブラウザに記録しておく</p></div>
+      <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>カートが空か、アカウントと得意先が想定どおりかを先に確かめる</p></div>
+      <div class="card"><div class="who">商品と在庫 · 案件1</div><h3>流すときに選び、戻す</h3><p>在庫と次回予定を読んで商品を選び、発注した直後に画面からキャンセルする</p></div>
+      <div class="card"><div class="who">金額と番号 · 案件2</div><h3>合わなければ押さない</h3><p>金額をその場で計算し、注文番号が予想とずれたら確定を押さずに止まる</p></div>
+      <div class="card"><div class="who">二重注文の防止 · 案件2</div><h3>「済み」を記録する</h3><p>流し終えた注文をブラウザに記録し、同じ注文を二度流さない</p></div>
     </div>
-    <p class="note sm">案件1では、テストで発注した注文を直後に画面から自動でキャンセルして、在庫を戻した</p>
+    <p class="note sm">案件1では、実行中の表示や画面のスリープ止めも含めた7つを、スクリプトの共通の型にした</p>
   </section>
 
   <!-- 6 -->
@@ -106,11 +113,12 @@
     <div class="kicker">03 · Remember</div>
     <h2>ルールと訂正を、次の会話に残す</h2>
     <div class="cards four">
-      <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：実行中のスクリプト名を、画面の上に出す</p></div>
-      <div class="card"><div class="who">メモリ</div><h3>決めたことを残す</h3><p>例：判断できない結果は「要確認」（案件1）。「いちいち確認しなくていい」（案件2）</p></div>
-      <div class="card"><div class="who">サブエージェント · 案件1</div><h3>役割と権限を分ける</h3><p>実行計画（読むだけ）、スクリプト作成、結果の記録、仕様調査</p></div>
+      <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：流してもらう前に毎回、ファイル名・設定・アカウント・注意を伝える</p></div>
+      <div class="card"><div class="who">メモリ · 両方</div><h3>訂正を残す</h3><p>案件1は約35件。例：判断できない結果は「要確認」にする</p></div>
+      <div class="card"><div class="who">サブエージェント · 案件1</div><h3>役割と権限を分ける</h3><p>実行計画（読むだけ）、スクリプト作成、結果の記録、仕様調査の4つ</p></div>
       <div class="card"><div class="who">根拠 · 案件2</div><h3>OKの理由を書く</h3><p>どのログ・どのPDFで確かめたか、または「担当判断」かを備考に</p></div>
     </div>
+    <p class="note sm">案件2では、最初は1件ずつ確認していたが、慣れてから「いちいち確認しなくていい」と伝えた</p>
   </section>
 
   <!-- 7 -->
@@ -125,34 +133,63 @@
     </div>
     <ul>
       <li>案件2では、提出用ブックのオプションシート1万2千行を全件照合し、差がないことを確かめた</li>
-      <li>案件1では、直った指摘を画面で再確認し、新しい指摘も再現手順つきで伝えられた</li>
+      <li>案件1では、スクリプト約15本。1本をコピーして作り替える流れができた</li>
     </ul>
   </section>
 
   <!-- 8 -->
   <section class="slide">
-    <div class="kicker">05 · Failures</div>
-    <h2>うまくいかなかったこと</h2>
-    <div class="cards four dense">
-      <div class="card"><div class="who">予想が外れた · 案件1</div><h3>4伝票のはずが3伝票</h3><p>商品の区分を取り違えていた</p><p class="muted">予想より先に、データで裏を取る</p></div>
-      <div class="card"><div class="who">ガードが後から · 案件1</div><h3>同じ失敗を3回</h3><p>得意先を切り替えられないまま、スクリプトが発注まで進めた</p><p class="muted">ガードは、失敗する前に入れる</p></div>
-      <div class="card"><div class="who">推測で決めつけた · 案件2</div><h3>「このIDでは開けないはず」</h3><p>人に「開ける」と言われて、本当の原因（古いページを見続けていた）が分かった</p><p class="muted">原因は推測で断定しない</p></div>
-      <div class="card"><div class="who">別の行を書き換えた · 案件2</div><h3>番号ではなく位置で引いた</h3><p>PowerShell の辞書の罠。バックアップからすぐ戻した</p><p class="muted">書き込む前に、必ずバックアップを取る</p></div>
+    <div class="kicker">05 · Thoughts</div>
+    <h2>なぜ速くなったのかを考えた</h2>
+    <p class="lead">2つの案件から考えた、私の見立てです</p>
+    <div class="cards four">
+      <div class="card"><div class="who">分ける</div><h3>流すのは人、判定はAI</h3><p>結果を文字で受け取るので、AIが判定でき、人もその判定を確かめられる</p></div>
+      <div class="card"><div class="who">止まる</div><h3>見張らずに何度でも流せる</h3><p>想定と違えば押さずに止まるので、毎回画面を見張らなくて済む</p></div>
+      <div class="card"><div class="who">使い回す</div><h3>速くなるのは2回目からだと思う</h3><p>一度できたスクリプトを貼り直せば、同じ手順と判定基準で流せる</p></div>
+      <div class="card"><div class="who">人に残る</div><h3>前提と見た目は人が決める</h3><p>前提が合っているかの確認と、見た目で決めるところは人がする</p></div>
     </div>
   </section>
 
   <!-- 9 -->
   <section class="slide">
+    <div class="kicker">06 · Other Uses</div>
+    <h2>同じ型が使えそうな仕事</h2>
+    <p class="lead">同じ手順を何度も流すか、期待する結果を文字で書けるか。この2つで見分けられると思います</p>
+    <div class="cards four">
+      <div class="card"><div class="who">実績に近い</div><h3>リリースごとの回帰テスト</h3><p>同じ手順と期待結果を流し直す。直った不具合の確認にも使える</p></div>
+      <div class="card"><div class="who">実績に近い</div><h3>帳票と出力の検算</h3><p>注文書や工場向けのデータを読み、計算し直して突き合わせる</p></div>
+      <div class="card"><div class="who">見立て</div><h3>移行後のデータ照合</h3><p>移行先の管理画面を読み、移行元のデータと突き合わせる。読むだけで済む</p></div>
+      <div class="card"><div class="who">見立て</div><h3>受注システムと基幹の突き合わせ</h3><p>受注番号をキーに両方の画面やCSVを読み、件数と中身を合わせる</p></div>
+    </div>
+    <p class="note sm">向かないのは、本番での取り消せない書き込み、見た目の確認、毎日無人で回したい作業</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">07 · Service</div>
+    <h2>ヤエノワのサービスにするなら</h2>
+    <p class="lead">いま考えている形です。お客様の環境に何も入れずに使えるのが強みだと思います</p>
+    <div class="cards four">
+      <div class="card"><div class="who">要件定義・システム導入支援</div><h3>受け入れテストの支援</h3><p>何ができればOKかを一緒に決め、スクリプト、判定、記録、修正の確認まで</p></div>
+      <div class="card"><div class="who">システム導入支援</div><h3>移行のときの全件照合</h3><p>移行先の画面を読むだけで全件たどり、移行元のデータと突き合わせる</p></div>
+      <div class="card"><div class="who">AIコンサルティング</div><h3>社内研修</h3><p>書く人と貼る人に、止まる・残す・照合する決まりと向き不向きを伝える</p></div>
+      <div class="card"><div class="who">どれにも共通</div><h3>ログインと貼り付けは人</h3><p>AIにパスワードを渡さず、本番では流さない。最後の判断はお客様</p></div>
+    </div>
+    <p class="note sm">夜間の自動実行や大量のケースの検証は、テストツールや検証会社のほうが向いていると思います</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
     <div class="kicker">Takeaways</div>
     <h2>持ち帰ってほしいこと</h2>
     <div class="middle">
       <div class="trend"><span class="no">01</span><div><h3>書くのはAI、貼るのは人</h3><p>AIが直接さわれない環境でも、こう分けて自動化できた</p></div></div>
-      <div class="trend"><span class="no">02</span><div><h3>止まる・残す・照合する</h3><p>想定と違えば止まり、結果は文字で残し、全件で検算する</p></div></div>
-      <div class="trend"><span class="no">03</span><div><h3>失敗する前提で用意する</h3><p>バックアップと全件検算を先に用意し、人の訂正はメモリに残す</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>止まる・残す・照合する</h3><p>この仕組みがあるので、同じテストを見張らずに何度でも流せる</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>繰り返す仕事から試す</h3><p>回帰テストや修正の確認のように、同じ手順を何度も流す仕事から始めるとよいと思います</p></div></div>
     </div>
   </section>
 
-  <!-- 10 -->
+  <!-- 12 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
