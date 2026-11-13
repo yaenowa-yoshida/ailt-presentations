@@ -96,7 +96,25 @@
 
   <!-- 5 -->
   <section class="slide">
-    <div class="kicker">02 · Stop</div>
+    <div class="kicker">02 · Prompt</div>
+    <h2>シナリオは自分で書き、スクリプトはAIが書く</h2>
+    <div class="steps">
+      <div class="pc">1 シナリオを書く<small>人</small></div>
+      <div>2 スクリプトにする<small>Claude Code</small></div>
+      <div class="pc">3 1件で試す<small>人</small></div>
+      <div>4 直して型にする<small>Claude Code</small></div>
+      <div>5 コピーして広げる<small>人と Claude Code</small></div>
+    </div>
+    <div class="cards three">
+      <div class="card"><div class="who">人がプロンプトに書く</div><h3>シナリオは自分で打ち込む</h3><p>どの順で何を操作して、何を確かめるかを、自分でプロンプトに書く</p></div>
+      <div class="card"><div class="who">Claude Code が読む · 案件1</div><h3>テスト設計と仕様も読む</h3><p>テスト設計や仕様の資料を読み取り、7つの型に沿ってスクリプトにする</p></div>
+      <div class="card"><div class="who">広げ方</div><h3>1件ずつから、まとめて</h3><p>最初は1件ずつ確かめ（案件2）、できた1本をコピーして別の確認用に作り替える（案件1）</p></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">03 · Stop</div>
     <h2>想定と違えば、押さずに止まる</h2>
     <div class="cards four">
       <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>開始前にカートが空かを確かめ、アカウントや得意先が違えば発注しない</p></div>
@@ -107,9 +125,9 @@
     <p class="note sm">案件1では、実行中の表示や画面のスリープ止めも含めた7つを、スクリプトの共通の型にした</p>
   </section>
 
-  <!-- 6 -->
+  <!-- 7 -->
   <section class="slide">
-    <div class="kicker">03 · Remember</div>
+    <div class="kicker">04 · Remember</div>
     <h2>ルールと訂正を、次の会話に残す</h2>
     <div class="cards four">
       <div class="card"><div class="who">CLAUDE.md · 案件1</div><h3>全セッションのルール</h3><p>例：流してもらう前に毎回、ファイル名・設定・アカウント・注意を伝える</p></div>
@@ -120,9 +138,9 @@
     <p class="note sm">案件2では、途中から伝えた「いちいち確認しなくていい」も、メモリに残した</p>
   </section>
 
-  <!-- 7 -->
+  <!-- 8 -->
   <section class="slide">
-    <div class="kicker">04 · Results</div>
+    <div class="kicker">05 · Results</div>
     <h2>回帰テストなど決まった手順が、圧倒的に速くなった</h2>
     <p class="lead">どちらの案件でも同じでした。3つの数字は案件2のものです</p>
     <div class="stats">
@@ -136,9 +154,22 @@
     </ul>
   </section>
 
-  <!-- 8 -->
+  <!-- 9 -->
   <section class="slide">
-    <div class="kicker">05 · Thoughts</div>
+    <div class="kicker">06 · Limits</div>
+    <h2>このテストで確かめられないこと</h2>
+    <div class="cards four">
+      <div class="card"><div class="who">見た目</div><h3>レイアウトや色は人が見る</h3><p>結果は文字で残し、画像は撮らない（案件1）。見た目で決めるところは人が判断した（案件2）</p></div>
+      <div class="card"><div class="who">画面の裏側</div><h3>データベースは見られない</h3><p>見られるのは画面だけ。データベースや連携先の中身は、直接は確かめられない（案件1）</p></div>
+      <div class="card"><div class="who">無人の実行</div><h3>夜間に自動では回せない</h3><p>流すのは人なので、人がブラウザの前にいないと動かない</p></div>
+      <div class="card"><div class="who">本番の環境</div><h3>本番では流さない</h3><p>本番だけで起きることは、別のやり方で確かめる必要がある</p></div>
+    </div>
+    <p class="note sm">画面や商品が変わると、スクリプトの直しも要る。案件1では、商品を固定せず、流すときに画面から選ぶようにした</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">07 · Thoughts</div>
     <h2>なぜ速くなったのかを考えた</h2>
     <p class="lead">2つの案件からの、私の見立てです</p>
     <div class="cards four">
@@ -149,9 +180,9 @@
     </div>
   </section>
 
-  <!-- 9 -->
+  <!-- 11 -->
   <section class="slide">
-    <div class="kicker">06 · Other Uses</div>
+    <div class="kicker">08 · Other Uses</div>
     <h2>同じ型が使えそうな仕事</h2>
     <p class="lead">同じ手順を何度も流すか、期待する結果を文字で書けるか。この2つで見分けられると思います</p>
     <div class="cards four">
@@ -160,10 +191,9 @@
       <div class="card"><div class="who">見立て</div><h3>移行後のデータ照合</h3><p>移行先の管理画面を読み、移行元のデータと突き合わせる。読むだけで済む</p></div>
       <div class="card"><div class="who">見立て</div><h3>受注システムと基幹の突き合わせ</h3><p>受注番号をキーに両方の画面やCSVを読み、件数と中身を合わせる</p></div>
     </div>
-    <p class="note sm">向かないのは、本番での取り消せない書き込み、見た目の確認、毎日無人で回したい作業だと思います</p>
   </section>
 
-  <!-- 10 -->
+  <!-- 12 -->
   <section class="slide">
     <div class="kicker">Takeaways</div>
     <h2>持ち帰ってほしいこと</h2>
@@ -174,7 +204,7 @@
     </div>
   </section>
 
-  <!-- 11 -->
+  <!-- 13 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
