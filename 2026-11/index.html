@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261113h">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
 </head>
 <body class="white" data-title="コンソールに貼るだけ">
 <div class="deck">
@@ -189,14 +189,14 @@
     <div class="steps">
       <div>1 書く<small>Claude Code</small></div>
       <div class="pc">2 貼って流す<small>人</small></div>
-      <div>3 結果を読む<small>Claude Code</small></div>
-      <div>4 判定・検算<small>Claude Code</small></div>
-      <div>5 記録<small>シート・Excel</small></div>
+      <div>3 結果をJSONで出す<small>スクリプト</small></div>
+      <div>4 読んで判定<small>Claude Code</small></div>
+      <div>5 記録・共有<small>チェックシート</small></div>
     </div>
-    <div class="cards three">
-      <div class="card"><div class="who">人</div><h3>ログインと貼り付け</h3><p>仕様の決定、社外とのやりとり、最後の判断も人（案件2）</p></div>
-      <div class="card"><div class="who">Claude Code</div><h3>書く・読む・判定する</h3><p>OK・NG・要確認・保留に分けてシートに記録し、次の指示を出す（案件1）。案件2はExcelに記録</p></div>
-      <div class="card"><div class="who">結果の形</div><h3>文字で残す</h3><p>案件1は画像を撮らずCSV・JSON・テキストに。案件2は操作ログと金額もJSONに</p></div>
+    <div class="cards three roomy">
+      <div class="card"><div class="who">人</div><h3>コンソールに貼って流す</h3><p>ほかのサードパーティのツールは、導入するまでのプロセスが難しいため</p></div>
+      <div class="card"><div class="who">Claude Code</div><h3>読んで判定し、記録する</h3><p>結果のJSONを読み、OK／NGをチェックシートに記録する</p></div>
+      <div class="card"><div class="who">NGのとき</div><h3>原因と再現性も残す</h3><p>期待値と実際の結果、考えられる原因、ほかのバリエーションでの再現性を記録し、開発と共有する</p></div>
     </div>
   </section>
 
@@ -206,20 +206,20 @@
     <h2>仕様書からチェックシートまでの手順</h2>
     <p class="lead">準備</p>
     <div class="steps" style="margin-top:8px">
-      <div>1 仕様書をつくる<small>AI</small></div>
+      <div>1 テスト仕様書<br>をつくる<small>AI</small></div>
       <div class="pc">2 テスト<br>シナリオを作る<small>人がプロンプトに</small></div>
       <div>3 商品データを<br>ダウンロード<small>付随するデータも</small></div>
-      <div>4 テストデータ<br>を作成<small>AI</small></div>
+      <div>4 テストデータ<br>を選定<small>AI</small></div>
       <div>5 スクリプト<br>を作成<small>Claude Code</small></div>
     </div>
     <p class="lead">実行と記録</p>
     <div class="steps" style="margin-top:8px">
       <div class="pc">6 ブラウザで実行<small>人</small></div>
-      <div>7 実行結果を検証<small>Claude Code</small></div>
+      <div>7 実行結果を検証<small>JSONのログを Claude Code が</small></div>
       <div>8 チェックシートに<br>OK/NGを記入<small>Claude Code</small></div>
       <div>9 指摘点を<br>チェックシートに記入<small>Claude Code</small></div>
     </div>
-    <p class="note sm">人がやるのは、シナリオをプロンプトに打ち込むことと、ブラウザで流すこと</p>
+    <p class="note sm">人がやるのは、最初にシナリオを打ち込むことと、ブラウザで流すこと</p>
   </section>
 
   <!-- 10 -->
@@ -232,12 +232,12 @@
       <div class="card"><div class="who">test-result-recorder · 許可制</div><h3>結果記録係</h3><p>OK・NG・要確認・保留を判定してシートに記録する。書き込むのは「書き込んでよい」と言われたときだけ</p></div>
       <div class="card"><div class="who">spec-finder · 読むだけ</div><h3>仕様調査係</h3><p>仕様書や経緯の記録を横断して調べ、ファイル・シート・セルの根拠つきで返す</p></div>
     </div>
-    <p class="note sm">案件1で使った4つ。役割と権限を分け、シートに書けるのは結果記録係だけにした</p>
+    <p class="note sm">両方の案件で使った4つ。役割と権限を分け、シートに書けるのは結果記録係だけにした</p>
   </section>
 
   <!-- 11 -->
   <section class="slide">
-    <div class="kicker">06 · Stop</div>
+    <div class="kicker">06 · Stop 1/2</div>
     <h2>想定と違えば、押さずに止まる</h2>
     <div class="cards four">
       <div class="card"><div class="who">前提の確認 · 案件1</div><h3>違えば発注しない</h3><p>開始前にカートが空かを確かめ、アカウントや得意先が違えば発注しない</p></div>
@@ -245,10 +245,25 @@
       <div class="card"><div class="who">金額と番号 · 案件2</div><h3>合わなければ押さない</h3><p>金額をその場で計算して違えば止まり、注文番号が予想とずれたら押さずに止まる</p></div>
       <div class="card"><div class="who">二重注文の防止 · 案件2</div><h3>「済み」を記録する</h3><p>流し終えた注文をブラウザに記録し、同じ注文を二度流さない</p></div>
     </div>
-    <p class="note sm">案件1では、実行中の表示や画面のスリープ止めも含めた7つを、スクリプトの共通の型にした</p>
   </section>
 
   <!-- 12 -->
+  <section class="slide">
+    <div class="kicker">06 · Stop 2/2</div>
+    <h2>案件1のスクリプトに入れた7つの型</h2>
+    <ol class="rules">
+      <li class="pick">実行中のスクリプト名と進み具合を、画面の上に出す</li>
+      <li class="pick">Wake Lock で、実行中に画面をスリープさせない</li>
+      <li>開始前にカートが空かを確かめ、1ケースごとに空に戻す</li>
+      <li>アカウントや得意先が違えば、発注しない</li>
+      <li>商品は、流すときに在庫と次回予定を読んで選ぶ</li>
+      <li>発注した直後に、画面からキャンセルして在庫を戻す</li>
+      <li class="pick">結果は文字で残す（画像は撮らない）</li>
+    </ol>
+    <p class="src">どのスクリプトにも同じ形で入れた共通の作り</p>
+  </section>
+
+  <!-- 13 -->
   <section class="slide">
     <div class="kicker">07 · Remember</div>
     <h2>ルールと訂正を、次の会話に残す</h2>
@@ -260,7 +275,7 @@
     <p class="note sm">案件2では、途中から伝えた「いちいち確認しなくていい」も、メモリに残した</p>
   </section>
 
-  <!-- 13 -->
+  <!-- 14 -->
   <section class="slide">
     <div class="kicker">08 · Results</div>
     <h2>回帰テストなど決まった手順が、圧倒的に速くなった</h2>
@@ -276,7 +291,7 @@
     </ul>
   </section>
 
-  <!-- 14 -->
+  <!-- 15 -->
   <section class="slide">
     <div class="kicker">09 · Limits</div>
     <h2>このテストで確かめられないこと</h2>
@@ -289,7 +304,7 @@
     <p class="note sm">画面や商品が変わると、スクリプトの直しも要る。案件1では、商品を固定せず、流すときに画面から選ぶようにした</p>
   </section>
 
-  <!-- 15 -->
+  <!-- 16 -->
   <section class="slide">
     <div class="kicker">10 · Compared</div>
     <h2>似たサービスとの違い</h2>
@@ -303,7 +318,7 @@
     <p class="src">比べたのは、3・4枚目のサービスです（公式サイト、2026-11-13確認）</p>
   </section>
 
-  <!-- 16 -->
+  <!-- 17 -->
   <section class="slide">
     <div class="kicker">11 · Thoughts</div>
     <h2>なぜ速くなったのかを考えた</h2>
@@ -315,7 +330,7 @@
     </div>
   </section>
 
-  <!-- 17 -->
+  <!-- 18 -->
   <section class="slide">
     <div class="kicker">12 · Other Uses</div>
     <h2>同じ型が使えそうな仕事</h2>
@@ -328,7 +343,7 @@
     </div>
   </section>
 
-  <!-- 18 -->
+  <!-- 19 -->
   <section class="slide">
     <div class="kicker">Takeaways</div>
     <h2>持ち帰ってほしいこと</h2>
@@ -339,7 +354,7 @@
     </div>
   </section>
 
-  <!-- 19 -->
+  <!-- 20 -->
   <section class="slide inverse sakura-bg">
     <div class="kicker">Message</div>
     <p class="big-quote">大事だったのは、<br>自動化よりも<br><span class="em">止まる・残す・照合する</span><br>仕組みでした。</p>
@@ -348,6 +363,6 @@
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261113h"></script>
+<script src="../_theme/deck.js?v=20261113i"></script>
 </body>
 </html>

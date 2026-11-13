@@ -513,3 +513,14 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .cards.lift .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .cards.lift .card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px var(--shadow-raised); border-color: var(--sakura-mid); }
 @media (hover: none), (prefers-reduced-motion: reduce) { .cards.lift .card:hover { transform: none; } }
+
+/* ── 部品: 番号つきの決まりごと（ol.rules）。話す項目は .pick で目立たせる ── */
+ol.rules { list-style: none; counter-reset: r; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin-top: 4px; }
+ol.rules li { counter-increment: r; position: relative; word-break: auto-phrase; padding: 14px 18px 14px 64px; font-size: 20px; line-height: 1.6; background: var(--surface-raised); border: .5px solid var(--paper-dark); }
+ol.rules li::before { content: counter(r, decimal-leading-zero); position: absolute; left: 18px; top: 13px; font-family: var(--font-mincho); font-weight: 700; font-size: 22px; color: var(--accent-gold); }
+ol.rules li.pick { border: 1.5px solid var(--sakura-deep); box-shadow: 0 8px 22px var(--shadow-raised); color: var(--ink); }
+@media (max-width: 760px) and (orientation: portrait) {
+  ol.rules { grid-template-columns: 1fr; gap: 8px; }
+  ol.rules li { font-size: 14px; padding: 10px 12px 10px 46px; }
+  ol.rules li::before { left: 12px; top: 9px; font-size: 16px; }
+}
