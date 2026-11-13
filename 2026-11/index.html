@@ -7,13 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261113c">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113d">
 </head>
 <body class="white" data-title="コンソールに貼るだけ">
 <div class="deck">
 
   <!-- 1 -->
-  <section class="slide title sakura-bg">
+  <section class="slide title sakura-bg sub2">
     <div class="kicker">AI Lightning Talk · 2026.11</div>
     <h1>ブラウザの<br>コンソールに<br><span class="em">貼るだけ</span></h1>
     <p class="sub">Claude Code で作ったスクリプトで回した、<br>2つのサイトの受け入れテスト</p>
@@ -57,26 +57,30 @@
   <section class="slide dark">
     <div class="kicker">00 · Without AI</div>
     <h2>AIを使わずにテストを作って動かすサービス</h2>
-    <p class="peek-hint"><span class="mouse">カードにマウスを乗せると、概要と参考の料金が出ます</span><span class="touch">カードをタップすると、概要と参考の料金が開きます</span></p>
-    <div class="cards pair middle peek">
-      <div class="card" tabindex="0">
-        <div class="who">テスト代行・第三者検証</div>
+    <div class="cards pair compact">
+      <div class="card">
+        <div class="who">人力</div>
         <h3>人が作って、人が流す</h3>
-        <div class="peek-body">
-          <p>テスト項目づくりから実行、不具合の報告までを、テストの会社の人が受け持つ。時間や人日で頼む</p>
-          <p class="muted">参考：1日（8時間）約3.2万〜18万円</p>
-        </div>
+        <p>人がテストシナリオを作って、人が目で見て、手で実行する</p>
       </div>
-      <div class="card" tabindex="0">
+      <div class="card">
         <div class="who">テスト自動化ツール</div>
         <h3>人が作って、ツールが流す</h3>
+        <p>人が画面の操作を記録して、ツールが何度でも流す</p>
+      </div>
+    </div>
+    <div class="cards one peek price-cmp">
+      <div class="card" tabindex="0">
+        <div class="row"><h3>金額を1日あたりで比べると</h3><span class="peek-hint"><span class="mouse">マウスを乗せると出ます</span></span></div>
         <div class="peek-body">
-          <p>画面の操作を人が記録やノーコードで作り、ツールが何度でも流す。例：T-DASH の Standard</p>
-          <p class="muted">参考：月 約5千円〜（1日 約170〜250円）</p>
+          <div class="cmp">
+            <div><div class="who">人力（テスト代行に頼む場合）</div><div class="v">約3.2万〜18万円</div><div class="muted">1日（8時間）あたり</div></div>
+            <div><div class="who">テスト自動化ツール</div><div class="v">約170〜250円</div><div class="muted">月 約5千円〜を1日あたりに直したもの</div></div>
+          </div>
         </div>
       </div>
     </div>
-    <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし。テスト代行はテスター10とSHIFTのUIテスト、ツールはT-DASHの年払いから計算</p>
+    <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし。人力はテスト代行（テスター10とSHIFTのUIテスト）、ツールはT-DASHの年払いから計算</p>
   </section>
 
   <!-- 4 -->
@@ -282,6 +286,6 @@
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261113c"></script>
+<script src="../_theme/deck.js?v=20261113d"></script>
 </body>
 </html>
