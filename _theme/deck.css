@@ -508,3 +508,8 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
   .title.sub2 .sub { font-size: 15px; }
   .title.sub2 .rule { margin: 24px 0 18px; }
 }
+
+/* ── 部品: マウスを乗せると浮き上がるカード（.cards.lift） ── */
+.cards.lift .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.cards.lift .card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px var(--shadow-raised); border-color: var(--sakura-mid); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .cards.lift .card:hover { transform: none; } }
