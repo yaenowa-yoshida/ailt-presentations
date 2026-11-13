@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../_theme/deck.css?v=20261113d">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113e">
 </head>
 <body class="white" data-title="コンソールに貼るだけ">
 <div class="deck">
@@ -80,20 +80,33 @@
         </div>
       </div>
     </div>
-    <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし。人力はテスト代行（テスター10とSHIFTのUIテスト）、ツールはT-DASHの年払いから計算</p>
+    <p class="src">各社の公式サイト（2026-11-13確認）。料金は税抜か税表記なし。人力はテスト代行（テスター10とSHIFTのUIテスト）、ツールはT-DASHの年払いを月額にし、30日〜20日で割ったもの</p>
   </section>
 
   <!-- 4 -->
   <section class="slide">
     <div class="kicker">01 · With AI</div>
     <h2>AIでテストを作って動かすサービス</h2>
-    <div class="cards four peek">
-      <div class="card" tabindex="0"><div class="who">仕様から作る</div><h3>テストケースをAIが作る</h3><div class="peek-body"><p>仕様書や要件から、テストの観点とケースを作る。例：Autify Genesis、Katalon</p><p class="muted">参考：Katalon TestOps 1シート月 約1.1万〜1.3万円</p></div></div>
-      <div class="card" tabindex="0"><div class="who">文章で頼む</div><h3>指示からテストを作って流す</h3><div class="peek-body"><p>日本語や文章の指示で、テストを作ってブラウザを動かす。例：MagicPod、QA Wolf</p><p class="muted">参考：MagicPod 月 約4万〜5.5万円、QA Wolf 1回 約160円〜</p></div></div>
-      <div class="card" tabindex="0"><div class="who">自動で直す</div><h3>壊れたテストをAIが直す</h3><div class="peek-body"><p>画面が変わったときに直し、失敗の原因も調べる。例：mabl、BrowserStack</p><p class="muted">参考：BrowserStack 月 約1.6万〜4.4万円（mabl は見積）</p></div></div>
-      <div class="card" tabindex="0"><div class="who">受け入れテスト</div><h3>判定と記録まで受け持つ</h3><div class="peek-body"><p>設計書からテストケース、実行、合否判定、不具合の記録まで。例：AGEST の TFACT</p><p class="muted">参考：TFACT 1シート月2,000円＋AIの従量</p></div></div>
+    <div class="cards four across">
+      <div class="card"><div class="who">仕様から作る</div><h3>テストケースをAIが作る</h3><p>仕様書や要件から、テストの観点とケースを作る。例：Autify Genesis、Katalon</p></div>
+      <div class="card"><div class="who">文章で頼む</div><h3>指示からテストを作って流す</h3><p>日本語や文章の指示で、テストを作ってブラウザを動かす。例：MagicPod、QA Wolf</p></div>
+      <div class="card"><div class="who">自動で直す</div><h3>壊れたテストをAIが直す</h3><p>画面が変わったときに直し、失敗の原因も調べる。例：mabl、BrowserStack</p></div>
+      <div class="card"><div class="who">受け入れテスト</div><h3>判定と記録まで受け持つ</h3><p>設計書からテストケース、実行、合否判定、不具合の記録まで。例：AGEST の TFACT</p></div>
     </div>
-    <p class="src">各社の公式サイト（2026-11-13確認）。税抜か税表記なし、1ドル＝159.91円（三菱UFJ銀行 TTM）で換算</p>
+    <div class="cards one peek price-cmp">
+      <div class="card" tabindex="0">
+        <div class="row"><h3>金額を1日あたりで比べると</h3><span class="peek-hint"><span class="mouse">マウスを乗せると出ます</span></span></div>
+        <div class="peek-body">
+          <div class="cmp four">
+            <div><div class="who">仕様から作る</div><div class="v">約360〜640円</div><div class="muted">Katalon TestOps 1シート 月 約1.1万〜1.3万円</div></div>
+            <div><div class="who">文章で頼む</div><div class="v">約1,300〜2,700円</div><div class="muted">MagicPod 月 約4万〜5.5万円。QA Wolf は1回 約160円〜</div></div>
+            <div><div class="who">自動で直す</div><div class="v">約530〜2,200円</div><div class="muted">BrowserStack 月 約1.6万〜4.4万円。mabl は見積</div></div>
+            <div><div class="who">受け入れテスト</div><div class="v">約70〜100円</div><div class="muted">TFACT 1シート 月2,000円＋AIの従量</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="src">各社の公式サイト（2026-11-13確認）。税抜か税表記なし、1ドル＝159.91円（三菱UFJ銀行 TTM）で換算。1日あたりは、月額を30日〜20日で割ったもの</p>
   </section>
 
   <!-- 5 -->
@@ -286,6 +299,6 @@
 
 </div>
 <div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
-<script src="../_theme/deck.js?v=20261113d"></script>
+<script src="../_theme/deck.js?v=20261113e"></script>
 </body>
 </html>

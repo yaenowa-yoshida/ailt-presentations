@@ -482,6 +482,14 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
 .price-cmp .v { font-family: var(--font-mincho); font-weight: 700; font-size: 32px; line-height: 1.3; letter-spacing: .04em; color: var(--accent); }
 .price-cmp .cmp .muted { font-size: 15px; line-height: 1.6; }
 @media (hover: none) { .price-cmp .row { display: block; } .price-cmp .row .peek-hint { display: none; } }
+/* 種類のカードを4枚横に並べる（.cards.four.across）。料金の比較を4列にする（.cmp.four） */
+.cards.four.across { grid-template-columns: repeat(4, 1fr); flex: 0 0 auto; gap: 16px; }
+.cards.four.across .card { padding: 16px 20px; }
+.cards.four.across h3 { font-size: 19px; word-break: auto-phrase; }
+.cards.four.across p { font-size: 15px; line-height: 1.6; }
+.price-cmp .cmp.four { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.price-cmp .cmp.four .v { font-size: 25px; }
+.price-cmp .cmp.four .muted { font-size: 13px; line-height: 1.5; }
 /* 表紙の副題が2行になる資料（.slide.title.sub2）は、行間と余白を少し詰める */
 .title.sub2 .sub { font-size: 24px; line-height: 1.6; }
 .title.sub2 .rule { margin: 28px 0 22px; }
@@ -492,6 +500,8 @@ body.white .slide.inverse .poly.big { right: -150px; width: 440px; height: 440px
   .cards.price-cmp .card { padding: 16px 18px; }
   .cards.price-cmp h3 { font-size: 17px; }
   .price-cmp .cmp { grid-template-columns: 1fr; gap: 12px; }
+  .cards.four.across, .price-cmp .cmp.four { grid-template-columns: 1fr; }
+  .price-cmp .cmp.four .v { font-size: 22px; }
   .price-cmp .v { font-size: 24px; }
   .title.sub2 .sub { font-size: 15px; }
   .title.sub2 .rule { margin: 24px 0 18px; }
