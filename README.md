@@ -8,7 +8,7 @@
 
 | 日付 | イベント・会場 | タイトル | 資料 |
 | --- | --- | --- | --- |
-| 2026-11-14 | CraftStage LT会 ／ 富士通UIS（川崎） | ブラウザのコンソールに貼るだけ（Claude Code で作ったスクリプトで回した、2つのサイトの受け入れテスト） | [スライド](2026-11/index.html) ／ [台本](2026-11/script.md) |
+| 2026-11-14 | CraftStage LT会 ／ 富士通UIS（川崎） | ブラウザのコンソールに貼るだけ（Claude Code で作ったスクリプトで回した、2つのサイトの受け入れテスト） | [スライド](2026-11/index.html) ／ [台本](2026-11/script.md) ／ [Instagram](https://www.instagram.com/p/DftmrBkRcT-/) |
 | 2026-10-10 | CraftStage LT会 ／ 富士通UIS（川崎） | 来る前に、決まっている（5分） | [スライド](2026-10/index.html) ／ [Instagram](https://www.instagram.com/p/DeTxxewRZAP/) |
 | 2026-09-12 | CraftStage LT会 ／ 富士通UIS（川崎） | 人を笑顔にして、悲しむ人を生まないシステム設計（宮本佳林のCloudflare登壇の話） | [スライド](2026-09/index.html) ／ [Instagram](https://www.instagram.com/p/DdV9Injx5SM/) |
 | 2026-08-22 | CraftStage LT会 ／ 富士通UIS（川崎） | 日報を、あとで書かない。（自社の日報入力ツールの紹介） | [Instagram](https://www.instagram.com/p/DcVhxF6R_Zo/) |
