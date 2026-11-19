@@ -122,7 +122,7 @@
         <p class="cap">15分区切りごとに、この画面だけが出てきます。</p>
       </div>
       <ul class="tight">
-        <li>15分区切りのタイミングで自動で表示されます。書きに行くのではなく、向こうから来ます。<small>宣言した時間（15〜120分）のあいだは表示されません</small></li>
+        <li>15分区切りのタイミングで自動で表示されます。自分で開かなくても、画面のほうから出てきます。<small>宣言した時間（15〜120分）のあいだは表示されません</small></li>
         <li>案件と作業内容は選択式なので、数秒で終わります。</li>
         <li>新しい作業名は直接入力でき、次回から選択肢に自動で加わります。</li>
         <li>休憩は長さを決めずに始められます。戻って「休憩完了」を押した時点までが休憩になります。<small>15分未満なら記録しないので、押し間違えてもデータは汚れません</small></li>
@@ -194,7 +194,7 @@
   <section class="slide">
     <div class="kicker">08 · Data</div>
     <h2>残るのは、素直なCSV</h2>
-    <p class="lead">1日1ファイル、1行が15分の枠です。UTF-8（BOM付き）なので、Excelでそのまま開けます。<code>日報ログ\日報ログ_2026-07-31.csv</code></p>
+    <p class="lead">1日1ファイル、1行が15分の枠です。UTF-8（BOM付き）なので、Excelでそのまま開けます。保存先は <code>日報ログ\日報ログ_2026-07-31.csv</code> のような名前です。</p>
     <table class="grid xs">
       <thead><tr><th>日付</th><th>時刻</th><th>案件</th><th>作業内容</th></tr></thead>
       <tbody>
@@ -218,8 +218,8 @@
     <h2>選択肢はテキスト2つ、手入れは画面から</h2>
     <div class="split shot-left">
       <div class="shotcol">
-        <pre class="code sm" style="font-size: 14px; padding: 12px 18px;"><span class="c"># 日報設定\作業名.txt
-# 見出しの前は全案件で共通に表示</span>
+        <p class="cap" style="margin: 0;"><code>日報設定\作業名.txt</code></p>
+        <pre class="code sm" style="font-size: 14px; padding: 12px 18px;"><span class="c"># 見出しの前は全案件で共通に表示</span>
 社内MTG
 資料作成
 <span class="k">[案件A]</span>
@@ -245,11 +245,11 @@ PRJ-12 商品ページ改修
     <div class="kicker">10 · Structure</div>
     <h2>中身は、このフォルダひとつ</h2>
     <p class="lead">インストールも設定画面もありません。フォルダごと渡せば、そのまま動きます。</p>
-    <pre class="code sm tree"><span>日報記録\</span><span></span><span>├ 日報入力.bat</span><span class="d">起動用（デスクトップのショートカットの実体）</span><span>├ Nippo-Batch.ps1</span><span class="d">プログラム本体。直すのはここだけ</span><span>├ ユーザーマニュアル.xlsx</span><span class="d">利用者向けの使い方</span><span>├ ユーザーマニュアル生成.ps1</span><span class="d">上のマニュアルを作り直すスクリプト</span><span>├ 日報システム紹介プレゼン.html</span><span class="d">この資料</span><span>├ README.md</span><span class="d">構成と保守のメモ（引き継ぎ用）</span><span>├ 日報ログ\</span><span class="d">出力。1日1ファイルのCSV</span><span>├ 日報設定\</span><span class="d">案件.txt と 作業名.txt</span><span>└ 画像\</span><span class="d">資料に貼る画面写真</span></pre>
+    <pre class="code sm tree"><span>日報記録\</span><span></span><span>├ 日報入力.bat</span><span class="d">起動用（デスクトップのショートカットの実体）</span><span>├ Nippo-Batch.ps1</span><span class="d">プログラム本体。直すのはここだけ</span><span>├ ユーザーマニュアル.xlsx</span><span class="d">利用者向けの使い方</span><span>├ ユーザーマニュアル生成.ps1</span><span class="d">上のマニュアルを作り直すスクリプト</span><span>├ 日報システム紹介プレゼン.html</span><span class="d">ツールの紹介資料（この資料の元）</span><span>├ README.md</span><span class="d">構成と保守のメモ（引き継ぎ用）</span><span>├ 日報ログ\</span><span class="d">出力。1日1ファイルのCSV</span><span>├ 日報設定\</span><span class="d">案件.txt と 作業名.txt</span><span>└ 画像\</span><span class="d">資料に貼る画面写真</span></pre>
     <ul class="tight" style="margin-top: 18px;">
       <li>ログも設定もスクリプトと同じ場所を見に行くので、フォルダを移しても動きます。</li>
-      <li>入っているのは、CSVとテキストとPowerShellだけです。人が読めないものは置いていません。</li>
-      <li>マニュアルとこの資料も同じ場所に置いているので、フォルダを渡せば引き継げます。</li>
+      <li>データはCSVとテキスト、プログラムはPowerShellだけです。専用の形式やデータベースは使っていません。</li>
+      <li>マニュアルと紹介資料も同じ場所に置いているので、フォルダを渡せば引き継げます。</li>
     </ul>
   </section>
 
@@ -280,14 +280,14 @@ PRJ-12 商品ページ改修
       <div class="trend sm"><span class="no">03</span><div><h3>運用で引っかかるところを潰した</h3><p>MTG予約、過去日の編集、休憩の記録、トレイへの常駐を足しました。</p></div></div>
       <div class="trend sm"><span class="no">04</span><div><h3>中身はテキストとCSVだけ</h3><p>誰でも読めるので、ほかの人にもそのまま渡せます。</p></div></div>
     </div>
-    <p class="src">ツール本体と<a href="https://github.com/yaenowa-yoshida/daily-report/raw/main/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.xlsx" target="_blank" rel="noopener">利用マニュアル（Excel、クリックでダウンロード）</a>は、<a href="https://yaenowa.co.jp/services/nippo" target="_blank" rel="noopener">日報入力ツールのページ</a>から入手できます。</p>
+    <p class="src"><a href="https://github.com/yaenowa-yoshida/daily-report/raw/main/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.xlsx" target="_blank" rel="noopener">利用マニュアル（Excel、クリックでダウンロード）</a>は配布フォルダにも入っています。ツール本体は<a href="https://yaenowa.co.jp/services/nippo" target="_blank" rel="noopener">日報入力ツールのページ</a>から入手できます。</p>
   </section>
 
   <!-- 14 付録 作り方 -->
   <section class="slide">
     <div class="kicker">Appendix A · How I Built It</div>
     <h2>この仕組みは、どう作ったか</h2>
-    <p class="lead">元エンジニアなので、コードは読めますし、調べれば書けます。ただ、いまは開発が本業ではありません。そこで Claude Code と話しながら、書く側ではなく確かめる側に回って作りました。仕様書はつくっていません。</p>
+    <p class="lead">元エンジニアなので、コードは読めますし、調べれば書けます。ただ、いまは開発が本業ではありません。そこで Claude Code と話しながら、自分は出てきたものを確かめる役に回って作りました。仕様書はつくっていません。</p>
     <div class="cards three">
       <div class="card"><h3>私がやったこと</h3><p>何に困っているか、どう動いてほしいかを日本語で伝えました。動作環境の制約も伝え、出てきたコードと画面に目を通して、気になったことをそのまま言いました。</p></div>
       <div class="card"><h3>AIがやったこと</h3><p>PowerShellでの実装、既存コードの整理、動作確認の仕組みづくり、マニュアルとこの資料の作成です。</p></div>
@@ -344,7 +344,7 @@ PRJ-12 商品ページ改修
     <h2>AIから見た、この進め方</h2>
     <p class="lead" style="margin-bottom: 14px;">手を動かした側のAIに、最後まで崩れなかった理由を挙げてもらいました。</p>
     <div class="cards three dense" style="gap: 14px 18px;">
-      <div class="card"><h3>出口から逆算していた</h3><p>15分単位・案件と作業内容という粒度は、月次報告書へ転記するという出口から決まっていました。作りながら仕様が揺れませんでした。</p></div>
+      <div class="card"><h3>出口から逆算していた</h3><p>15分単位・案件と作業内容という粒度は、月次報告書へ転記するという出口から決まっていました。作りながら仕様が揺れなかった、いちばんの理由です。</p></div>
       <div class="card"><h3>要件を小分けに出した</h3><p>一度に全部を伝えず、1機能ずつ頼みました。手戻りが小さく、毎回動くものが残りました。</p></div>
       <div class="card"><h3>やめる判断が早い</h3><p>exe化も自動起動も、使えないと分かった時点で引き返しました。試した記録だけを残しています。</p></div>
       <div class="card"><h3>自動化の線引き</h3><p>月1回の転記は手作業のままにして、毎回くり返すもの（確認・マニュアル・画面撮影）だけを自動にしました。</p></div>
@@ -376,13 +376,13 @@ PRJ-12 商品ページ改修
       <tbody>
         <tr><td>丸ごと任せて一気に作らせる<small>期待とずれて、直すより作り直したくなる</small></td><td>1機能ずつ小分けに頼みました。毎回動く状態で止めるので、戻る場所を見失いません。</td></tr>
         <tr><td>環境の前提を伝えない<small>手元で動かないものができる</small></td><td>動作環境の制約をその都度伝えました。exe化は使えないと分かった時点でやめ、記録だけ残しました。</td></tr>
-        <tr><td>「できました」を確かめずに信じる<small>動かない・要件を満たさないものが残る</small></td><td>自分で動かし、コードも読んで、気になる点を伝えました。直っていない箇所はその場で戻しました。</td></tr>
+        <tr><td>「できました」を確かめずに信じる<small>動かない・要件を満たさないものが残る</small></td><td>自分で動かし、コードも読んで、気になる点を伝えました。直っていない箇所は、その場でやり直しを頼みました。</td></tr>
         <tr><td>完璧な仕様を作ろうとする<small>考えているあいだ、何も生まれない</small></td><td>最初の2通のメッセージだけで始めました。細かいところは使いながら決めました。</td></tr>
         <tr><td>作って終わりにする<small>半年後、自分でも直せなくなる</small></td><td>動作確認の仕組み、マニュアル、判断の経緯を残しました。</td></tr>
         <tr><td>実データをそのまま渡す・資料に載せる<small>気づかないうちに社外へ出る</small></td><td>資料の画面写真はダミーの値に差し替えました。仕組みも手元で完結し、外に出ない構成です。</td></tr>
       </tbody>
     </table>
-    <p class="note sm">どれも特別な技術ではなく、人に仕事を頼むときの作法とほとんど同じだと思います。</p>
+    <p class="note sm">どれも、人に仕事を頼むときの作法とほとんど同じだと思います。</p>
   </section>
 
   <!-- 21 付録 他のAIとの比較（1/2） -->
@@ -411,7 +411,7 @@ PRJ-12 商品ページ改修
         <tr><td>調べる・まとめるツール<small>NotebookLM、Deep Research（ChatGPT・Gemini）、Microsoft 365 Copilot</small></td><td>用途が違い、今回は使っていません。着手前の下調べや、できた資料の要約・想定問答づくりには使えます。</td></tr>
       </tbody>
     </table>
-    <p class="src">各サービスを実際に試して比べたものではなく、Claude Code で行った作業を基準に、使い方の違いを整理したものです（2026年8月時点の理解）。各サービスの現在の機能は、提供元の公開情報をご確認ください。各社名・製品名は各社の商標または登録商標で、当社は各社と提携等の関係にありません。</p>
+    <p class="src">各サービスを実際に試して比べたものではなく、Claude Code で行った作業を基準に、使い方の違いを整理したものです（2026年8月時点の理解）。各サービスの現在の機能は、提供元の公開情報をご確認ください。各社名・製品名は各社の商標または登録商標で、当社は各社と提携・監修等の関係にありません。</p>
   </section>
 
   <!-- 23 付録 境界線 -->
@@ -433,17 +433,17 @@ PRJ-12 商品ページ改修
         <p>「実行ファイルは使えない」「自動起動は使えない」といった動作環境の制約は、伝えて初めて設計に入ります。休憩の仕様を3回変えたのも、使ってみた本人の判断でした。</p>
       </div>
     </div>
-    <p class="note">道具の差は、実行できるかどうかに出ます。中身を決めるのは、やはり人だと思います。</p>
+    <p class="note">道具の差が出るのは、実行まで任せられるかどうかだと思います。何を作るかを決めるのは人です。</p>
   </section>
 
   <!-- 24 付録 使いこなしの段階 -->
   <section class="slide">
     <div class="kicker">Appendix D · Stages</div>
     <h2>使いこなしは、どの段階にあるか</h2>
-    <p class="lead" style="margin-bottom: 8px;">使いこなし率を測る物差しはないので、AIとの付き合い方を5つの段階に分けて振り返ります。</p>
+    <p class="lead" style="margin-bottom: 8px;">どれだけ使いこなせているかを測る客観的な物差しは、いまのところありません。代わりに、AIとの付き合い方を5つの段階に分けて振り返ります。</p>
     <div class="tl dense xs">
-      <div class="tl-row"><span class="date">段階1</span><div><h3>聞く</h3><p>分からないことを質問する。調べものの相手として使います。</p></div></div>
-      <div class="tl-row"><span class="date">段階2</span><div><h3>書かせる</h3><p>文章やコードを作らせる。出てきたものは自分で確かめ、自分で動かします。</p></div></div>
+      <div class="tl-row"><span class="date">段階1</span><div><h3>聞く</h3><p>分からないことを質問します。調べものの相手として使う段階です。</p></div></div>
+      <div class="tl-row"><span class="date">段階2</span><div><h3>書かせる</h3><p>文章やコードを作らせます。出てきたものは自分で確かめ、自分で動かします。</p></div></div>
       <div class="tl-row"><span class="date">段階3</span><div><h3>任せる</h3><p>実行と確認まで任せ、こちらはどう動いてほしいかと、うまくいっていない点を伝える役に回ります。</p></div></div>
       <div class="tl-row hl"><span class="date">段階4</span><div><h3>仕組みにする（今回はここ）</h3><p>くり返す作業を自動にして、決めた理由を記録に残します。動作確認・マニュアル作成・画面撮影まで組み込みました。</p></div></div>
       <div class="tl-row"><span class="date">段階5</span><div><h3>広げる（始めたところ）</h3><p>自分だけの道具で終わらせず、ほかの人が使える形にします。この資料と利用マニュアルが、その最初の一歩です。</p></div></div>
@@ -453,7 +453,7 @@ PRJ-12 商品ページ改修
   <!-- 25 付録 到達点 -->
   <section class="slide">
     <div class="kicker">Appendix D · Checklist</div>
-    <h2>数字ではなく、行動で確かめる</h2>
+    <h2>行動で確かめる6つの問い</h2>
     <p class="lead" style="margin-bottom: 12px;">AIをうまく使えているかは、次の6つで確かめられると思います。</p>
     <ul class="tight xs">
       <li><b>目的を自分の言葉で言えるか</b>　何に困っていて、どうなれば成功かを説明できること。<small>今回は、最初の2通で前回入力の保持・CSVへの積み上げ・Excelに貼る流れまで伝えていました</small></li>
