@@ -1,6 +1,6 @@
 # ブラウザのコンソールに貼るだけ　台本
 
-2026年11月14日 CraftStage LT会（AIなんでもLightning Talk交流会）／富士通UIS（川崎）の台本です。スライドは[こちら](https://yaenowa-yoshida.github.io/ailt-presentations/2026-11/)です。
+2026年11月14日 CraftStage LT会（AIなんでもLightning Talk交流会）／富士通UIS（川崎）の台本です。スライドは[こちら](https://presentations.yaenowa.co.jp/2026-11/)です。
 
 話す本文は約3,640字で、1分あたり約310字として約11分45秒です。料金は、スライドに書いた各社の公式サイト（2026-11-13確認）の参考値です。
 
