@@ -18,7 +18,8 @@
   .split.shot-left { grid-template-columns: auto 1fr; gap: 40px; }
   .split ul.tight li small, ul.tight li small { display: block; font-size: 14px; color: var(--ink-light); line-height: 1.6; margin-top: 2px; }
   .lead { font-size: 22px; line-height: 1.75; margin: -12px 0 22px; color: var(--ink-mid); }
-  .code.sm { font-size: 16px; padding: 16px 22px; line-height: 1.55; }
+  /* 中身が切れないよう、スライドの縦の並びで縮ませない */
+  .code.sm { font-size: 16px; padding: 14px 22px; line-height: 1.5; flex-shrink: 0; }
   .code .d { color: rgba(247,244,238,0.55); }
   .tree { display: grid; grid-template-columns: max-content 1fr; column-gap: 28px; }
   table.grid td small { display: block; font-size: 13px; color: var(--ink-light); line-height: 1.5; margin-top: 2px; }
@@ -244,9 +245,9 @@ PRJ-12 商品ページ改修
   <section class="slide">
     <div class="kicker">10 · Structure</div>
     <h2>中身は、このフォルダひとつ</h2>
-    <p class="lead">インストールも設定画面もありません。フォルダごと渡せば、そのまま動きます。</p>
+    <p class="lead" style="margin-bottom: 16px;">インストールも設定画面もありません。フォルダごと渡せば、そのまま動きます。</p>
     <pre class="code sm tree"><span>日報記録\</span><span></span><span>├ 日報入力.bat</span><span class="d">起動用（デスクトップのショートカットの実体）</span><span>├ Nippo-Batch.ps1</span><span class="d">プログラム本体。直すのはここだけ</span><span>├ ユーザーマニュアル.xlsx</span><span class="d">利用者向けの使い方</span><span>├ ユーザーマニュアル生成.ps1</span><span class="d">上のマニュアルを作り直すスクリプト</span><span>├ 日報システム紹介プレゼン.html</span><span class="d">ツールの紹介資料（この資料の元）</span><span>├ README.md</span><span class="d">構成と保守のメモ（引き継ぎ用）</span><span>├ 日報ログ\</span><span class="d">出力。1日1ファイルのCSV</span><span>├ 日報設定\</span><span class="d">案件.txt と 作業名.txt</span><span>└ 画像\</span><span class="d">資料に貼る画面写真</span></pre>
-    <ul class="tight" style="margin-top: 18px;">
+    <ul class="tight xs" style="margin-top: 14px;">
       <li>ログも設定もスクリプトと同じ場所を見に行くので、フォルダを移しても動きます。</li>
       <li>データはCSVとテキスト、プログラムはPowerShellだけです。専用の形式やデータベースは使っていません。</li>
       <li>マニュアルと紹介資料も同じ場所に置いているので、フォルダを渡せば引き継げます。</li>
