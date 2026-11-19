@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日報を、あとで書かない。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
+<style>
+  /* この資料だけで使う部品（画面写真・ファイルの中身・小さめの表） */
+  .shot { display: block; max-width: 100%; height: auto; background: #fff; border: .5px solid var(--paper-dark); box-shadow: 0 8px 24px var(--shadow-raised); }
+  .cap { font-size: 15px; line-height: 1.6; color: var(--ink-light); margin-top: 8px; letter-spacing: .03em; }
+  .shotcol { display: grid; gap: 10px; align-content: start; }
+  /* 写真の下の説明は、写真の幅に合わせて折り返す（説明の長さで列が広がらないように） */
+  .split .cap, .shotcol .cap { font-size: 15px; line-height: 1.6; width: 0; min-width: 100%; margin-top: -2px; }
+  .split.shot-left { grid-template-columns: auto 1fr; gap: 40px; }
+  .split ul.tight li small, ul.tight li small { display: block; font-size: 14px; color: var(--ink-light); line-height: 1.6; margin-top: 2px; }
+  .lead { font-size: 22px; line-height: 1.75; margin: -12px 0 22px; color: var(--ink-mid); }
+  .code.sm { font-size: 16px; padding: 16px 22px; line-height: 1.55; }
+  .code .d { color: rgba(247,244,238,0.55); }
+  .tree { display: grid; grid-template-columns: max-content 1fr; column-gap: 28px; }
+  table.grid td small { display: block; font-size: 13px; color: var(--ink-light); line-height: 1.5; margin-top: 2px; }
+  table.grid.wrap td:first-child { white-space: normal; }
+  ul.tight.xs { gap: 6px; }
+  ul.tight.xs li, .split ul.tight.xs li { font-size: 16px; line-height: 1.65; }
+  ul.tight.xs li small { font-size: 13px; }
+  table.grid.xs th, table.grid.xs td { padding: 6px 10px; font-size: 14px; line-height: 1.5; }
+  table.grid.xs td small { font-size: 12px; }
+  .stats.four { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 26px; }
+  .stats.four .stat { padding: 20px 22px 18px; }
+  .stats.four .stat .n { font-size: 46px; }
+  .stats.four .stat .n small { font-size: 20px; }
+  .stats.four .stat .l { font-size: 15px; line-height: 1.55; }
+  .tl.dense .tl-row { padding: 10px 0; grid-template-columns: 110px 1fr; }
+  .tl.dense .tl-row h3 { font-size: 22px; margin-bottom: 2px; }
+  .tl.dense .tl-row p { font-size: 17px; line-height: 1.65; }
+  .tl.dense .tl-row.hl .date { color: var(--accent); }
+  .cards.three.dense .card { padding: 16px 20px; gap: 6px; }
+  .cards.three.dense h3 { font-size: 19px; }
+  .cards.three.dense p { font-size: 15px; line-height: 1.6; }
+  .tl.dense.xs .tl-row { padding: 6px 0; }
+  .tl.dense.xs .tl-row h3 { font-size: 19px; }
+  .tl.dense.xs .tl-row p { font-size: 15px; line-height: 1.55; }
+  .tl.dense.xs .date { font-size: 21px; }
+  .trend.sm { padding: 12px 0; grid-template-columns: 64px 1fr; }
+  .trend.sm .no { font-size: 36px; }
+  .trend.sm h3 { font-size: 22px; }
+  .trend.sm p { font-size: 17px; }
+  @media (max-width: 760px) and (orientation: portrait) {
+    .split.shot-left, .stats.four, .tree { grid-template-columns: 1fr; }
+    .lead { font-size: 15px; margin: -8px 0 14px; }
+    .code.sm { font-size: 12px; white-space: pre-wrap; }
+    .tl.dense .tl-row { grid-template-columns: 1fr; gap: 4px; }
+    .tl.dense .tl-row h3 { font-size: 16px; }
+    .tl.dense .tl-row p, .trend.sm p { font-size: 14px; }
+    .stats.four .stat .n { font-size: 34px; }
+  }
+</style>
+</head>
+<body data-title="日報を、あとで書かない。">
+<div class="deck">
+
+  <!-- 1 表紙 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · 2026.08</div>
+    <h1>日報を、<br><span class="em">あとで書かない</span>。</h1>
+    <p class="sub">15分ごとに「これからやる作業」を先に記録する、<br>自作の日報入力ツールの紹介です</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 課題 -->
+  <section class="slide">
+    <div class="kicker">01 · Problem</div>
+    <h2>日報のよくある困りごと</h2>
+    <div class="cards three">
+      <div class="card"><h3>思い出せない</h3><p>終業時にまとめて書こうとすると、午前中に何をしていたかの記憶がもう曖昧です。日報の精度が日ごとに落ちていきます。</p></div>
+      <div class="card"><h3>粒度が粗くなる</h3><p>「終日：開発」のような一行になりがちです。月次報告や工数集計に使おうとしても、案件別の内訳が出せません。</p></div>
+      <div class="card"><h3>書くこと自体が負担</h3><p>一日の最後に残る重いタスクになり、後回しや書き忘れが起きます。翌日にまとめて書くと、精度はさらに下がります。</p></div>
+    </div>
+    <p class="note">原因は、あとで思い出して書いていることにあると思います。</p>
+  </section>
+
+  <!-- 3 アプローチ -->
+  <section class="slide">
+    <div class="kicker">02 · Approach</div>
+    <h2>始める前に、宣言する</h2>
+    <div class="cards pair" style="--h3: 24px;">
+      <div class="card"><div class="who">これまでの日報</div><h3 style="font-size: 23px;">作業する → 思い出す → 書く</h3><p>記録の質が、記憶力と終業時の余力に左右されます。</p></div>
+      <div class="card" style="border-color: var(--sakura-deep);"><div class="who">この仕組み</div><h3 style="font-size: 23px;">次の作業を宣言する → 作業する</h3><p>15分区切りごとに「これからやること」を選ぶだけです。記憶に頼らずに済みます。</p></div>
+    </div>
+    <p class="note">作業を始めた時点で記録は済んでいるので、日報は書かなくても貯まっていきます。</p>
+  </section>
+
+  <!-- 4 一日の流れ -->
+  <section class="slide">
+    <div class="kicker">03 · Overview</div>
+    <h2>一日の流れ</h2>
+    <div class="tl dense">
+      <div class="tl-row"><span class="date">起動</span><div><h3>デスクトップのアイコンをダブルクリック</h3><p>朝いちばんに起動して「業務開始」を押すと、記録が始まります。ショートカットは初回起動時に自動で用意され、消えても起動のたびに作り直されます。</p></div></div>
+      <div class="tl-row hl"><span class="date">日中</span><div><h3>2つのウィンドウで運用</h3><p>入力ウィンドウが15分区切りごとに現れ、次の作業を宣言します。常駐の小窓（日報メニュー）からは、編集やMTG予約がいつでもできます。</p></div></div>
+      <div class="tl-row"><span class="date">終業</span><div><h3>表を確認して締める</h3><p>業務終了は好きなタイミングで押せます。一日の記録が表で出るので、確認・修正して「締め」でCSVを保存します。キャンセルすれば通常どおりに戻ります。</p></div></div>
+      <div class="tl-row"><span class="date">月次</span><div><h3>報告書の元データが揃っている</h3><p>15分単位・案件別のCSVが毎日貯まっているので、月次報告書への転記は集計するだけです。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 5 入力ウィンドウ -->
+  <section class="slide">
+    <div class="kicker">04 · Input Window</div>
+    <h2>15分ごとに、選ぶのは3つだけ</h2>
+    <div class="split shot-left">
+      <div class="shotcol">
+        <img class="shot" src="img/input-window.png" width="532" height="345" style="width: 460px;" alt="入力ウィンドウ。対象時間帯の表示、案件・作業内容・記録する時間の選択、記録(OK)・スキップ・休憩・業務終了のボタンが並ぶ">
+        <p class="cap">15分区切りごとに、この画面だけが出てきます。</p>
+      </div>
+      <ul class="tight">
+        <li>15分区切りのタイミングで自動で表示されます。書きに行くのではなく、向こうから来ます。<small>宣言した時間（15〜120分）のあいだは表示されません</small></li>
+        <li>案件と作業内容は選択式なので、数秒で終わります。</li>
+        <li>新しい作業名は直接入力でき、次回から選択肢に自動で加わります。</li>
+        <li>休憩は長さを決めずに始められます。戻って「休憩完了」を押した時点までが休憩になります。<small>15分未満なら記録しないので、押し間違えてもデータは汚れません</small></li>
+        <li>MTG予約済みの時間帯には出てこないので、会議の邪魔をしません。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 日報メニュー -->
+  <section class="slide">
+    <div class="kicker">05 · Menu</div>
+    <h2>常駐の小窓から、いつでも5つの操作</h2>
+    <div class="split shot-left">
+      <div class="shotcol">
+        <img class="shot" src="img/menu.png" width="352" height="289" style="width: 220px;" alt="日報メニュー。日付の選択と編集ボタン、MTG予約・休憩・選択肢の編集・業務終了のボタンが縦に並ぶ小窓">
+        <p class="cap">×で閉じてもタスクトレイに常駐します。</p>
+        <img class="shot" src="img/break.png" width="392" height="195" style="width: 220px;" alt="休憩中ウィンドウ。開始時刻と経過分数が表示され、休憩完了ボタンがある">
+        <p class="cap">「休憩」を押すと出る窓です。</p>
+      </div>
+      <ul class="tight xs">
+        <li><b>編集</b>　日報ログのある日付を選び、時刻・案件・作業内容の表をその場で直せます。<small>過去の日付も直せます（次のスライド）</small></li>
+        <li><b>MTG予約</b>　当日の先の時間枠を、会議の予定で先に押さえます。</li>
+        <li><b>休憩</b>　入力ウィンドウを待たずに休憩に入れます。</li>
+        <li><b>選択肢の編集</b>　案件と作業内容の候補をその場で整理できます。</li>
+        <li><b>業務終了</b>　いつでも締めの処理に進めます。入力ウィンドウとトレイアイコンからも同じ操作ができます。<small>3つの入口は、表記も動きも揃えてあります</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 一覧編集 -->
+  <section class="slide">
+    <div class="kicker">06 · Edit</div>
+    <h2>あとから直せるから、迷わず記録できる</h2>
+    <div class="split shot-left">
+      <div class="shotcol">
+        <img class="shot" src="img/list-edit.png" width="672" height="590" style="width: 380px;" alt="一覧編集ウィンドウ。時刻・案件・作業内容の表と、選択した行に入力・クリア・この行を入力欄へコピーのボタン">
+        <p class="cap">「編集」で開く一日の記録表です。業務終了時の確認画面も同じものです。</p>
+      </div>
+      <ul class="tight xs">
+        <li>日報ログのある日付なら、どの日でも開けます。入力し忘れた枠の穴埋めも、過去日の修正もここでできます。</li>
+        <li>「この行を入力欄へコピー」から「選択した行に入力」で、同じ作業をマウスだけで複製できます。<small>まとまった時間の記録を一気に埋められます</small></li>
+        <li>空欄にすると、その枠の記録を消せます。MTG予約の取り消しもここで行います。</li>
+        <li>保存すると時刻順に並べ直して、CSVを書き直します。<small>ExcelでCSVを開いて書式が変わっても、読み込む側で吸収します</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8 MTG予約 -->
+  <section class="slide">
+    <div class="kicker">07 · Meeting</div>
+    <h2>会議が始まる瞬間に、入力を求めない</h2>
+    <p class="lead">15分ごとに窓が出る仕組みのいちばんの弱点は、会議中に出てくることです。そこで、会議は先に枠を予約しておく形にしました。</p>
+    <div class="steps">
+      <div>〜13:30<small>入力ウィンドウを表示</small></div>
+      <div class="pc">13:30〜14:30<small>MTG予約済み（表示しない）</small></div>
+      <div>14:30〜<small>入力ウィンドウを再開</small></div>
+    </div>
+    <div class="split shot-left">
+      <img class="shot" src="img/meeting.png" width="532" height="325" style="width: 360px;" alt="MTG予約ウィンドウ。開始時刻・時間・案件・作業内容を指定して予約するダイアログ">
+      <ul class="tight">
+        <li>開始時刻・時間（30分か60分）・案件・作業内容を指定して、先の枠を記録します。</li>
+        <li>予約した時間帯は入力ウィンドウを出しません。会議に集中でき、記録はもう済んでいます。</li>
+        <li>予定がなくなったら、「編集」でその枠を消すだけです。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 データ形式 -->
+  <section class="slide">
+    <div class="kicker">08 · Data</div>
+    <h2>残るのは、素直なCSV</h2>
+    <p class="lead">1日1ファイル、1行が15分の枠です。UTF-8（BOM付き）なので、Excelでそのまま開けます。<code>日報ログ\日報ログ_2026-07-31.csv</code></p>
+    <table class="grid xs">
+      <thead><tr><th>日付</th><th>時刻</th><th>案件</th><th>作業内容</th></tr></thead>
+      <tbody>
+        <tr><td>2026/07/31</td><td>9:00</td><td>案件A</td><td>API設計レビュー</td></tr>
+        <tr><td>2026/07/31</td><td>9:15</td><td>案件A</td><td>API設計レビュー</td></tr>
+        <tr><td>2026/07/31</td><td>9:30</td><td>案件A</td><td>PRJ-12 商品ページ改修</td></tr>
+        <tr><td>2026/07/31</td><td>9:45</td><td>社内</td><td>週次定例MTG</td></tr>
+        <tr><td>2026/07/31</td><td>12:00</td><td>その他</td><td>休憩</td></tr>
+      </tbody>
+    </table>
+    <ul class="tight xs" style="margin-top: 18px;">
+      <li>ピボットで集計するだけで、案件別・作業別の工数が出ます。月次報告の元データにそのまま使えます。</li>
+      <li>休憩も1行として残るので、空白が入力し忘れなのか休んでいたのかで迷いません。</li>
+      <li>データベースもクラウドも使わない、ただのファイルです。いつでも読めて、壊れにくい形です。</li>
+    </ul>
+  </section>
+
+  <!-- 10 マスタ管理 -->
+  <section class="slide">
+    <div class="kicker">09 · Settings</div>
+    <h2>選択肢はテキスト2つ、手入れは画面から</h2>
+    <div class="split shot-left">
+      <div class="shotcol">
+        <pre class="code sm" style="font-size: 14px; padding: 12px 18px;"><span class="c"># 日報設定\作業名.txt
+# 見出しの前は全案件で共通に表示</span>
+社内MTG
+資料作成
+<span class="k">[案件A]</span>
+API設計
+PRJ-12 商品ページ改修
+<span class="k">[案件B]</span>
+運用保守</pre>
+        <img class="shot" src="img/master-edit.png" width="752" height="567" style="width: 250px;" alt="選択肢の編集ウィンドウ。左に案件の一覧、右にその案件の作業内容の一覧、それぞれに追加・名前変更・削除・並べ替えのボタンが並ぶ">
+      </div>
+      <ul class="tight xs">
+        <li>使うのは「案件.txt」と「作業名.txt」の2ファイルだけです。#でコメントも書けます。</li>
+        <li>作業名は[案件名]の見出しでまとめます。選んだ案件の作業名と、共通の作業名だけが選択肢に出ます。</li>
+        <li>表示のたびに読み直すので、メモ帳で直せば次の窓から反映されます。</li>
+        <li>入力ウィンドウで新しく入れた作業名は、その案件の見出しの下に自動で書き足されます。<small>放っておいても候補は育ち、整理したいときだけ手を入れます</small></li>
+        <li>「選択肢の編集」の画面で、追加・名前変更・削除・並べ替え・別案件への移動ができます。コメント行は残します。</li>
+        <li>名前を変えたり消したりしても、変わるのは次回からの選択肢だけです。過去のCSVは当時の表記のまま残ります。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11 フォルダ構成 -->
+  <section class="slide">
+    <div class="kicker">10 · Structure</div>
+    <h2>中身は、このフォルダひとつ</h2>
+    <p class="lead">インストールも設定画面もありません。フォルダごと渡せば、そのまま動きます。</p>
+    <pre class="code sm tree"><span>日報記録\</span><span></span><span>├ 日報入力.bat</span><span class="d">起動用（デスクトップのショートカットの実体）</span><span>├ Nippo-Batch.ps1</span><span class="d">プログラム本体。直すのはここだけ</span><span>├ ユーザーマニュアル.xlsx</span><span class="d">利用者向けの使い方</span><span>├ ユーザーマニュアル生成.ps1</span><span class="d">上のマニュアルを作り直すスクリプト</span><span>├ 日報システム紹介プレゼン.html</span><span class="d">この資料</span><span>├ README.md</span><span class="d">構成と保守のメモ（引き継ぎ用）</span><span>├ 日報ログ\</span><span class="d">出力。1日1ファイルのCSV</span><span>├ 日報設定\</span><span class="d">案件.txt と 作業名.txt</span><span>└ 画像\</span><span class="d">資料に貼る画面写真</span></pre>
+    <ul class="tight" style="margin-top: 18px;">
+      <li>ログも設定もスクリプトと同じ場所を見に行くので、フォルダを移しても動きます。</li>
+      <li>入っているのは、CSVとテキストとPowerShellだけです。人が読めないものは置いていません。</li>
+      <li>マニュアルとこの資料も同じ場所に置いているので、フォルダを渡せば引き継げます。</li>
+    </ul>
+  </section>
+
+  <!-- 12 技術構成 -->
+  <section class="slide">
+    <div class="kicker">11 · Tech</div>
+    <h2>Windowsの標準機能だけで動く</h2>
+    <div class="stats four">
+      <div class="stat"><div class="n">約1,900<small>行</small></div><div class="l">PowerShellのスクリプト1本。画面はWindows Forms（2026年8月時点）</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">追加のインストール・ライセンス費用・管理者権限</div></div>
+      <div class="stat"><div class="n">15<small>分</small></div><div class="l">記録の単位。1行が1枠なので、データの形も最小限</div></div>
+      <div class="stat"><div class="n">0<small>件</small></div><div class="l">外部との通信。記録はすべて手元のCSVとテキストに保存</div></div>
+    </div>
+    <ul class="tight xs">
+      <li>ショートカットからバッチ、PowerShellスクリプトへとつなぐだけの構成です。サーバーもインストールも要りません。<small>実行ファイル（exe）化と自動起動は、配布先の環境によっては使えないため見送り、手動起動とショートカットの自動作成にしました</small></li>
+      <li>スクリプトを直せば、次の起動から反映されます。ビルドがないので、思いついた改善をその日のうちに入れられます。</li>
+      <li>開発と改修は、Claude Code と話しながら進めました。「MTG中は窓を出さないで」のような要望を、そのまま実装にしています。</li>
+    </ul>
+  </section>
+
+  <!-- 13 まとめ -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>この仕組みで変わったこと</h2>
+    <div>
+      <div class="trend sm"><span class="no">01</span><div><h3>記憶に頼らなくなった</h3><p>作業の前に宣言するので、抜け漏れや思い出す手間が起きにくくなりました。</p></div></div>
+      <div class="trend sm"><span class="no">02</span><div><h3>15分単位のログが自動で貯まる</h3><p>月次報告や工数集計の元データが、いつでも手元にあります。</p></div></div>
+      <div class="trend sm"><span class="no">03</span><div><h3>運用で引っかかるところを潰した</h3><p>MTG予約、過去日の編集、休憩の記録、トレイへの常駐を足しました。</p></div></div>
+      <div class="trend sm"><span class="no">04</span><div><h3>中身はテキストとCSVだけ</h3><p>誰でも読めるので、ほかの人にもそのまま渡せます。</p></div></div>
+    </div>
+    <p class="src">ツール本体と<a href="https://github.com/yaenowa-yoshida/daily-report/raw/main/%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%9E%E3%83%8B%E3%83%A5%E3%82%A2%E3%83%AB.xlsx" target="_blank" rel="noopener">利用マニュアル（Excel、クリックでダウンロード）</a>は、<a href="https://yaenowa.co.jp/services/nippo" target="_blank" rel="noopener">日報入力ツールのページ</a>から入手できます。</p>
+  </section>
+
+  <!-- 14 付録 作り方 -->
+  <section class="slide">
+    <div class="kicker">Appendix A · How I Built It</div>
+    <h2>この仕組みは、どう作ったか</h2>
+    <p class="lead">元エンジニアなので、コードは読めますし、調べれば書けます。ただ、いまは開発が本業ではありません。そこで Claude Code と話しながら、書く側ではなく確かめる側に回って作りました。仕様書はつくっていません。</p>
+    <div class="cards three">
+      <div class="card"><h3>私がやったこと</h3><p>何に困っているか、どう動いてほしいかを日本語で伝えました。動作環境の制約も伝え、出てきたコードと画面に目を通して、気になったことをそのまま言いました。</p></div>
+      <div class="card"><h3>AIがやったこと</h3><p>PowerShellでの実装、既存コードの整理、動作確認の仕組みづくり、マニュアルとこの資料の作成です。</p></div>
+      <div class="card"><h3>決めたのは人</h3><p>何を作るか、どこで妥協するかは、使っている本人にしか決められません。AIは提案はしますが、決めてはくれません。</p></div>
+    </div>
+  </section>
+
+  <!-- 15 付録 出発点 -->
+  <section class="slide">
+    <div class="kicker">Appendix A · Starting Point</div>
+    <h2>最初に伝えたのは、この2つだけ</h2>
+    <div class="cards pair" style="grid-template-columns: 1fr; gap: 14px;">
+      <div class="card" style="padding: 18px 28px;"><div class="who">1通目　困りごと（要旨）</div><p>日報の作成をAIに任せられないか。15分単位で作業内容を記録・報告する必要がある。</p></div>
+      <div class="card" style="padding: 18px 28px;"><div class="who">2通目　解き方の提案（要旨）</div><p>15分単位で入力を求めるバッチにする。案件と作業内容を入れる窓を出し、前回の入力を保持するチェックをつける。OKでCSVの末尾に積み上げ、最後にExcelへ貼れば日報になる。</p></div>
+    </div>
+    <ul class="tight xs" style="margin-top: 16px;">
+      <li>2通目で、AIに書かせる案から、15分ごとに入力させる仕組みへ方式を切り替えました。ここは人が決めています。</li>
+      <li>前回入力の保持、CSVへの積み上げ、Excelに貼って完成という芯の要件は、この時点で出そろっていて、いまも変わっていません。</li>
+      <li>休憩・MTG予約・一覧編集は、使いながらあとから足しました。最初から全部を決めてはいません。</li>
+    </ul>
+  </section>
+
+  <!-- 16 付録 進め方 -->
+  <section class="slide">
+    <div class="kicker">Appendix A · Process</div>
+    <h2>短いやり取りを、何度も回す</h2>
+    <div class="tl dense">
+      <div class="tl-row"><span class="date">相談</span><div><h3>困りごとと、解き方の見当を伝える</h3><p>最初は「日報を任せられないか」でした。すぐに「15分ごとに入力を求める仕組みでいい」と方式を切り替えています。設計書は書きませんが、どう解くかは自分で決めています。</p></div></div>
+      <div class="tl-row hl"><span class="date">実装</span><div><h3>その場で動くものが出てくる</h3><p>コードが書かれ、すぐに試せます。気に入らなければ言い直します。1回で完成させようとしないのがこつです。</p></div></div>
+      <div class="tl-row"><span class="date">確認</span><div><h3>壊れていないかを毎回みる</h3><p>設定の読み込み、CSVの書き込み、記録の重複防止などを自動で確かめる仕組みを、最初に作ってもらいました。直すたびに流すので、安心して手を入れられます。</p></div></div>
+      <div class="tl-row"><span class="date">記録</span><div><h3>決めた理由と、やめた理由を残す</h3><p>なぜこの形にしたかを、AIがドキュメントに書き足していきます。次に触るときに、同じ検討をくり返さずに済みます。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 17 付録 実例 -->
+  <section class="slide">
+    <div class="kicker">Appendix A · Examples</div>
+    <h2>こう言ったら、こうなった</h2>
+    <table class="grid small wrap">
+      <thead><tr><th style="width: 32%;">伝えたこと</th><th>起きたこと</th></tr></thead>
+      <tbody>
+        <tr><td>「休憩ボタンを配置して」</td><td>ボタンを足したあと、使ってみて「長さは戻ってから決めたい」と伝え、その場で方式ごと作り直しました。</td></tr>
+        <tr><td>「機能ごとにIDを振って、同じ挙動にして」</td><td>入力画面・メニュー・トレイの3つの入口が、同じ定義を呼ぶ形になりました。ボタン名のずれもなくなりました。</td></tr>
+        <tr><td>「1つの実行ファイルにしたい」</td><td>exe化したところ、できた実行ファイルがセキュリティ製品に隔離されたので、元の方式に戻しました。経緯も記録に残しています。</td></tr>
+        <tr><td>「マニュアルをExcelで作って」</td><td>マニュアルを作るスクリプトができました。画面の写真も自動で撮るので、画面を変えたら撮り直すだけです。</td></tr>
+      </tbody>
+    </table>
+    <p class="note sm">途中で気が変わってもかまいません。使ってみて初めて分かることのほうが多く、うまくいかなかったことも残しておけば、同じ失敗をくり返さずに済みます。</p>
+  </section>
+
+  <!-- 18 付録 AIから見た評価 -->
+  <section class="slide">
+    <div class="kicker">Appendix B · Review</div>
+    <h2>AIから見た、この進め方</h2>
+    <p class="lead" style="margin-bottom: 14px;">手を動かした側のAIに、最後まで崩れなかった理由を挙げてもらいました。</p>
+    <div class="cards three dense" style="gap: 14px 18px;">
+      <div class="card"><h3>出口から逆算していた</h3><p>15分単位・案件と作業内容という粒度は、月次報告書へ転記するという出口から決まっていました。作りながら仕様が揺れませんでした。</p></div>
+      <div class="card"><h3>要件を小分けに出した</h3><p>一度に全部を伝えず、1機能ずつ頼みました。手戻りが小さく、毎回動くものが残りました。</p></div>
+      <div class="card"><h3>やめる判断が早い</h3><p>exe化も自動起動も、使えないと分かった時点で引き返しました。試した記録だけを残しています。</p></div>
+      <div class="card"><h3>自動化の線引き</h3><p>月1回の転記は手作業のままにして、毎回くり返すもの（確認・マニュアル・画面撮影）だけを自動にしました。</p></div>
+      <div class="card"><h3>データを閉じ込めない</h3><p>CSVとテキストだけなので、この道具がなくなっても記録は読めます。</p></div>
+      <div class="card"><h3>使う人と作る人が同じ</h3><p>使って感じた違和感が、その日のうちに修正になりました。</p></div>
+    </div>
+  </section>
+
+  <!-- 19 付録 わかったこと -->
+  <section class="slide">
+    <div class="kicker">Appendix B · Lessons</div>
+    <h2>やってみて、分かったこと</h2>
+    <ul class="tight">
+      <li><b>完璧な仕様はいらない</b>　使いながら決めるほうが、結果として早く、実態にも合います。</li>
+      <li><b>環境の制約は、自分にしか分からない</b>　「実行ファイルは使えない」「自動起動は使えない」は、伝えて初めて設計に入ります。</li>
+      <li><b>確認の仕組みとドキュメントを一緒に作ってもらう</b>　安心して直せるようになり、半年後の自分が助かります。</li>
+      <li><b>読めることが、そのまま速さになる</b>　出てきたものを確かめられるので、細かく指示しなくても任せられます。自分で書くより速いと思います。</li>
+      <li><b>AIは決めてくれない</b>　何を作るか、どこでやめるかを決めるのは、いつも人の側です。</li>
+    </ul>
+    <p class="note">道具を自分で作るハードルは、もう高くないと思います。この資料と利用マニュアルも、同じやり方で作りました。</p>
+  </section>
+
+  <!-- 20 付録 つまずきどころ -->
+  <section class="slide">
+    <div class="kicker">Appendix B · Pitfalls</div>
+    <h2>AIでうまくいかない原因を、どう避けたか</h2>
+    <table class="grid xs wrap">
+      <thead><tr><th style="width: 38%;">よくあるつまずき</th><th>今回どうしていたか</th></tr></thead>
+      <tbody>
+        <tr><td>丸ごと任せて一気に作らせる<small>期待とずれて、直すより作り直したくなる</small></td><td>1機能ずつ小分けに頼みました。毎回動く状態で止めるので、戻る場所を見失いません。</td></tr>
+        <tr><td>環境の前提を伝えない<small>手元で動かないものができる</small></td><td>動作環境の制約をその都度伝えました。exe化は使えないと分かった時点でやめ、記録だけ残しました。</td></tr>
+        <tr><td>「できました」を確かめずに信じる<small>動かない・要件を満たさないものが残る</small></td><td>自分で動かし、コードも読んで、気になる点を伝えました。直っていない箇所はその場で戻しました。</td></tr>
+        <tr><td>完璧な仕様を作ろうとする<small>考えているあいだ、何も生まれない</small></td><td>最初の2通のメッセージだけで始めました。細かいところは使いながら決めました。</td></tr>
+        <tr><td>作って終わりにする<small>半年後、自分でも直せなくなる</small></td><td>動作確認の仕組み、マニュアル、判断の経緯を残しました。</td></tr>
+        <tr><td>実データをそのまま渡す・資料に載せる<small>気づかないうちに社外へ出る</small></td><td>資料の画面写真はダミーの値に差し替えました。仕組みも手元で完結し、外に出ない構成です。</td></tr>
+      </tbody>
+    </table>
+    <p class="note sm">どれも特別な技術ではなく、人に仕事を頼むときの作法とほとんど同じだと思います。</p>
+  </section>
+
+  <!-- 21 付録 他のAIとの比較（1/2） -->
+  <section class="slide">
+    <div class="kicker">Appendix C · Other Tools 1/2</div>
+    <h2>ほかのAIでも、作れたのか</h2>
+    <p class="lead">コードを書くことは、いまの主要なAIならどれもできたはずです。分かれ目は、自分のPCで動かして、結果を見て、直すというループを回せるかどうかだと思います。</p>
+    <table class="grid compact wrap">
+      <thead><tr><th style="width: 40%;">AIの使い方（例）</th><th>この使い方だと、どこまでできたか</th></tr></thead>
+      <tbody>
+        <tr><td>チャットだけで使う<small>ChatGPT、Gemini、Claude（ブラウザ版）、Grok、Microsoft Copilot</small></td><td>中核の機能は作れたはずです。ただ、貼り付け、実行、エラーを書き戻す作業がすべて手作業になります。</td></tr>
+        <tr><td>サンドボックスで実行できるチャット<small>ChatGPT のデータ分析、Gemini のコード実行</small></td><td>実行がサービス側で完結するので、手元のWindowsの画面操作やローカルのファイル・Excelの読み書きには向きません。</td></tr>
+        <tr><td>エディタの補完<small>GitHub Copilot（補完）、Cursor のタブ補完、Amazon Q Developer</small></td><td>書く速さは上がりますが、実行して結果を見て直すところまでは含まれません。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 22 付録 他のAIとの比較（2/2） -->
+  <section class="slide">
+    <div class="kicker">Appendix C · Other Tools 2/2</div>
+    <h2>ほかのAIでも、作れたのか</h2>
+    <table class="grid compact wrap">
+      <thead><tr><th style="width: 40%;">AIの使い方（例）</th><th>この使い方だと、どこまでできたか</th></tr></thead>
+      <tbody>
+        <tr><td>エージェント型のツール<small>Claude Code（今回）、Cursor（Agent）、Cline、Windsurf、GitHub Copilot（エージェントモード）、Codex CLI、Gemini CLI、Devin</small></td><td>今回の作業の大半が再現できたはずです。この形のツールのあいだでは、大きな差はないと思います。</td></tr>
+        <tr><td>調べる・まとめるツール<small>NotebookLM、Deep Research（ChatGPT・Gemini）、Microsoft 365 Copilot</small></td><td>用途が違い、今回は使っていません。着手前の下調べや、できた資料の要約・想定問答づくりには使えます。</td></tr>
+      </tbody>
+    </table>
+    <p class="src">各サービスを実際に試して比べたものではなく、Claude Code で行った作業を基準に、使い方の違いを整理したものです（2026年8月時点の理解）。各サービスの現在の機能は、提供元の公開情報をご確認ください。各社名・製品名は各社の商標または登録商標で、当社は各社と提携等の関係にありません。</p>
+  </section>
+
+  <!-- 23 付録 境界線 -->
+  <section class="slide">
+    <div class="kicker">Appendix C · Boundary</div>
+    <h2>効いたのは、書く以外の作業</h2>
+    <div class="split">
+      <div>
+        <p class="sm" style="margin-bottom: 10px;">今回、Claude Code が人の手を借りずに行った作業</p>
+        <ul class="tight">
+          <li>スクリプトを実行し、確認の結果を読んで直す</li>
+          <li>exe化を試し、実行が止められる原因を切り分ける</li>
+          <li>デスクトップやスタートアップのショートカットを作る・消す</li>
+          <li>Excelを操作してマニュアルを作り、アプリを起動して画面を自動で撮る</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>どのAIでも変わらないこと</h3>
+        <p>「実行ファイルは使えない」「自動起動は使えない」といった動作環境の制約は、伝えて初めて設計に入ります。休憩の仕様を3回変えたのも、使ってみた本人の判断でした。</p>
+      </div>
+    </div>
+    <p class="note">道具の差は、実行できるかどうかに出ます。中身を決めるのは、やはり人だと思います。</p>
+  </section>
+
+  <!-- 24 付録 使いこなしの段階 -->
+  <section class="slide">
+    <div class="kicker">Appendix D · Stages</div>
+    <h2>使いこなしは、どの段階にあるか</h2>
+    <p class="lead" style="margin-bottom: 8px;">使いこなし率を測る物差しはないので、AIとの付き合い方を5つの段階に分けて振り返ります。</p>
+    <div class="tl dense xs">
+      <div class="tl-row"><span class="date">段階1</span><div><h3>聞く</h3><p>分からないことを質問する。調べものの相手として使います。</p></div></div>
+      <div class="tl-row"><span class="date">段階2</span><div><h3>書かせる</h3><p>文章やコードを作らせる。出てきたものは自分で確かめ、自分で動かします。</p></div></div>
+      <div class="tl-row"><span class="date">段階3</span><div><h3>任せる</h3><p>実行と確認まで任せ、こちらはどう動いてほしいかと、うまくいっていない点を伝える役に回ります。</p></div></div>
+      <div class="tl-row hl"><span class="date">段階4</span><div><h3>仕組みにする（今回はここ）</h3><p>くり返す作業を自動にして、決めた理由を記録に残します。動作確認・マニュアル作成・画面撮影まで組み込みました。</p></div></div>
+      <div class="tl-row"><span class="date">段階5</span><div><h3>広げる（始めたところ）</h3><p>自分だけの道具で終わらせず、ほかの人が使える形にします。この資料と利用マニュアルが、その最初の一歩です。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 25 付録 到達点 -->
+  <section class="slide">
+    <div class="kicker">Appendix D · Checklist</div>
+    <h2>数字ではなく、行動で確かめる</h2>
+    <p class="lead" style="margin-bottom: 12px;">AIをうまく使えているかは、次の6つで確かめられると思います。</p>
+    <ul class="tight xs">
+      <li><b>目的を自分の言葉で言えるか</b>　何に困っていて、どうなれば成功かを説明できること。<small>今回は、最初の2通で前回入力の保持・CSVへの積み上げ・Excelに貼る流れまで伝えていました</small></li>
+      <li><b>解き方を自分で決められるか</b>　提案をうのみにせず方式を選び、やめる判断もできること。<small>今回は、AIに書かせる案から15分ごとの入力バッチへ切り替えました</small></li>
+      <li><b>AIが知らない前提を渡せるか</b>　環境や運用の制約、これまでの経緯は外から見えません。<small>今回は「実行ファイルは使えない」「自動起動は使えない」</small></li>
+      <li><b>出てきたものを確かめられるか</b>　動かして確かめ、読んで違和感に気づけること。<small>今回は、文字の折り返しの違和感を、CSSの max-width の指定が原因だと突き止めて伝えました</small></li>
+      <li><b>渡していい情報の線引きができるか</b>　出せない情報を、渡さない・資料に載せないこと。<small>今回は、画面写真の案件名をダミーの値に差し替えました</small></li>
+      <li><b>一度きりにせず、仕組みと記録に残せるか</b>　次に触る人（半年後の自分も含めて）が困らない形にすること。<small>今回は、動作確認・マニュアル作成・画面撮影をくり返せる形にしました</small></li>
+    </ul>
+  </section>
+
+  <!-- 26 メッセージ -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">何％使えているかより、<br><span class="em">どこまで任せて、<br>どこで自分が判断するか</span>を<br>考えるのが大事だと思います。</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js?v=20261113i"></script>
+</body>
+</html>
