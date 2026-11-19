@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI／UXは誰のためのものか？</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
+<style>
+  /* この資料だけで使う部品（矢印つきの流れ・条件の表・候補の一覧） */
+  .steps.flow { gap: 34px; margin: 18px 0 26px; }
+  .steps.flow div { position: relative; padding: 18px 6px; font-size: 22px; }
+  .steps.flow div:not(:last-child)::after {
+    content: "→"; position: absolute; right: -27px; top: 50%; transform: translateY(-50%);
+    font-family: var(--font-sans); font-weight: 400; font-size: 20px; color: var(--sakura-deep);
+  }
+  .steps.flow small { font-size: 14px; letter-spacing: .05em; }
+  .steps.flow.sm div { font-size: 19px; padding: 14px 4px; }
+  .cards.one.ask h3 { font-size: 30px; }
+  table.grid.cond td { font-size: 22px; padding: 12px 18px; }
+  table.grid.cond td:first-child { width: 220px; }
+  .pick-list { display: grid; gap: 12px; }
+  .pick-list li { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 24px; color: var(--ink); }
+  .pick-list.next li { font-size: 20px; color: var(--ink-mid); }
+  .tags.big .tag { font-size: 20px; padding: 6px 18px; }
+  @media (max-width: 760px) and (orientation: portrait) {
+    .steps.flow { gap: 8px; grid-template-columns: repeat(3, 1fr); }
+    .steps.flow div, .steps.flow.sm div { font-size: 14px; padding: 10px 4px; }
+    .steps.flow div::after { display: none; }
+    .steps.flow small { font-size: 11px; }
+    .cards.one.ask h3 { font-size: 18px; }
+    table.grid.cond td { font-size: 14px; padding: 8px 10px; }
+    table.grid.cond td:first-child { width: auto; }
+    .pick-list li { font-size: 15px; }
+    .pick-list.next li { font-size: 14px; }
+    .tags.big .tag { font-size: 13px; padding: 4px 10px; }
+  }
+</style>
+</head>
+<body class="white" data-title="UI／UXは誰のためのものか">
+<div class="deck">
+
+  <!-- 1 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · 2026.03</div>
+    <h1>UI／UXは<br><span class="em">誰のため</span>の<br>ものか？</h1>
+    <p class="sub">AI時代のEC設計の再定義</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">About Me</div>
+    <h2>自己紹介</h2>
+    <div class="profile">
+      <div class="id">
+        <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+        <div class="name">吉田 勝大</div>
+        <div class="roman">Yoshida Katsuhiro</div>
+        <div class="role">株式会社ヤエノワ<br>代表取締役</div>
+      </div>
+      <div>
+        <ul>
+          <li>ECサイトと他システムの連携の、要件定義・設計を担当</li>
+          <li>業務システムやECサイトの運用・保守を担当</li>
+          <li>基幹システムとEC・OMSの<b>連携設計</b>が専門（SAP連携など）</li>
+          <li>2025年4月にヤエノワを設立。要件定義・設計を軸に、生成AI活用・アプリ開発まで</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">要件定義</span><span class="tag">システム設計</span><span class="tag">基幹システム連携</span><span class="tag">EC・OMS</span><span class="tag">PM</span><span class="tag">生成AI</span><span class="tag">Shopify</span><span class="tag">生成AIパスポート</span>
+        </div>
+      </div>
+    </div>
+    <p class="src">yaenowa.co.jp</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">01 · What Is UX 1/4</div>
+    <h2>UXと聞いて、何を思い浮かべますか</h2>
+    <p class="lead">ECサイトなら、たとえばこんなことだと思います</p>
+    <div class="cards three roomy">
+      <div class="card"><div class="who">探す</div><h3>迷わずに探せる</h3></div>
+      <div class="card"><div class="who">比べる</div><h3>比べやすい</h3></div>
+      <div class="card"><div class="who">買う</div><h3>ストレスなく買える</h3></div>
+    </div>
+    <p class="note">今日は、このUI／UXが誰のためのものかを考えます</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">01 · What Is UX 2/4</div>
+    <h2>UXが目指していること</h2>
+    <div class="middle">
+      <div class="trend"><span class="no">01</span><div><h3>人が迷わないようにする</h3></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>人が理解しやすくする</h3></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>人がスムーズに行動できるようにする</h3></div></div>
+    </div>
+    <p class="note">どれも、人間が画面を触ることを前提にしています</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">01 · What Is UX 3/4</div>
+    <h2>UXとUIの関係</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">UX</div><h3>体験の全体</h3><p>知ってから行動し、何かを感じるまで</p></div>
+      <div class="card"><div class="who">UI</div><h3>体験との接点</h3><p>画面や操作、見た目など、人が直接触れるところ</p></div>
+    </div>
+    <div class="steps flow sm">
+      <div>知る</div><div>気になる</div><div>調べる</div><div>比較する</div><div>買う</div><div>使う</div>
+    </div>
+    <p class="note" style="margin-top:0">UXは、この時間の流れに沿って設計するものです</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">01 · What Is UX 4/4</div>
+    <h2>その前提は、いまも成り立っていますか</h2>
+    <p class="lead">人が探して、人が比べて、人が選ぶ。本当に人がそのまま決めているでしょうか</p>
+    <div class="cards pair">
+      <div class="card"><div class="who">AIがすること</div><h3>要約して、返信文を整える</h3><p>メールやSlack、LINEのやり取りを、AIが要約し、返信の文章も整えます</p></div>
+      <div class="card"><div class="who">人がすること</div><h3>確認して、最後に決める</h3><p>人は中身を確かめて、最終的な判断をするだけになってきていると思います</p></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">02 · Where UX Happens 1/4</div>
+    <h2>そのUX、本当に画面の中で起きていますか</h2>
+    <p class="lead">いま起きているのは、やり取りの間にAIが入る変化だと思います</p>
+    <div class="steps flow">
+      <div class="pc">人<small>伝える</small></div>
+      <div>AI<small>文章を整える</small></div>
+      <div>AI<small>要約する</small></div>
+      <div class="pc">人<small>確認して決める</small></div>
+    </div>
+    <p class="note">人と人のやり取りでも、間でAIとAIがやり取りする形になってきていると思います</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">02 · Where UX Happens 2/4</div>
+    <h2>ECでも同じことが起きています</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">これまで</div><h3>人が画面で探して、比べて、選ぶ</h3><p>UXは、ECサイトの画面の中にありました</p></div>
+      <div class="card"><div class="who">これから</div><h3>AIが探して比べ、人は受け取る</h3><p>UXの多くが、ECサイトの画面の外で起きるようになると思います</p></div>
+    </div>
+    <p class="note">UXが起きる場所が変わってきています</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">02 · Where UX Happens 3/4</div>
+    <h2>では、何がUXをつくっているのか</h2>
+    <p class="lead">AIを通して買い物をするときの流れです</p>
+    <div class="steps flow sm">
+      <div class="pc">ユーザー</div><div>AI</div><div>API</div><div>データ</div><div>AI</div><div class="pc">ユーザー</div>
+    </div>
+    <p class="note">人が見る画面よりも、AIが読むAPIとデータの出来が、体験を左右すると思います</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">02 · Where UX Happens 4/4</div>
+    <h2>その商品、AIに理解されていますか</h2>
+    <div class="cards three roomy">
+      <div class="card"><div class="who">属性</div><h3>属性があいまい</h3><p>サイズや素材が、AIに読める形になっていない</p></div>
+      <div class="card"><div class="who">欠損</div><h3>データが欠けている</h3><p>必要な項目が、そもそも入っていない</p></div>
+      <div class="card"><div class="who">意味</div><h3>意味がそろわない</h3><p>同じことを指す値が、商品によって違う書き方になっている</p></div>
+    </div>
+    <p class="note">こうした商品は、AIから見ると存在しない商品になってしまいます</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 1/6</div>
+    <h2>では、UXはもう要らないのでしょうか</h2>
+    <p class="lead">ここまでの話を進めると、こういう仮説が立ちます</p>
+    <div class="middle">
+      <div class="trend"><span class="no">01</span><div><h3>意思決定はAIがする</h3></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>UIは人に見られない</h3></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>UXが入り込む余地がない</h3></div></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 2/6</div>
+    <h2>一度、この仮説を受け入れてみます</h2>
+    <div class="cards three pair">
+      <div class="card"><div class="who">選ぶ</div><h3>商品はAIが選ぶ</h3></div>
+      <div class="card"><div class="who">比べる</div><h3>比較もAIがする</h3></div>
+      <div class="card"><div class="who">答え</div><h3>最適な答えが示される</h3></div>
+    </div>
+    <p class="lead" style="margin:40px 0 4px">これまでのUXは、丸ごと飛ばされることになります</p>
+    <div class="cards one">
+      <div class="card"><h3>でも、本当にそれで買いますか？</h3></div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 3/6</div>
+    <h2>条件を満たしているのに、ずれるAIの提案</h2>
+    <div class="steps flow sm" style="margin:0 0 18px">
+      <div class="pc">人</div><div>AI</div><div>EC</div><div>AI</div><div class="pc">人</div>
+    </div>
+    <p class="lead">スニーカーを探して、AIに次の条件を伝えました</p>
+    <table class="grid cond">
+      <tr><td>価格帯</td><td>15,000〜25,000円</td></tr>
+      <tr><td>サイズ</td><td>27.5cm、足幅はやや広め（2E相当）</td></tr>
+      <tr><td>クッション</td><td>柔らかめ</td></tr>
+      <tr><td>用途</td><td>街履き（長い時間歩くこともある）</td></tr>
+      <tr><td>カラー</td><td>白×黒</td></tr>
+    </table>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 4/6</div>
+    <h2>AIの回答</h2>
+    <div class="split">
+      <div>
+        <p class="lead" style="margin-bottom:16px">おすすめ</p>
+        <ul class="pick-list">
+          <li>HOKA CLIFTON 10 WIDE</li>
+          <li>New Balance Fresh Foam X 1080 v14</li>
+          <li>New Balance Fresh Foam X 880v15 2E/4E</li>
+        </ul>
+      </div>
+      <div>
+        <p class="lead" style="margin-bottom:16px">次点</p>
+        <ul class="pick-list next">
+          <li>Nike Air Max 90</li>
+          <li>Nike Air Max Excee</li>
+          <li>On Cloud 6</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">どれも、伝えた条件には合っている候補です</p>
+  </section>
+
+  <!-- 15 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 5/6</div>
+    <h2>僕が欲しかったもの</h2>
+    <div class="cards one roomy ask">
+      <div class="card"><div class="who">本当に欲しかったスニーカー</div><h3>Nike Air Jordan 1 MID</h3></div>
+    </div>
+    <p class="note">AIが挙げた候補の中には、入っていませんでした</p>
+  </section>
+
+  <!-- 16 -->
+  <section class="slide">
+    <div class="kicker">03 · Is UX Unnecessary 6/6</div>
+    <h2>人は欲しいものを選びます</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">人の選び方</div><h3>欲しいと思えるかで選ぶ</h3><p>モデルやカルチャー、持つことの価値、買ったあとの体験で選びます</p></div>
+      <div class="card"><div class="who">AIの選び方</div><h3>条件に合うかで選ぶ</h3><p>履きやすさ、クッション、用途、コスパなどの条件から、合理的に選びます</p></div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="slide">
+    <div class="kicker">04 · Conclusion 1/2</div>
+    <h2>結論</h2>
+    <div class="middle">
+      <div class="trend"><span class="no">01</span><div><h3>意思決定を、AIが担い始めていると思います</h3></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>UXの多くは、UIの外に移ってきていると思います</h3></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>選ばれるかどうかは、APIとデータで決まっていくと思います</h3></div></div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="slide">
+    <div class="kicker">04 · Conclusion 2/2</div>
+    <h2>人のUXとAIのUX</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">人のUX</div><h3>納得するための体験</h3><p>小さくなっていくと思います</p></div>
+      <div class="card"><div class="who">AIのUX</div><h3>選ばれるための構造</h3><p>こちらが主戦場になると思います</p></div>
+    </div>
+    <div class="steps flow sm">
+      <div>知る</div><div>気になる</div><div class="pc">調べる<small>AI</small></div><div class="pc">比較する<small>AI</small></div><div>買う</div><div>使う</div>
+    </div>
+    <p class="note" style="margin-top:0">調べて比べるところは、AIが受け持つようになっていくと思います</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js?v=20261113i"></script>
+</body>
+</html>

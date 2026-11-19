@@ -13,7 +13,11 @@
 | 2026-09-12 | CraftStage LT会 ／ 富士通UIS（川崎） | 人を笑顔にして、悲しむ人を生まないシステム設計（宮本佳林のCloudflare登壇の話） | [スライド](2026-09/index.html) ／ [Instagram](https://www.instagram.com/p/DdV9Injx5SM/) |
 | 2026-08-22 | CraftStage LT会 ／ 富士通UIS（川崎） | 日報を、あとで書かない。（自社の日報入力ツールの紹介） | [スライド](2026-08/index.html) ／ [Instagram](https://www.instagram.com/p/DcVhxF6R_Zo/) |
 | 2026-07-18 | CraftStage LT会 ／ 富士通UIS（川崎） | AIは業務システムの中から浸透する | [スライド](2026-07/index.html) |
-| 2026-01-13 | CraftStage LT会 ／ 富士通UIS（川崎） | イーロン・マスクの“シンギュラリティ”発言 | [Instagram](https://www.instagram.com/p/DTc-i4cEWz-/) |
+| 2026-06-06 | CraftStage LT会 ／ 富士通UIS（川崎） | AIと要件再定義して残したADR（Claudeの業務活用事例） | [スライド](2026-06/index.html) |
+| 2026-04-11 | CraftStage LT会 ／ 富士通UIS（川崎） | 対話式日記ツールの設計（書く日記から、対話で残す日記へ） | [スライド](2026-04/index.html) |
+| 2026-03-21 | CraftStage LT会 ／ 富士通UIS（川崎） | UI／UXは誰のためのものか？（AI時代のEC設計の再定義） | [スライド](2026-03/index.html) |
+| 2026-01-10 | CraftStage LT会 ／ 富士通UIS（川崎） | イーロン・マスクの“シンギュラリティ”発言 | [スライド](2026-01/index.html) ／ [Instagram](https://www.instagram.com/p/DTc-i4cEWz-/) |
+| 2025-12-01 | CraftStage LT会 ／ 富士通UIS（川崎） | あの黒タイツみたいなスーツ、覚えてますか？（サイズ推定AIの今） | [スライド](2025-12/index.html) ／ [台本](2025-12/script.md) |
 | 2025-10-01 | CraftStage AI活用アイデアソン ／ 富士通UIS（川崎） | 3文で「自分専用AI」をつくってみよう | [Instagram](https://www.instagram.com/p/DPi-WXxkZW-/) |
 
 資料は発表ごとに `YYYY-MM/` のフォルダに入れます。発表したら、この表とトップの `index.html` に1件足します。台本を入れるときは、話す本文だけを `YYYY-MM/script.md` にします。注意書きや【】の指示は入れません。
