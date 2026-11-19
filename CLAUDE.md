@@ -7,7 +7,7 @@
 - `_theme/` を変えたら、各資料の `deck.css?v=` / `deck.js?v=` の日付を更新する（GitHub Pages は10分ほどキャッシュされ、スマホに古い表示が残るため）
 - 5分のLTが基本。台本は1分あたり約310字で時間配分を書く
 - 台本は、話す本文だけを `YYYY-MM/script.md` に入れる（リポジトリが公開なので GitHub 上では誰でも読める。GitHub Pages からは `.github/workflows/static.yml` で消している）。社名・業界の扱いなどの注意書きや【】の本人への指示は入れず、それらを含む版は発表者に別に渡す。その版をリポジトリのフォルダに置くときは `*.private.md` という名前にする（`.gitignore` で除外している）
-- `main` に入ると GitHub Pages（https://yaenowa-yoshida.github.io/ailt-presentations/）に自動で公開される
+- `main` に入ると GitHub Pages（https://presentations.yaenowa.co.jp/ 。旧URL https://yaenowa-yoshida.github.io/ailt-presentations/ からは転送される）に自動で公開される。カスタムドメインは Settings → Pages で設定し、DNS は CNAME `presentations` → `yaenowa-yoshida.github.io`
 - 発表したら、README の「登壇実績」とトップの `index.html`（登壇実績の一覧）に1件足す。資料は `YYYY-MM/` に入れるだけでよい
 
 ## 文章

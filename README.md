@@ -2,7 +2,7 @@
 
 株式会社ヤエノワのAI関連LT（ライトニングトーク）資料置き場。
 
-公開ページ（登壇実績の一覧）：https://yaenowa-yoshida.github.io/ailt-presentations/
+公開ページ（登壇実績の一覧）：https://presentations.yaenowa.co.jp/
 
 ## 登壇実績
 
