@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIと要件を再定義して残したADR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
+<style>
+  /* この資料だけで使う部品（目立たせるカード・流れの図・質問の例） */
+  .card.hl { border-color: var(--sakura-mid); box-shadow: 0 10px 26px var(--shadow-raised); }
+  .card.hl .who { color: var(--sakura-deep); }
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 18px; margin: auto 0; }
+  .flow .box { background: var(--surface-raised); border: .5px solid var(--paper-dark); padding: 30px 22px; text-align: center; }
+  .flow .box.pc { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .flow .box h3 { font-size: 26px; margin-bottom: 10px; word-break: auto-phrase; }
+  .flow .box.pc h3, .flow .box.pc p { color: #fff; }
+  .cards.pair p { word-break: auto-phrase; }
+  .steps.big4 div { font-size: 28px; padding: 30px 6px; }
+  .flow .box p { font-size: 17px; line-height: 1.7; }
+  .flow .arrow { font-size: 34px; color: var(--sakura-deep); }
+  .qa { display: grid; gap: 22px; margin: auto 0; }
+  .qa .q { border-left: 4px solid var(--sakura-mid); padding: 14px 0 14px 26px; }
+  .qa .q .who { font-size: 16px; color: var(--ink-light); letter-spacing: .08em; margin-bottom: 6px; }
+  .qa .q p { font-family: var(--font-mincho); font-size: 30px; line-height: 1.6; color: var(--ink); word-break: auto-phrase; }
+  @media (max-width: 760px) {
+    .steps.big4 div { font-size: 16px; padding: 12px 4px; }
+    .flow { grid-template-columns: 1fr; gap: 8px; }
+    .flow .arrow { transform: rotate(90deg); text-align: center; font-size: 24px; }
+    .flow .box { padding: 16px; }
+    .flow .box h3 { font-size: 18px; }
+    .flow .box p { font-size: 14px; }
+    .qa .q p { font-size: 18px; }
+    .qa .q .who { font-size: 12px; }
+  }
+</style>
+</head>
+<body class="white" data-title="AIと要件を再定義して残したADR">
+<div class="deck">
+
+  <!-- 1 -->
+  <section class="slide title sakura-bg sub2">
+    <div class="kicker">AI Lightning Talk · 2026.06</div>
+    <h1>AIと要件を<br>再定義して<br>残した<span class="em">ADR</span></h1>
+    <p class="sub">Claude の業務活用事例の紹介</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">About Me</div>
+    <h2>自己紹介</h2>
+    <div class="profile">
+      <div class="id">
+        <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+        <div class="name">吉田 勝大</div>
+        <div class="roman">Yoshida Katsuhiro</div>
+        <div class="role">株式会社ヤエノワ<br>代表取締役</div>
+      </div>
+      <div>
+        <ul>
+          <li>ECサイトと他システムの連携の、要件定義・設計を担当</li>
+          <li>業務システムやECサイトの運用・保守を担当</li>
+          <li>基幹システムとEC・OMSの<b>連携設計</b>が専門</li>
+          <li>2025年4月にヤエノワを設立。要件定義・設計を軸に、生成AI活用・アプリ開発まで</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">要件定義</span><span class="tag">システム設計</span><span class="tag">基幹システム連携</span><span class="tag">EC・OMS</span><span class="tag">PM</span><span class="tag">生成AI</span><span class="tag">Shopify</span><span class="tag">生成AIパスポート</span>
+        </div>
+      </div>
+    </div>
+    <p class="src">yaenowa.co.jp</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">01 · Project</div>
+    <h2>あるプロジェクト</h2>
+    <p class="lead">ECと他のシステムをつなぐ連携の案件です。<br>ECとのあいだで、次のような情報をやり取りします</p>
+    <div class="steps big4">
+      <div>商品情報</div>
+      <div>在庫情報</div>
+      <div>受注情報</div>
+      <div>出荷情報</div>
+    </div>
+    <p class="note">連携の決めごとの多くは、私の頭の中にあります</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">02 · Launch</div>
+    <p class="big-quote">リリースを迎えて、<br>私はこのプロジェクトを<br><span class="em">離れます</span>。</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">03 · Hand Over</div>
+    <h2>プロジェクトのノウハウの残し方</h2>
+    <div class="cards three roomy">
+      <div class="card"><div class="who">1</div><h3>ドキュメント化</h3><p>設計書や手順書にまとめます</p></div>
+      <div class="card"><div class="who">2</div><h3>口頭で引き継ぐ</h3><p>後任の人に話して伝えます</p></div>
+      <div class="card hl"><div class="who">3　今日はここ</div><h3>ADR</h3><p>設計の判断と、その背景を記録します</p></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">04 · What Is ADR</div>
+    <h2>ADR（Architecture Decision Record）とは</h2>
+    <div class="cards one">
+      <div class="card"><h3>ソフトウェアアーキテクチャやシステム設計で、「なぜその設計や技術を選んだのか」という背景と意思決定の履歴を、簡潔に記録するドキュメントです</h3></div>
+    </div>
+    <p class="note sm">Michael Nygard の記事「Documenting Architecture Decisions」では、タイトル・状況（Context）・決定・状態（Status）・結果（Consequences）の5つの節で書く形が示されています</p>
+    <p class="src">Michael Nygard「Documenting Architecture Decisions」2011-11-15 https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions （2026-11-19確認）</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">05 · Problem</div>
+    <h2>ADRを今から書くときの困りごと</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">書くのは</div><h3>今から作るのは面倒です</h3><p>リリースの後に、判断の背景を一から文章にするのは手間がかかります</p></div>
+      <div class="card"><div class="who">話すのは</div><h3>対話なら昔話のように出てきます</h3><p>聞かれれば、当時の事情を思い出して話せます</p></div>
+    </div>
+    <p class="note">それなら、対話で引き出せばいいと考えました</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">06 · Interviewer</div>
+    <h2>Claude にインタビュアーになってもらう</h2>
+    <p class="lead">設計書を Claude に渡して、設計の背景を質問してもらいました</p>
+    <div class="flow">
+      <div class="box"><h3>頭の中のノウハウ</h3><p>判断の理由や制約は、書かれずに人の頭の中にある</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="box pc"><h3>対話</h3><p>Claude が質問し、私が答える</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="box"><h3>ADR</h3><p>答えを判断の記録としてまとめる</p></div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">07 · Risk</div>
+    <h2>気をつけたリスクと対策</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">リスク</div><h3>案件の中身が外に出る</h3><p>Anthropic のサーバーに、設計判断の背景・業務フロー・システム構成が送信されます</p></div>
+      <div class="card hl"><div class="who">対策</div><h3>固有名詞をマスキングする</h3><p>客先名やシステム名などの固有名詞を伏せてから渡します</p></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">08 · Questions</div>
+    <h2>Claude からの質問の例</h2>
+    <div class="qa">
+      <div class="q"><div class="who">1つ目　判断の背景を引き出す</div><p>「なぜ他の選択肢ではなく、この設計を選んだのですか？」</p></div>
+      <div class="q"><div class="who">2つ目　制約を引き出す</div><p>「この設計で、絶対に変えられない制約は何でしたか？」</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>まとめ</h2>
+    <div class="middle">
+      <div class="trend"><span class="no">01</span><div><h3>対話でノウハウを引き出せます</h3><p>書くのは面倒でも、聞かれれば話せます</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>AIがインタビュアーになります</h3><p>設計書を渡して、背景を質問してもらう。固有名詞は伏せてから渡す</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>答えをADRに残します</h3><p>判断の理由と制約を、後任の人が読める形にします</p></div></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">一言で答えられない問いほど、<br><span class="em">ADRに残す価値がある</span><br>と思います。</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js?v=20261113i"></script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あの黒タイツみたいなスーツ、覚えてますか？</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
+<style>
+  /* この資料だけで使う部品（リンクのカード・寸法の表・例の注記） */
+  .lead { font-size: 22px; line-height: 1.75; margin: -12px 0 22px; color: var(--ink-mid); }
+  .linkcard { display: block; background: var(--surface-raised); border: .5px solid var(--paper-dark); border-left: 4px solid var(--accent); padding: 26px 32px; text-decoration: none; color: var(--ink); box-shadow: 0 8px 24px var(--shadow-raised); }
+  .linkcard .who { font-size: 14px; letter-spacing: .2em; color: var(--accent-gold); }
+  .linkcard h3 { font-size: 26px; margin: 8px 0 10px; color: var(--accent); }
+  .linkcard p { font-size: 18px; line-height: 1.7; color: var(--ink-mid); }
+  .linkcard .url { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 15px; color: var(--ink-light); margin-top: 10px; word-break: break-all; }
+  .ex { display: inline-block; font-size: 14px; letter-spacing: .2em; color: #fff; background: var(--accent-cool); padding: 3px 12px; margin-bottom: 14px; align-self: flex-start; }
+  .spec { display: grid; grid-template-columns: max-content 1fr; column-gap: 32px; row-gap: 10px; font-size: 24px; line-height: 1.5; }
+  .spec dt { font-family: var(--font-mincho); font-weight: 700; color: var(--accent); }
+  .spec dd { color: var(--ink-mid); }
+  .spec dd small { font-size: 17px; color: var(--ink-light); margin-left: 8px; }
+  .reveal-q { font-family: var(--font-mincho); font-size: 30px; line-height: 1.8; color: var(--ink-mid); }
+  .reveal-a { font-family: var(--font-mincho); font-weight: 700; font-size: 64px; color: var(--accent); letter-spacing: .12em; margin: 14px 0 4px; }
+  .steps.big div { font-size: 24px; padding: 22px 8px; }
+  .steps.big small { font-size: 15px; line-height: 1.6; }
+  table.grid td.ok { color: var(--accent); font-weight: 700; white-space: nowrap; }
+  table.grid td.ng { color: var(--accent-cool); font-weight: 700; white-space: nowrap; }
+  @media (max-width: 760px) and (orientation: portrait) {
+    .lead { font-size: 15px; margin: -8px 0 14px; }
+    .spec { font-size: 16px; column-gap: 16px; }
+    .spec dd small { display: block; margin-left: 0; font-size: 13px; }
+    .reveal-q { font-size: 18px; }
+    .reveal-a { font-size: 38px; }
+    .linkcard { padding: 18px; }
+    .linkcard h3 { font-size: 19px; }
+    .linkcard p { font-size: 14px; }
+    .linkcard .url { font-size: 12px; }
+    .steps.big div { font-size: 15px; padding: 12px 4px; }
+    .steps.big small { font-size: 12px; }
+    table.grid td.ok, table.grid td.ng { white-space: normal; }
+  }
+</style>
+</head>
+<body data-title="あの黒タイツみたいなスーツ">
+<div class="deck">
+
+  <!-- 1 表紙 -->
+  <section class="slide title sakura-bg">
+    <div class="kicker">AI Lightning Talk · 2025.12</div>
+    <h1>あの黒タイツみたいな<br>スーツ、<br><span class="em">覚えてますか？</span></h1>
+    <p class="sub">サイズ推定AIの今</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 ZOZOSUIT -->
+  <section class="slide">
+    <div class="kicker">01 · ZOZOSUIT</div>
+    <h2>「230万枚以上を無料配布」と報じられたゾゾスーツ</h2>
+    <p class="lead">全身に水玉模様の入った、あの黒いボディスーツです</p>
+    <a class="linkcard" href="https://corp.zozo.com/news/20201029-12001/" target="_blank" rel="noopener">
+      <div class="who">ZOZO · 2020年10月29日のお知らせ</div>
+      <h3>旧ZOZOSUIT と ZOZOSUIT 2 については、こちらのお知らせをご覧ください</h3>
+      <p>旧ZOZOSUIT の配布期間は 2018年4月27日〜2019年10月31日と書かれています</p>
+      <div class="url">https://corp.zozo.com/news/20201029-12001/</div>
+    </a>
+    <p class="src">配布枚数は FASHIONSNAP「230万枚以上を無料配布したゾゾスーツ、結局どうなった？」（最終更新 2024-04-23）の見出し。配布期間は ZOZO のお知らせ（2020-10-29）。いずれも 2026-11-19 確認</p>
+  </section>
+
+  <!-- 3 期待 -->
+  <section class="slide">
+    <div class="kicker">01 · ZOZOSUIT</div>
+    <h2>家で、自分の体を3Dで測れるようになりました</h2>
+    <div class="steps big">
+      <div>2018年<small>家で自分の体を<br>3Dで測る</small></div>
+      <div>体のデータ<small>そのデータをもとに<br>服のサイズを自動で選ぶ</small></div>
+      <div class="pc">サイズ問題が解決<small>ECで服を買うときの<br>サイズの不安がなくなる</small></div>
+    </div>
+    <p class="note">…と、多くの人が期待したと思います</p>
+    <p class="src">FASHIONSNAP（最終更新 2024-04-23）、ZOZO のお知らせ（2020-10-29）。2026-11-19 確認</p>
+  </section>
+
+  <!-- 4 終了 -->
+  <section class="slide">
+    <div class="kicker">01 · ZOZOSUIT</div>
+    <h2>初代のゾゾスーツは、2022年に終了しています</h2>
+    <ul>
+      <li>初代のゾゾスーツは、2022年6月にサービスを終了しました</li>
+      <li>では、ECで服を買うときのサイズの問題は、解決したのでしょうか</li>
+      <li>サイズ選びは、いまも運試しのままなのでしょうか</li>
+    </ul>
+    <p class="note">そうではないと思います。スーツが表に出なくなった裏で、ECのサイズ推定は進んできたと思います</p>
+    <p class="src">FASHIONSNAP「230万枚以上を無料配布したゾゾスーツ、結局どうなった？」（最終更新 2024-04-23、2026-11-19 確認）。後継の ZOZOSUIT 2 は 2020年に発表されています（ZOZO のお知らせ 2020-10-29）</p>
+  </section>
+
+  <!-- 5 全体像 -->
+  <section class="slide">
+    <div class="kicker">02 · How It Works</div>
+    <h2>サイズ推定AIは何をしているのか</h2>
+    <div class="steps big">
+      <div>ベクトル化<small>体の寸法と<br>アイテムの形を数値にする</small></div>
+      <div>Fit &amp; Gap<small>物理的な差を<br>計算する</small></div>
+      <div class="pc">成否を学習<small>好みのフィット感、ブランドのクセ、<br>過去の購入と返品</small></div>
+    </div>
+    <p class="note">AIが本領を発揮するのは、3つめの学習の部分です。ここから靴を例に順に見ていきます</p>
+  </section>
+
+  <!-- 6 身体ベクトル -->
+  <section class="slide">
+    <div class="kicker">02 · Step 1</div>
+    <h2>体の寸法を「身体ベクトル」にまとめる</h2>
+    <span class="ex">説明のための例</span>
+    <dl class="spec">
+      <dt>足長</dt><dd>25.5cm</dd>
+      <dt>足幅</dt><dd>やや細め<small>D〜C相当</small></dd>
+      <dt>甲</dt><dd>やや低め</dd>
+      <dt>つま先の形</dt><dd>ラウンド</dd>
+      <dt>かかと</dt><dd>細め</dd>
+    </dl>
+    <p class="note">足首の柔らかさや、クッションの硬さの好みといった、体感の好みも含めます</p>
+  </section>
+
+  <!-- 7 アイテムベクトル -->
+  <section class="slide">
+    <div class="kicker">02 · Step 2</div>
+    <h2>靴の特徴を「アイテムベクトル」にまとめる</h2>
+    <span class="ex">説明のための例</span>
+    <dl class="spec">
+      <dt>足長の内寸</dt><dd>26.0cm</dd>
+      <dt>足幅</dt><dd>やや細め</dd>
+      <dt>甲</dt><dd>標準〜低め</dd>
+      <dt>つま先</dt><dd>ややシャープ</dd>
+    </dl>
+    <p class="note">アッパーの硬さ、つま先の形、フィット圧など、履き心地に関わる作りも数値にします</p>
+  </section>
+
+  <!-- 8 ブランドのクセ -->
+  <section class="slide">
+    <div class="kicker">02 · Step 2</div>
+    <h2>ブランドやモデルごとのクセも数値にして持つ</h2>
+    <span class="ex">説明のための例</span>
+    <table class="grid compact">
+      <tr><th style="white-space:nowrap">ブランド</th><th>クセの例</th></tr>
+      <tr><td>NIKE</td><td>やや細身でタイト、前寄りの重心</td></tr>
+      <tr><td>PUMA</td><td>細身で甲が低め。モデルによる差が大きい</td></tr>
+      <tr><td>adidas</td><td>シリーズごとに傾向が分かれる。クラシック系は柔らかい細身、スタンスミス系は標準でクセが少ない、ライバルリーやフォーラムなどのハイカット系は窮屈に感じやすい、といったクセ</td></tr>
+    </table>
+    <p class="note sm">サイズ推定AIは、こうしたモデルごとの違いを数値として持っておきます</p>
+  </section>
+
+  <!-- 9 Fit & Gap -->
+  <section class="slide">
+    <div class="kicker">02 · Step 3</div>
+    <h2>体と靴の差を計算する（Fit &amp; Gap）</h2>
+    <span class="ex">説明のための例</span>
+    <dl class="spec">
+      <dt>足長の差</dt><dd>26.0 − 25.5 = 0.5cm<small>許容の範囲</small></dd>
+      <dt>足幅</dt><dd>ほぼ一致</dd>
+      <dt>甲</dt><dd>一致</dd>
+      <dt>つま先</dt><dd>少しタイト<small>計算はできないが、形の差として△</small></dd>
+    </dl>
+    <p class="note">ここまではAIがなくてもできる計算です。これだけでは「履いたら合わなかった」はなくなりません</p>
+  </section>
+
+  <!-- 10 感覚のバイアス -->
+  <section class="slide">
+    <div class="kicker">02 · Step 4</div>
+    <h2>数字に出ない「体感」を推定して補正する</h2>
+    <div class="cards pair compact">
+      <div class="card">
+        <div class="who">感覚のずれ</div>
+        <h3>アッパーが硬い靴</h3>
+        <p>実際の寸法より窮屈に感じることがある</p>
+      </div>
+      <div class="card">
+        <div class="who">作りの影響</div>
+        <h3>クッションが硬い靴</h3>
+        <p>同じ寸法でも、圧迫感が増すことがある</p>
+      </div>
+    </div>
+    <p class="note">こうした人の感じ方のずれを推定して、Fit &amp; Gap の数値を体感に合わせて補正します</p>
+  </section>
+
+  <!-- 11 Success/Fail -->
+  <section class="slide">
+    <div class="kicker">02 · Step 5</div>
+    <h2>過去の購入と返品から、成否を学習する</h2>
+    <span class="ex">説明のための例（足長25.5cm・足幅やや細めの人の履歴）</span>
+    <table class="grid small">
+      <tr><th>買った靴</th><th>結果</th><th>感想</th><th>AIが覚えること</th></tr>
+      <tr><td>NIKE Air Force 1　25.5cm</td><td class="ok">成功</td><td>つま先が少し当たるが、幅はよい</td><td>つま先が少し当たるのは許せる</td></tr>
+      <tr><td>PUMA レディース　25.0cm</td><td class="ng">失敗</td><td>つま先はよいが、足首が少し当たる</td><td>足首が作りで圧迫されるのはだめ</td></tr>
+      <tr><td>adidas ガゼル　25.5cm</td><td class="ok">大成功</td><td>全体的に完璧</td><td>柔らかいアッパーと丸いつま先は相性がよい</td></tr>
+      <tr><td>adidas ライバルリー　25.5cm</td><td class="ng">失敗</td><td>つま先が当たり、クッションも窮屈</td><td>硬いアッパーとクッションの組み合わせは窮屈</td></tr>
+    </table>
+    <p class="note sm">この人だけの好みを覚えて、次の靴のおすすめに使います</p>
+  </section>
+
+  <!-- 12 予測 -->
+  <section class="slide">
+    <div class="kicker">02 · Step 6</div>
+    <h2>次の靴の「ちょうどいいサイズ」を予測する</h2>
+    <div class="steps big">
+      <div>ベクトル化<small>体の寸法と<br>アイテムの形</small></div>
+      <div>Fit &amp; Gap<small>物理的な差を計算</small></div>
+      <div class="pc">成否を学習<small>好みのフィット感、<br>ブランドのクセ</small></div>
+    </div>
+    <p class="lead" style="margin-top:12px">初めて買うブランドでも「25.5cmだと足首が当たるので、26.0cmにしましょう」と返せます</p>
+  </section>
+
+  <!-- 13 サービス -->
+  <section class="slide">
+    <div class="kicker">03 · Services</div>
+    <h2>サイズ推定は、すでにECで使われています</h2>
+    <div class="cards three" style="align-items:start">
+      <div class="card"><div class="who">unisize</div><h3>サイズのレコメンド</h3><p>ECで洋服を買うときに、体に合ったサイズをすすめる</p></div>
+      <div class="card"><div class="who">Virtusize</div><h3>AIのサイズレコメンド</h3><p>ファッションEC向け。返品を減らし、購入につなげるとうたっています</p></div>
+      <div class="card"><div class="who">True Fit</div><h3>サイズとフィットの推奨</h3><p>実際の購入と返品の結果をもとに、サイズとフィットを案内する</p></div>
+    </div>
+    <p class="note sm">代表的なサービスです。アパレルの外では、どうでしょうか</p>
+    <p class="src">CommercePick の unisize のサービス資料ページ、Virtusize 公式サイト、True Fit 公式サイト（いずれも 2026-11-19 確認）</p>
+  </section>
+
+  <!-- 14 一発勝負 -->
+  <section class="slide">
+    <div class="kicker">04 · Beyond Apparel</div>
+    <h2>アパレルの外へも広がっていくと思います</h2>
+    <p class="reveal-q">サイズ選びに失敗が許されない、一発勝負の買い物。<br>それは、</p>
+    <p class="reveal-a">婚約指輪</p>
+    <p class="reveal-q">ではないでしょうか。</p>
+  </section>
+
+  <!-- 15 指輪の未来 -->
+  <section class="slide">
+    <div class="kicker">04 · Beyond Apparel</div>
+    <h2>指輪のサイズも、AIが推定できるかもしれません</h2>
+    <div class="cards pair compact">
+      <div class="card">
+        <div class="who">いま</div>
+        <h3>本人が自分で選ぶ前提</h3>
+        <p>自分の体の寸法、購入履歴、好みをもとにサイズを推定する</p>
+      </div>
+      <div class="card">
+        <div class="who">これから</div>
+        <h3>贈る側を支える</h3>
+        <p>左薬指の号数は本人も知らないことが多いと思います。サプライズにしたいと聞けない。そこをAIが助ける</p>
+      </div>
+    </div>
+    <p class="note">好みや体格から「左薬指は9.5号、細身のプラチナの一粒石」と<br>教えてくれる未来が来るかもしれません</p>
+  </section>
+
+  <!-- 16 サイズが不安な領域 -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>サイズが不安な買い物は、ほかにもあります</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>服、靴</h3><p>サイズ推定のサービスが、すでにECで使われています</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>帽子、メガネ、アクセサリー、手袋</h3><p>同じ考え方が広がっていく先だと思います</p></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>婚約指輪</h3><p>失敗できない大事な買い物も、支えられるようになるかもしれません</p></div></div>
+    </div>
+    <p class="note sm">ECサイトでサイズのおすすめを見かけたら、ぜひ使ってみてください</p>
+  </section>
+
+  <!-- 17 メッセージ -->
+  <section class="slide inverse sakura-bg">
+    <div class="kicker">Message</div>
+    <p class="big-quote">あの黒いスーツが残した夢は、<br><span class="em">サイズ推定AI</span>に<br>引き継がれていると思います。</p>
+  </section>
+
+  <!-- 18 出典 -->
+  <section class="slide">
+    <div class="kicker">References</div>
+    <h2>出典</h2>
+    <ul class="refs">
+      <li>ZOZO — 3D計測用ボディースーツ「ZOZOSUIT 2」を発表（2020-10-29） — <a href="https://corp.zozo.com/news/20201029-12001/" target="_blank" rel="noopener">https://corp.zozo.com/news/20201029-12001/</a></li>
+      <li>FASHIONSNAP — 230万枚以上を無料配布したゾゾスーツ、結局どうなった？（最終更新 2024-04-23） — <a href="https://www.fashionsnap.com/article/zozosuit-2024/" target="_blank" rel="noopener">https://www.fashionsnap.com/article/zozosuit-2024/</a></li>
+      <li>CommercePick — unisize のサービス資料 — <a href="https://www.commercepick.com/archives/30709" target="_blank" rel="noopener">https://www.commercepick.com/archives/30709</a></li>
+      <li>Virtusize — 公式サイト — <a href="https://www.virtusize.com/ja" target="_blank" rel="noopener">https://www.virtusize.com/ja</a></li>
+      <li>True Fit — 公式サイト — <a href="https://www.truefit.com/" target="_blank" rel="noopener">https://www.truefit.com/</a></li>
+    </ul>
+    <p class="note sm">いずれも 2026-11-19 確認。靴のサイズ推定の流れと数値は、説明のための例です</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js?v=20261113i"></script>
+</body>
+</html>

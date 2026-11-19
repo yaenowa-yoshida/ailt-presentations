@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>対話式日記ツールの設計</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_theme/deck.css?v=20261113i">
+<style>
+  /* この資料だけで使う部品（矢印つきの流れ・7つの項目・日記の出力イメージ） */
+  .steps.flow { gap: 30px; margin: 8px 0 18px; }
+  .steps.flow div { position: relative; padding: 16px 6px; font-size: 20px; word-break: auto-phrase; }
+  .steps.flow div:not(:last-child)::after {
+    content: "→"; position: absolute; right: -24px; top: 50%; transform: translateY(-50%);
+    font-family: var(--font-sans); font-weight: 400; font-size: 18px; color: var(--sakura-deep);
+  }
+  .flow-label { font-size: 16px; letter-spacing: .2em; color: var(--accent-gold); margin-top: 6px; }
+  .stats .stat .n small { font-size: 26px; }
+  .stats .stat .l { line-height: 1.6; }
+  ol.rules.seven li { font-size: 22px; }
+  .diary { background: var(--surface-raised); border: .5px solid var(--paper-dark); padding: 22px 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 40px; }
+  .diary .sec h3 { font-size: 19px; color: var(--accent); margin-bottom: 2px; }
+  .diary .sec p { font-size: 15px; line-height: 1.6; color: var(--ink-light); }
+  .diary .sec.wide { grid-column: 1 / -1; }
+  .diary-head { display: flex; align-items: baseline; gap: 18px; margin: -8px 0 12px; }
+  .diary-head .date { font-size: 20px; }
+  .diary-head span { font-size: 15px; color: var(--ink-light); }
+  @media (max-width: 760px) and (orientation: portrait) {
+    .steps.flow { gap: 8px; grid-template-columns: repeat(2, 1fr); }
+    .steps.flow div { font-size: 14px; padding: 10px 4px; }
+    .steps.flow div::after { display: none; }
+    .flow-label { font-size: 12px; }
+    ol.rules.seven li { font-size: 14px; }
+    .diary { grid-template-columns: 1fr; padding: 16px 18px; }
+    .diary .sec h3 { font-size: 15px; }
+    .diary .sec p { font-size: 13px; }
+    .diary-head .date { font-size: 15px; }
+    .diary-head span { font-size: 12px; }
+  }
+</style>
+</head>
+<body data-title="対話式日記ツールの設計">
+<div class="deck">
+
+  <!-- 1 表紙 -->
+  <section class="slide title sakura-bg sub2">
+    <div class="kicker">AI Lightning Talk · 2026.04</div>
+    <h1>対話式<br>日記ツールの<span class="em">設計</span></h1>
+    <p class="sub">自分で書く日記をやめて、<br>AIと話しながら残す日記を試しました</p>
+    <div class="rule"></div>
+    <div class="presenter">
+      <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+      <div>
+        <div class="org">株式会社ヤエノワ　代表取締役</div>
+        <div class="name">吉田 勝大</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 自己紹介 -->
+  <section class="slide">
+    <div class="kicker">About Me</div>
+    <h2>自己紹介</h2>
+    <div class="profile">
+      <div class="id">
+        <img src="../_theme/logo.png" alt="ヤエノワロゴ">
+        <div class="name">吉田 勝大</div>
+        <div class="roman">Yoshida Katsuhiro</div>
+        <div class="role">株式会社ヤエノワ<br>代表取締役</div>
+      </div>
+      <div>
+        <ul>
+          <li>ECサイトと他システムの連携の、要件定義・設計を担当</li>
+          <li>業務システムやECサイトの運用・保守を担当</li>
+          <li>基幹システムとEC・OMSの<b>連携設計</b>が専門（SAP連携など）</li>
+          <li>2025年4月にヤエノワを設立。要件定義・設計を軸に、生成AI活用・アプリ開発まで</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">要件定義</span><span class="tag">システム設計</span><span class="tag">基幹システム連携</span><span class="tag">EC・OMS</span><span class="tag">PM</span><span class="tag">生成AI</span><span class="tag">Shopify</span><span class="tag">生成AIパスポート</span>
+        </div>
+      </div>
+    </div>
+    <p class="src">yaenowa.co.jp</p>
+  </section>
+
+  <!-- 3 日記は良い習慣 -->
+  <section class="slide">
+    <div class="kicker">01 · Background 1/4</div>
+    <h2>日記は良い習慣だと思います</h2>
+    <p class="lead">日記には、次のような良いところがあります</p>
+    <div class="cards three roomy">
+      <div class="card"><div class="who">01</div><h3>心理・メンタル面</h3></div>
+      <div class="card"><div class="who">02</div><h3>行動・成長面</h3></div>
+      <div class="card"><div class="who">03</div><h3>成長を実感できる</h3></div>
+    </div>
+    <p class="note">自分を振り返り、記録し、判断の質を上げるための道具になると思います</p>
+  </section>
+
+  <!-- 4 日記をつけている人の割合 -->
+  <section class="slide">
+    <div class="kicker">01 · Background 2/4</div>
+    <h2>日記をつけている人は、2割ほどです</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">20.3<small>％</small></div><div class="l">普段日記をつけている<br>（20〜80代、主婦を中心とした<br>モニター会員1,000人）</div></div>
+      <div class="stat"><div class="n">18〜26<small>％</small></div><div class="l">20代・30代の女性で<br>日記を付けている割合</div></div>
+      <div class="stat"><div class="n">12<small>％</small></div><div class="l">20代の男性で<br>日記を付けている割合</div></div>
+    </div>
+    <p class="note sm">左はナビットの2025年1月の調査、中央と右はLifeTimeTechLaboの2018年の調査です。調査の時期も対象も違うため、並べて比べるものではありません</p>
+    <p class="src">株式会社ナビット「日記をつけてますか？日記に関する意識の調査してみました！【1000人アンケート】」（2025年1月、20〜80代の主婦を中心としたモニター会員1,000人、Webアンケート）／LifeTimeTechLabo「日記の日にちなんだ『日々の記録に関するアンケート調査』」（2018年5〜6月、20〜60代の1,000人）。2026-11-19確認</p>
+  </section>
+
+  <!-- 5 挫折 -->
+  <section class="slide">
+    <div class="kicker">01 · Background 3/4</div>
+    <h2>約7割が、日記に挫折した経験があります</h2>
+    <div class="stats two">
+      <div class="stat"><div class="n">69.6<small>％</small></div><div class="l">過去に日記をつけていて、挫折した経験が「ある」（主婦を中心としたモニター会員1,000人）</div></div>
+      <div class="stat"><div class="n">20.3<small>％</small></div><div class="l">普段日記を「つけている」（同じ1,000人）</div></div>
+    </div>
+    <ul style="margin-top:18px">
+      <li>やったことのある人は多いのに、続けられている人は少ないようです</li>
+      <li>良いと分かっていても、続けられるとは限らないと思います</li>
+    </ul>
+    <p class="src">株式会社ナビット「日記をつけてますか？日記に関する意識の調査してみました！【1000人アンケート】」（2025年1月、20〜80代の主婦を中心としたモニター会員1,000人、Webアンケート）。2026-11-19確認</p>
+  </section>
+
+  <!-- 6 原因 -->
+  <section class="slide">
+    <div class="kicker">01 · Background 4/4</div>
+    <h2>続かない原因は2つあると思います</h2>
+    <div class="cards pair">
+      <div class="card"><div class="who">入力</div><h3>書くまでの負担が大きい</h3><p>何を書くかを、毎回考える必要があります</p></div>
+      <div class="card"><div class="who">見返り</div><h3>良さを感じるまでが遠い</h3><p>書いても、その場では何も返ってきません</p></div>
+    </div>
+  </section>
+
+  <!-- 7 アプローチ -->
+  <section class="slide">
+    <div class="kicker">02 · Approach</div>
+    <h2>対話で深掘りして、最後に要約します</h2>
+    <div class="steps flow">
+      <div>AIと質疑応答<small>やりとりしながら</small></div>
+      <div>話したことを記録<small>メモとしてデータに</small></div>
+      <div>最後に要約<small>日記の形に</small></div>
+    </div>
+    <p class="note">自分で書かずに、聞かれたことに答えていけば日記になる形を考えました</p>
+  </section>
+
+  <!-- 8 プロダクト概要 -->
+  <section class="slide">
+    <div class="kicker">03 · Overview</div>
+    <h2>ツールの概要</h2>
+    <div>
+      <div class="trend"><span class="no">01</span><div><h3>ChatGPTの上で、対話しながら入力します</h3><p>今回は試しにChatGPTで動かしました</p></div></div>
+      <div class="trend"><span class="no">02</span><div><h3>AIの質問と自分の問いで、考えを引き出します</h3></div></div>
+      <div class="trend"><span class="no">03</span><div><h3>会話のログをもとに、日記を作ります</h3></div></div>
+      <div class="trend"><span class="no">04</span><div><h3>共有用のテキストとして書き出します</h3><p>LINEやメールで送れる形にします</p></div></div>
+    </div>
+  </section>
+
+  <!-- 9 利用フロー -->
+  <section class="slide">
+    <div class="kicker">04 · Flow</div>
+    <h2>使い方の流れ</h2>
+    <div class="flow-label">1回目</div>
+    <div class="steps flow">
+      <div class="pc">自分が話す</div>
+      <div>AIが質問する</div>
+      <div class="pc">自分が答える</div>
+      <div>ここまでを記録</div>
+    </div>
+    <div class="flow-label">2回目から</div>
+    <div class="steps flow">
+      <div class="pc">記録を<br>聞き返す<small>読み返す</small></div>
+      <div class="pc">自分でも<br>問いを持つ</div>
+      <div>AIも<br>追加で質問</div>
+      <div class="pc">自分が<br>また答える</div>
+      <div>さらに<br>記録する</div>
+    </div>
+    <p class="note sm">これを数回繰り返したあと、最後に日記のフォーマットに整えます</p>
+  </section>
+
+  <!-- 10 従来との違い -->
+  <section class="slide">
+    <div class="kicker">05 · Difference</div>
+    <h2>これまでの日記との違い</h2>
+    <table class="grid">
+      <thead><tr><th>項目</th><th>これまでの日記</th><th>このツール</th></tr></thead>
+      <tbody>
+        <tr><td>書き方</td><td>自分で考えて書く</td><td>対話で引き出してもらう</td></tr>
+        <tr><td>続けやすさ</td><td>続けるのが難しい</td><td>短い時間で終わるので、続けやすくなると思います</td></tr>
+        <tr><td>書いたあと</td><td>書いて終わり</td><td>要約と気づきまでAIが手伝ってくれます</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 11 構造立て -->
+  <section class="slide">
+    <div class="kicker">06 · Format 1/2</div>
+    <h2>日記を7つの項目に分けます</h2>
+    <ol class="rules seven">
+      <li>今日の景色</li>
+      <li>心の動き</li>
+      <li>人との時間</li>
+      <li>学びの時間・つながり</li>
+      <li>夜（アフターファイブ）の時間</li>
+      <li>小さな気づき</li>
+      <li class="pick">明日への種</li>
+    </ol>
+    <p class="note sm">話した順番に関係なく、AIがこの項目に振り分けてまとめます</p>
+  </section>
+
+  <!-- 12 出力イメージ -->
+  <section class="slide">
+    <div class="kicker">06 · Format 2/2</div>
+    <h2>できあがる日記のイメージ</h2>
+    <div class="diary-head"><span class="date">YYYY.MM.DD</span><span>形を示すための見本です。各項目には、そこに入る内容を書いています</span></div>
+    <div class="diary">
+      <div class="sec"><h3>今日の景色</h3><p>その日に見た風景や、印象に残った場面</p></div>
+      <div class="sec"><h3>心の動き</h3><p>うれしかったこと、引っかかったこと</p></div>
+      <div class="sec"><h3>人との時間</h3><p>話した人と、そのとき感じたこと</p></div>
+      <div class="sec"><h3>学びの時間・つながり</h3><p>新しく知ったことと、前に知っていたこととのつながり</p></div>
+      <div class="sec"><h3>夜（アフターファイブ）の時間</h3><p>仕事が終わってからの過ごし方</p></div>
+      <div class="sec"><h3>小さな気づき</h3><p>話しているうちに出てきた、ちょっとした発見</p></div>
+      <div class="sec wide"><h3>明日への種</h3><p>明日やってみたいこと、続けたいこと</p></div>
+    </div>
+  </section>
+
+  <!-- 13 まとめ -->
+  <section class="slide">
+    <div class="kicker">Takeaways</div>
+    <h2>使ってみて</h2>
+    <div class="cards pair compact">
+      <div class="card">
+        <div class="who">良かったところ</div>
+        <ul class="tight">
+          <li>項目を決めておいたので、矢継ぎ早に話しても整理してくれた</li>
+          <li>個人的な意見と事実を分けて整理してくれた</li>
+          <li>話した内容を補う深掘りの質問をしてくれた</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="who">これからの課題</div>
+        <ul class="tight">
+          <li>アプリケーションにすること</li>
+          <li>どのくらい続けられるかを確かめること</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 出典 -->
+  <section class="slide">
+    <div class="kicker">References</div>
+    <h2>出典</h2>
+    <ul class="refs">
+      <li>株式会社ナビット — 日記をつけてますか？日記に関する意識の調査してみました！【1000人アンケート】（2025年1月31日配信、20〜80代の主婦を中心としたモニター会員1,000人、Webアンケート、財経新聞に掲載） — <a href="https://zaikei.co.jp/releases/2790857/" target="_blank" rel="noopener">https://zaikei.co.jp/releases/2790857/</a></li>
+      <li>LifeTimeTechLabo — 日記の日にちなんだ「日々の記録に関するアンケート調査」（2018年6月12日） — <a href="https://lttl.jp/report/0001.html" target="_blank" rel="noopener">https://lttl.jp/report/0001.html</a></li>
+    </ul>
+    <p class="src">いずれも2026-11-19確認</p>
+  </section>
+
+</div>
+<div class="hint">← → / 左右の余白をクリックで移動 · F で全画面</div>
+<script src="../_theme/deck.js?v=20261113i"></script>
+</body>
+</html>
