@@ -17,26 +17,31 @@
     margin: 0; background: var(--paper); color: var(--ink-mid);
     font-family: "Noto Sans JP", sans-serif; line-height: 1.8;
     border-left: 10px solid var(--plum); min-height: 100vh;
+    word-break: auto-phrase; /* 日本語を文節で折り返し、名前や語の途中で切れないようにする */
   }
-  main { max-width: 880px; margin: 0 auto; padding: 56px 24px 72px; }
+  main { max-width: 880px; margin: 0 auto; padding: 80px 32px 96px; }
   .kicker { font-size: 13px; letter-spacing: .3em; color: var(--sakura); }
   h1 { font-family: "Zen Old Mincho", serif; font-size: 36px; color: var(--ink); margin: 8px 0 4px; letter-spacing: .06em; }
-  h1 + .rule { width: 48px; height: 2px; background: var(--sakura); margin: 12px 0 28px; }
-  .lead { margin: 0 0 32px; }
-  ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
-  li { background: var(--card); border: 1px solid var(--line); padding: 20px 24px; }
-  .meta { font-size: 14px; color: var(--ink-light); }
-  .meta .date { color: var(--plum); font-weight: 700; margin-right: 12px; }
-  h2 { font-family: "Zen Old Mincho", serif; font-size: 22px; color: var(--ink); margin: 6px 0 4px; }
-  .about { margin: 0 0 10px; font-size: 15px; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 14px; }
+  h1 + .rule { width: 48px; height: 2px; background: var(--sakura); margin: 16px 0 36px; }
+  .lead { margin: 0 0 56px; }
+  ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 28px; }
+  li { background: var(--card); border: 1px solid var(--line); padding: 32px 40px; min-width: 0; }
+  .meta { font-size: 14px; color: var(--ink-light); display: flex; flex-wrap: wrap; gap: 2px 16px; }
+  .meta .venue { word-break: auto-phrase; min-width: 0; }
+  .meta .date { color: var(--plum); font-weight: 700; }
+  h2 { font-family: "Zen Old Mincho", serif; font-size: 22px; line-height: 1.6; color: var(--ink); margin: 12px 0 12px; word-break: auto-phrase; text-wrap: pretty; }
+  .about { margin: 0 0 20px; font-size: 15px; line-height: 1.95; text-wrap: pretty; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
   .links a { color: var(--plum); }
-  footer { margin-top: 48px; font-size: 13px; color: var(--ink-light); }
+  footer { margin-top: 72px; font-size: 13px; color: var(--ink-light); }
   footer a { color: var(--plum); }
   @media (max-width: 600px) {
-    main { padding: 36px 16px 56px; }
+    main { padding: 48px 16px 64px; }
     h1 { font-size: 28px; }
-    li { padding: 16px; }
+    .lead { margin-bottom: 40px; }
+    ol { gap: 20px; }
+    li { padding: 24px 20px; }
+    h2 { font-size: 20px; }
   }
 </style>
 </head>
@@ -45,11 +50,11 @@
   <div class="kicker">TALKS</div>
   <h1>登壇実績</h1>
   <div class="rule"></div>
-  <p class="lead">株式会社ヤエノワ 代表取締役 吉田 勝大の登壇記録です。新しいものから並べています。</p>
+  <p class="lead">株式会社ヤエノワ 代表取締役 <span style="white-space: nowrap;">吉田 勝大</span>の登壇記録です。新しいものから並べています。</p>
 
   <ol>
     <li>
-      <div class="meta"><span class="date">2026.11.14</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.11.14</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>ブラウザのコンソールに貼るだけ</h2>
       <p class="about">Claude Code がスクリプトを書き、人がブラウザのコンソールに貼って流し、Claude Code が判定して記録する。この分け方で、2つのサイトの受け入れテストを回した話をしたLTです。</p>
       <div class="links">
@@ -58,7 +63,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.10.10</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.10.10</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>来る前に、決まっている</h2>
       <p class="about">AIが調べて、比べて、まとめてくれる今、人に残るのは「確かめる仕事」だと思う、という5分のLTです。</p>
       <div class="links">
@@ -67,7 +72,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.09.12</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.09.12</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>人を笑顔にして、悲しむ人を生まないシステム設計</h2>
       <p class="about">宮本佳林さんのCloudflare登壇を題材に、笑顔にする仕組みを機能要件、悲しむ人を生まない判断を非機能要件として整理したLTです。</p>
       <div class="links">
@@ -76,7 +81,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.08.22</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.08.22</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>日報を、あとで書かない。</h2>
       <p class="about">自社サービスとして作った簡易日報作成ツールを題材に、AIでツールを作るときは「自分の要求は何か」「AIに何をしてほしいか」をはっきり伝えるのが大事、という話をしたLTです。</p>
       <div class="links">
@@ -85,7 +90,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.07.18</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.07.18</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>AIは業務システムの中から浸透する</h2>
       <p class="about">日本のAI普及は、個人のチャット利用よりも、毎日使う業務システムにAIが組み込まれる形で進む、という仮説を考えたLTです。</p>
       <div class="links">
@@ -93,7 +98,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.06.06</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.06.06</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>AIと要件再定義して残したADR</h2>
       <p class="about">担当していた案件を離れる前に、設計の背景や判断の理由をAIに質問させて引き出し、ADR（設計判断の記録）として残した進め方を紹介したLTです。</p>
       <div class="links">
@@ -101,7 +106,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.04.11</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.04.11</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>対話式日記ツールの設計</h2>
       <p class="about">続けにくい日記を、AIとの対話で深掘りして最後に要約する形にした、対話式日記ツールの設計を紹介したLTです。</p>
       <div class="links">
@@ -109,7 +114,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.03.21</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.03.21</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>UI／UXは誰のためのものか？</h2>
       <p class="about">AIが商品を探して比べるようになったとき、ECのUI／UXは誰のためのものになるのかを考えたLTです。</p>
       <div class="links">
@@ -117,7 +122,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2026.01.10</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2026.01.10</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>イーロン・マスクの“シンギュラリティ”発言</h2>
       <p class="about">AIが人間を超え始める世界線はもう始まっている、というテーマで、仕事の現場で起きている変化や社会への影響を話したLTです。</p>
       <div class="links">
@@ -126,7 +131,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2025.12.01</span>CraftStage LT会 ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2025.12.01</span><span class="venue">CraftStage LT会 ／ 富士通UIS（川崎）</span></div>
       <h2>あの黒タイツみたいなスーツ、覚えてますか？</h2>
       <p class="about">サイズ計測スーツが姿を消したあと、ECのサイズ推定AIが何をしているのかを、靴の例で分解して紹介したLTです。</p>
       <div class="links">
@@ -134,7 +139,7 @@
       </div>
     </li>
     <li>
-      <div class="meta"><span class="date">2025.10.01</span>CraftStage AI活用アイデアソン ／ 富士通UIS（川崎）</div>
+      <div class="meta"><span class="date">2025.10.01</span><span class="venue">CraftStage AI活用アイデアソン ／ 富士通UIS（川崎）</span></div>
       <h2>3文で「自分専用AI」をつくってみよう</h2>
       <p class="about">大勢のシステムエンジニアの方の前で、大規模言語モデルの仕組みについて話したLTです。</p>
       <div class="links">
